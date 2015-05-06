@@ -11,6 +11,16 @@
     "prebuild": "npm run lint"
   },
   "author": "Fong Kuanghuei <waneblade@gmail.com>",
+  "homepage": "http://roadmanfong.github.io/react-cropper/",
+  "bugs": {
+    "url": "https://github.com/roadmanfong/react-cropper/issues"
+  },
+  "keywords": [
+    "react",
+    "react-component",
+    "cropper",
+    "image"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
