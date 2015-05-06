@@ -6,7 +6,7 @@ var Demo = React.createClass({
 
   getInitialState: function() {
     return {
-      src: null,
+      src: 'http://fengyuanchen.github.io/cropper/img/picture.jpg',
       preview: null
     };
   },
@@ -32,12 +32,16 @@ var Demo = React.createClass({
     reader.readAsDataURL(files[0]);
   },
 
-  render() {
+  _useDefaultImage(){
+    this.setState({src: this.getInitialState().src});
+  },
 
+  render() {
     return (
       <div>
-        <div className='box' style={{width: '70%'}}>
+        <div className='box' style={{width: '70%', float: 'left'}}>
           <input type='file' onChange={this._onChange} />
+          <button onClick={this._useDefaultImage}>Use default img</button>
           <br/>
           <Cropper
             style={{height: 400, width: '100%'}}
@@ -48,7 +52,7 @@ var Demo = React.createClass({
             crop={this._crop} />
         </div>
 
-        <div className='box' style={{width: '30%'}}>
+        <div className='box' style={{width: '30%', float: 'right'}}>
           <h1>Preview</h1>
           <img style={{width: '100%'}} src={this.state.preview}/>
         </div>
