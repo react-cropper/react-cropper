@@ -1,5 +1,7 @@
-# react-cropper
+# [react-cropper](http://roadmanfong.github.io/react-cropper/)
 Cropper as React components
+
+[Demo](http://roadmanfong.github.io/react-cropper/example/)
 
 Currently only support webpack
 
