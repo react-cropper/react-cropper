@@ -20,11 +20,14 @@
 
     <section class="main-content">
       <h1>
-<a id="react-cropper" class="anchor" href="#react-cropper" aria-hidden="true"><span class="octicon octicon-link"></span></a>react-cropper</h1>
+<a id="react-cropper" class="anchor" href="#react-cropper" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="http://roadmanfong.github.io/react-cropper/">react-cropper</a>
+</h1>
 
 <p>Cropper as React components</p>
 
-<p>Currently only support Webpack build</p>
+<p><a href="http://roadmanfong.github.io/react-cropper/example/">Demo</a></p>
+
+<p>Currently only support webpack</p>
 
 <h2>
 <a id="docs" class="anchor" href="#docs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Docs</h2>
@@ -36,13 +39,18 @@
 <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
-<pre lang="cli"><code>npm install webpack
-npm install style-loader css-loader
-npm install react react-cropper
+<p>Install via <a href="https://www.npmjs.com/package/react-cropper">npm</a></p>
+
+<pre><code>npm install --save react-cropper
+</code></pre>
+
+<p>You also need a couple of loaders for webpack</p>
+
+<pre><code>npm install style-loader css-loader
 </code></pre>
 
 <h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a id="quick-example" class="anchor" href="#quick-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quick Example</h2>
 
 <div class="highlight highlight-js"><pre><span class="pl-k">var</span> Cropper <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>react-cropper<span class="pl-pds">'</span></span>);
 <span class="pl-k">var</span> Demo <span class="pl-k">=</span> React.createClass({
@@ -55,7 +63,7 @@ npm install react react-cropper
     <span class="pl-k">return</span> (
       <span class="pl-k">&lt;</span>Cropper
         ref<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>cropper<span class="pl-pds">'</span></span>
-        src<span class="pl-k">=</span>{<span class="pl-s"><span class="pl-pds">'</span>http://fengyuanchen.github.io/cropper/img/picture.jpg<span class="pl-pds">'</span></span>}
+        src<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>http://fengyuanchen.github.io/cropper/img/picture.jpg<span class="pl-pds">'</span></span>
         style<span class="pl-k">=</span>{{height<span class="pl-k">:</span> <span class="pl-c1">400</span>, width<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>100%<span class="pl-pds">'</span></span>}}
         <span class="pl-c">// Cropper.js options</span>
         aspectRatio<span class="pl-k">=</span>{<span class="pl-c1">16</span> / <span class="pl-c1">9</span>}
@@ -64,6 +72,68 @@ npm install react react-cropper
     );
   }
 });
+</pre></div>
+
+<h2>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<h3>
+<a id="src" class="anchor" href="#src" aria-hidden="true"><span class="octicon octicon-link"></span></a>src</h3>
+
+<ul>
+<li>Type: <code>string</code>
+</li>
+<li>Default: <code>null</code>
+</li>
+</ul>
+
+<div class="highlight highlight-js"><pre>  <span class="pl-k">&lt;</span>Cropper src<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>http://fengyuanchen.github.io/cropper/img/picture.jpg<span class="pl-pds">'</span></span> /<span class="pl-k">&gt;</span></pre></div>
+
+<h3>
+<a id="other-options" class="anchor" href="#other-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other options</h3>
+
+<p>Accept all options in the <a href="https://github.com/fengyuanchen/cropper#options">docs</a> as attributes.</p>
+
+<div class="highlight highlight-js"><pre>  <span class="pl-k">&lt;</span>Cropper
+    src<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>http://fengyuanchen.github.io/cropper/img/picture.jpg<span class="pl-pds">'</span></span>
+    aspectRatio<span class="pl-k">=</span>{<span class="pl-c1">16</span> / <span class="pl-c1">9</span>} 
+    guides<span class="pl-k">=</span>{<span class="pl-c1">false</span>} 
+    crop<span class="pl-k">=</span>{<span class="pl-v">this</span>._crop} /<span class="pl-k">&gt;</span></pre></div>
+
+<h2>
+<a id="methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h2>
+
+<p>Assign a <code>ref</code> attribute to use <a href="https://github.com/fengyuanchen/cropper#methods">methods</a></p>
+
+<div class="highlight highlight-js"><pre><span class="pl-k">var</span> Demo <span class="pl-k">=</span> React.createClass({
+
+  <span class="pl-en">_crop</span>: <span class="pl-k">function</span>(){
+    <span class="pl-k">var</span> dataUrl <span class="pl-k">=</span> <span class="pl-v">this</span>.refs.cropper.getCroppedCanvas().toDataURL();
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(dataUrl);
+  },
+
+  <span class="pl-en">render</span>: <span class="pl-k">function</span>() {
+    <span class="pl-k">return</span> (
+      <span class="pl-k">&lt;</span>Cropper
+        ref<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>cropper<span class="pl-pds">'</span></span>
+        crop<span class="pl-k">=</span>{<span class="pl-v">this</span>._crop} /<span class="pl-k">&gt;</span>
+    );
+  }
+})</pre></div>
+
+<h2>
+<a id="events" class="anchor" href="#events" aria-hidden="true"><span class="octicon octicon-link"></span></a>Events</h2>
+
+<p>Assign <a href="https://github.com/fengyuanchen/cropper#events">Events</a> handler with <code>.on(eventname, callback)</code> and <code>ref</code>.</p>
+
+<div class="highlight highlight-js"><pre>
+<span class="pl-en">componentDidMount</span>: <span class="pl-k">function</span>(){
+  <span class="pl-v">this</span>.refs.cropper.on(<span class="pl-s"><span class="pl-pds">'</span>dragstart.cropper<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">e</span>) {
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(e.<span class="pl-c1">type</span>); <span class="pl-c">// dragstart</span>
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(e.namespace); <span class="pl-c">// cropper</span>
+    <span class="pl-en">console</span><span class="pl-c1">.log</span>(e.dragType); <span class="pl-c">// ...</span>
+  });
+},
 </pre></div>
 
       <footer class="site-footer">
