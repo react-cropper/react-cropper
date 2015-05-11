@@ -8,7 +8,8 @@
     "lint": "grunt eslint",
     "build": "grunt babel",
     "prepublish": "npm run build",
-    "prebuild": "npm run lint"
+    "prebuild": "npm run lint",
+    "example": "webpack example/index.jsx --config example/webpack.config.js"
   },
   "author": "Fong Kuanghuei <waneblade@gmail.com>",
   "homepage": "http://roadmanfong.github.io/react-cropper/",
@@ -27,7 +28,7 @@
     "url": "https://github.com/roadmanfong/react-cropper.git"
   },
   "dependencies": {
-    "cropper": "^0.9.2",
+    "cropper": "^0.9.3",
     "jquery": "^2.1.4"
   },
   "peerDependencies": {
