@@ -105,3 +105,15 @@ componentDidMount: function(){
 },
 
 ```
+
+## Build
+
+```
+npm run build
+```
+
+## Author
+Fong Kuanghuei(waneblade@gmail.com)
+
+## License
+MIT
