@@ -21,6 +21,10 @@ You also need a couple of loaders for webpack
 npm install style-loader css-loader
 ```
 
+## Todo
+* Compatitble for browserify
+* Unit test
+* Put demo in [http://roadmanfong.github.io/react-cropper/](http://roadmanfong.github.io/react-cropper/)
 
 ## Quick Example
 ```js
