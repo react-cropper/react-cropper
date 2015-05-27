@@ -9,7 +9,7 @@
     "build": "grunt babel",
     "prepublish": "npm run build",
     "prebuild": "npm run lint",
-    "example": "webpack example/index.jsx --config example/webpack.config.js"
+    "example": "webpack example/index.jsx --config example/webpack.config.js --output-path example/assets"
   },
   "author": "Fong Kuanghuei <waneblade@gmail.com>",
   "homepage": "http://roadmanfong.github.io/react-cropper/",
