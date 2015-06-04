@@ -1,4 +1,7 @@
 # [react-cropper](http://roadmanfong.github.io/react-cropper/)
+
+[![NPM](https://nodei.co/npm/react-cropper.png?downloads=true)](https://www.npmjs.com/package/react-cropper)
+
 Cropper as React components
 
 [Demo](http://roadmanfong.github.io/react-cropper/example/)
