@@ -2,7 +2,7 @@
 
 [![NPM](https://nodei.co/npm/react-cropper.png?downloads=true)](https://www.npmjs.com/package/react-cropper)
 
-Cropper as React components
+[Cropper](https://github.com/fengyuanchen/cropper) as React components
 
 [Demo](http://roadmanfong.github.io/react-cropper/example/)
 
