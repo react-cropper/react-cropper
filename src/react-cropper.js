@@ -1,10 +1,9 @@
-var React = require('react');
-var $ = require('jquery');
+import React from 'react';
+import $ from 'jquery';
+import 'cropper';
+import 'cropper/dist/cropper.css';
 
-require('cropper');
-require('cropper/dist/cropper.css');
-
-var Cropper = React.createClass({
+const Cropper = React.createClass({
 
   propTypes: {
     // react cropper options
@@ -45,19 +44,19 @@ var Cropper = React.createClass({
     zoomout: React.PropTypes.func
   },
 
-  getDefaultProps: function() {
+  getDefaultProps() {
     return {
       src: null
     };
   },
 
-  componentDidMount: function() {
+  componentDidMount() {
     this.$img = $(React.findDOMNode(this.refs.img));
 
     this.$img.cropper(this.props);
   },
 
-  componentWillReceiveProps: function(nextProps) {
+  componentWillReceiveProps(nextProps) {
     if(nextProps.src !== this.props.src){
       this.replace(nextProps.src);
     }
@@ -66,7 +65,7 @@ var Cropper = React.createClass({
     }
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount() {
     if(this.$img) {
       // Destroy the cropper, this makes sure events such as resize are cleaned up and do not leak
       this.$img.cropper('destroy');
@@ -166,4 +165,4 @@ var Cropper = React.createClass({
   }
 });
 
-module.exports = Cropper;
+export default Cropper;

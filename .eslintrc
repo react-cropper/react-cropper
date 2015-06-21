@@ -3,6 +3,11 @@
     "browser": true,
     "node": true
   },
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+    "babel"
+  ],
   "rules": {
     "no-multi-spaces": 0,
     "no-multi-str": 0,
@@ -30,8 +35,5 @@
     "destructuring": true,
     "templateStrings": true,
     "jsx": true
-  },
-  "plugins": [
-    "react"
-  ]
+  }
 }

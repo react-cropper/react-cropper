@@ -1,8 +1,9 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
-  entry: __dirname + '/index.jsx',
+  entry: path.join(__dirname, 'index.js'),
   output: {
     path: 'assets',
     filename: 'bundle.js',
@@ -28,10 +29,10 @@ module.exports = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery",
-      "root.jQuery": "jquery"
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      'root.jQuery': 'jquery'
     }),
     new ExtractTextPlugin('bundle.css')
   ]

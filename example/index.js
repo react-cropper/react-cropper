@@ -1,10 +1,10 @@
-var React = require('react');
+import React from 'react';
 
-var Cropper = require('../dist/react-cropper');
+import Cropper from '../dist/react-cropper';
 
-var Demo = React.createClass({
+const Demo = React.createClass({
 
-  getInitialState: function() {
+  getInitialState() {
     return {
       src: 'http://fengyuanchen.github.io/cropper/img/picture.jpg',
       preview: null
@@ -19,13 +19,13 @@ var Demo = React.createClass({
 
   _onChange(e){
     e.preventDefault();
-    var files;
+    let files;
     if (e.dataTransfer) {
       files = e.dataTransfer.files;
     } else if (e.target) {
       files = e.target.files;
     }
-    var reader = new FileReader();
+    let reader = new FileReader();
     reader.onload = () => {
       this.setState({src: reader.result});
     };
