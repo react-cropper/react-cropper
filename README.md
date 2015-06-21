@@ -14,18 +14,33 @@ Currently only support webpack
 ## Installation
 Install via [npm](https://www.npmjs.com/package/react-cropper)
 
-```
+```shell
 npm install --save react-cropper
 ```
 
+### Webpack User
+
 You also need a couple of loaders for webpack
 
-```
+```shell
 npm install style-loader css-loader
 ```
 
+### Browserify User
+
+https://github.com/cheton/browserify-css
+
+```shell
+npm i --save-dev browserify-css
+```
+
+Compile your project with command line like
+
+```shell
+ browserify -t reactify -g browserify-css index.jsx > bundle.js
+```
+
 ## Todo
-* Compatitble for browserify
 * Unit test
 * Put demo in [http://roadmanfong.github.io/react-cropper/](http://roadmanfong.github.io/react-cropper/)
 
