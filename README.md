@@ -6,7 +6,6 @@
 
 [Demo](http://roadmanfong.github.io/react-cropper/example/)
 
-Currently only support webpack
 
 ## Docs
 * [Image Cropper](https://github.com/fengyuanchen/cropper)
