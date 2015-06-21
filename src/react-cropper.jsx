@@ -66,6 +66,15 @@ var Cropper = React.createClass({
     }
   },
 
+  componentWillUnmount: function() {
+    if(this.$img) {
+      // Destroy the cropper, this makes sure events such as resize are cleaned up and do not leak
+      this.$img.cropper('destroy');
+      // While we're at it remove our reference to the jQuery instance
+      delete this.$img;
+    }
+  },
+
   move(offsetX, offsetY){
     return this.$img.cropper('move', offsetX, offsetY);
   },
@@ -96,10 +105,6 @@ var Cropper = React.createClass({
 
   replace(url){
     return this.$img.cropper('replace', url);
-  },
-
-  destroy(){
-    return this.$img.cropper('destroy');
   },
 
   getData(){
@@ -148,7 +153,7 @@ var Cropper = React.createClass({
 
   render() {
     return (
-      <div {...this.props}>
+      <div {...this.props} src={null}>
         <img
           crossOrigin='anonymous'
           ref='img'
