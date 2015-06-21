@@ -29,11 +29,11 @@
   },
   "dependencies": {
     "cropper": "^0.9.3",
-    "jquery": "^2.1.4"
+    "jquery": "^1.11.3 || ^2.1.4"
   },
   "peerDependencies": {
     "react": ">= 0.12.0 || =0.14.0-alpha3",
-    "jquery": "^2.1.4"
+    "jquery": "^1.11.3 || ^2.1.4"
   },
   "devDependencies": {
     "babel-core": "^5.2.15",
