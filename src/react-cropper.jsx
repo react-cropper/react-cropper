@@ -148,7 +148,7 @@ var Cropper = React.createClass({
 
   render() {
     return (
-      <div {...this.props}>
+      <div {...this.props} src={null}>
         <img
           crossOrigin='anonymous'
           ref='img'
