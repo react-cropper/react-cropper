@@ -39,6 +39,14 @@ Compile your project with command line like
  browserify -t reactify -g browserify-css index.jsx > bundle.js
 ```
 
+If you are using `gulp`, `browserify` or other build tools, make sure you enable `global` option `true`
+
+For example in `gulp` you should do
+
+```js
+b.transform(browserifycss, {global: true});
+```
+
 ## Todo
 * Unit test
 * Put demo in [http://roadmanfong.github.io/react-cropper/](http://roadmanfong.github.io/react-cropper/)

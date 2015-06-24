@@ -51,9 +51,14 @@ const Cropper = React.createClass({
   },
 
   componentDidMount() {
+    var options = {};
+    for(var prop in this.props){
+      if(prop !== 'src'){
+        options[prop] = this.props[prop];
+      }
+    }
     this.$img = $(React.findDOMNode(this.refs.img));
-
-    this.$img.cropper(this.props);
+    this.$img.cropper(options);
   },
 
   componentWillReceiveProps(nextProps) {
@@ -158,7 +163,7 @@ const Cropper = React.createClass({
           ref='img'
           src={this.props.src}
           alt='picture'
-          style={{display: 'none'}}
+          style={{opacity: 0}}
           />
       </div>
     );
