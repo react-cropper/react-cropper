@@ -20,12 +20,11 @@
 
     <section class="main-content">
       <h1>
-<a id="react-cropper" class="anchor" href="#react-cropper" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="http://roadmanfong.github.io/react-cropper/">react-cropper</a>
-</h1>
-
-<p><a href="https://www.npmjs.com/package/react-cropper"><img src="https://nodei.co/npm/react-cropper.png" alt="NPM"></a></p>
+<a id="react-cropper" class="anchor" href="#react-cropper" aria-hidden="true"><span class="octicon octicon-link"></span></a>react-cropper</h1>
 
 <p><a href="https://github.com/fengyuanchen/cropper">Cropper</a> as React components</p>
+
+<p><a href="https://www.npmjs.com/package/react-cropper"><img src="https://nodei.co/npm/react-cropper.png" alt="NPM"></a></p>
 
 <p><a href="http://roadmanfong.github.io/react-cropper/example/">Demo</a></p>
 
@@ -60,6 +59,12 @@
 <p>Compile your project with command line like</p>
 
 <div class="highlight highlight-shell"><pre> browserify -t reactify -g browserify-css index.jsx <span class="pl-k">&gt;</span> bundle.js</pre></div>
+
+<p>If you are using <code>gulp</code>, <code>browserify</code> or other build tools, make sure you enable <code>global</code> option <code>true</code></p>
+
+<p>For example in <code>gulp</code> you should do</p>
+
+<div class="highlight highlight-js"><pre>b.transform(browserifycss, {global<span class="pl-k">:</span> <span class="pl-c1">true</span>});</pre></div>
 
 <h2>
 <a id="todo" class="anchor" href="#todo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Todo</h2>
