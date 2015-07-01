@@ -7,7 +7,9 @@ const Cropper = React.createClass({
 
   propTypes: {
     // react cropper options
+    crossOrigin: React.PropTypes.string,
     src: React.PropTypes.string,
+    alt: React.PropTypes.string,
 
     // cropper options
     aspectRatio: React.PropTypes.number,
@@ -55,7 +57,7 @@ const Cropper = React.createClass({
   componentDidMount() {
     var options = {};
     for(var prop in this.props){
-      if(prop !== 'src'){
+      if(prop !== 'src' && prop !== 'alt' && prop !== 'crossOrigin'){
         options[prop] = this.props[prop];
       }
     }
@@ -159,12 +161,12 @@ const Cropper = React.createClass({
 
   render() {
     return (
-      <div {...this.props} src={null}>
+      <div {...this.props} src={null} crossOrigin={null} alt={null}>
         <img
-          crossOrigin='anonymous'
+          crossOrigin={this.props.crossOrigin}
           ref='img'
           src={this.props.src}
-          alt='picture'
+          alt={this.props.alt === undefined ? 'picture' : this.props.alt}
           style={{opacity: 0}}
           />
       </div>
