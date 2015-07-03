@@ -20,14 +20,13 @@
 
     <section class="main-content">
       <h1>
-<a id="react-cropper" class="anchor" href="#react-cropper" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="http://roadmanfong.github.io/react-cropper/">react-cropper</a>
-</h1>
+<a id="react-cropper" class="anchor" href="#react-cropper" aria-hidden="true"><span class="octicon octicon-link"></span></a>react-cropper</h1>
 
-<p>Cropper as React components</p>
+<p><a href="https://github.com/fengyuanchen/cropper">Cropper</a> as React components</p>
+
+<p><a href="https://www.npmjs.com/package/react-cropper"><img src="https://nodei.co/npm/react-cropper.png" alt="NPM"></a></p>
 
 <p><a href="http://roadmanfong.github.io/react-cropper/example/">Demo</a></p>
-
-<p>Currently only support webpack</p>
 
 <h2>
 <a id="docs" class="anchor" href="#docs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Docs</h2>
@@ -41,25 +40,52 @@
 
 <p>Install via <a href="https://www.npmjs.com/package/react-cropper">npm</a></p>
 
-<pre><code>npm install --save react-cropper
-</code></pre>
+<div class="highlight highlight-shell"><pre>npm install --save react-cropper</pre></div>
+
+<h3>
+<a id="webpack-user" class="anchor" href="#webpack-user" aria-hidden="true"><span class="octicon octicon-link"></span></a>Webpack User</h3>
 
 <p>You also need a couple of loaders for webpack</p>
 
-<pre><code>npm install style-loader css-loader
-</code></pre>
+<div class="highlight highlight-shell"><pre>npm install style-loader css-loader</pre></div>
+
+<h3>
+<a id="browserify-user" class="anchor" href="#browserify-user" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browserify User</h3>
+
+<p><a href="https://github.com/cheton/browserify-css">https://github.com/cheton/browserify-css</a></p>
+
+<div class="highlight highlight-shell"><pre>npm i --save-dev browserify-css</pre></div>
+
+<p>Compile your project with command line like</p>
+
+<div class="highlight highlight-shell"><pre> browserify -t reactify -g browserify-css index.jsx <span class="pl-k">&gt;</span> bundle.js</pre></div>
+
+<p>If you are using <code>gulp</code>, <code>browserify</code> or other build tools, make sure you enable <code>global</code> option <code>true</code></p>
+
+<p>For example in <code>gulp</code> you should do</p>
+
+<div class="highlight highlight-js"><pre>b.transform(browserifycss, {global<span class="pl-k">:</span> <span class="pl-c1">true</span>});</pre></div>
+
+<h2>
+<a id="todo" class="anchor" href="#todo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Todo</h2>
+
+<ul>
+<li>Unit test</li>
+<li>Put demo in <a href="http://roadmanfong.github.io/react-cropper/">http://roadmanfong.github.io/react-cropper/</a>
+</li>
+</ul>
 
 <h2>
 <a id="quick-example" class="anchor" href="#quick-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Quick Example</h2>
 
 <div class="highlight highlight-js"><pre><span class="pl-k">var</span> Cropper <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>react-cropper<span class="pl-pds">'</span></span>);
 <span class="pl-k">var</span> Demo <span class="pl-k">=</span> React.createClass({
-  <span class="pl-en">_crop</span>: <span class="pl-k">function</span>(){
+  <span class="pl-en">_crop</span><span class="pl-k">:</span> <span class="pl-k">function</span>(){
     <span class="pl-c">// image in dataUrl</span>
     <span class="pl-en">console</span><span class="pl-c1">.log</span>(<span class="pl-v">this</span>.refs.cropper.getCroppedCanvas().toDataURL());
   },
 
-  <span class="pl-en">render</span>: <span class="pl-k">function</span>() {
+  <span class="pl-en">render</span><span class="pl-k">:</span> <span class="pl-k">function</span>() {
     <span class="pl-k">return</span> (
       <span class="pl-k">&lt;</span>Cropper
         ref<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>cropper<span class="pl-pds">'</span></span>
@@ -107,12 +133,12 @@
 
 <div class="highlight highlight-js"><pre><span class="pl-k">var</span> Demo <span class="pl-k">=</span> React.createClass({
 
-  <span class="pl-en">_crop</span>: <span class="pl-k">function</span>(){
+  <span class="pl-en">_crop</span><span class="pl-k">:</span> <span class="pl-k">function</span>(){
     <span class="pl-k">var</span> dataUrl <span class="pl-k">=</span> <span class="pl-v">this</span>.refs.cropper.getCroppedCanvas().toDataURL();
     <span class="pl-en">console</span><span class="pl-c1">.log</span>(dataUrl);
   },
 
-  <span class="pl-en">render</span>: <span class="pl-k">function</span>() {
+  <span class="pl-en">render</span><span class="pl-k">:</span> <span class="pl-k">function</span>() {
     <span class="pl-k">return</span> (
       <span class="pl-k">&lt;</span>Cropper
         ref<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">'</span>cropper<span class="pl-pds">'</span></span>
@@ -127,7 +153,7 @@
 <p>Assign <a href="https://github.com/fengyuanchen/cropper#events">Events</a> handler with <code>.on(eventname, callback)</code> and <code>ref</code>.</p>
 
 <div class="highlight highlight-js"><pre>
-<span class="pl-en">componentDidMount</span>: <span class="pl-k">function</span>(){
+<span class="pl-en">componentDidMount</span><span class="pl-k">:</span> <span class="pl-k">function</span>(){
   <span class="pl-v">this</span>.refs.cropper.on(<span class="pl-s"><span class="pl-pds">'</span>dragstart.cropper<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">e</span>) {
     <span class="pl-en">console</span><span class="pl-c1">.log</span>(e.<span class="pl-c1">type</span>); <span class="pl-c">// dragstart</span>
     <span class="pl-en">console</span><span class="pl-c1">.log</span>(e.namespace); <span class="pl-c">// cropper</span>
@@ -135,6 +161,22 @@
   });
 },
 </pre></div>
+
+<h2>
+<a id="build" class="anchor" href="#build" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build</h2>
+
+<pre><code>npm run build
+</code></pre>
+
+<h2>
+<a id="author" class="anchor" href="#author" aria-hidden="true"><span class="octicon octicon-link"></span></a>Author</h2>
+
+<p>Fong Kuanghuei(<a href="mailto:waneblade@gmail.com">waneblade@gmail.com</a>)</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>MIT</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/roadmanfong/react-cropper">react-cropper</a> is maintained by <a href="https://github.com/roadmanfong">roadmanfong</a>.</span>
