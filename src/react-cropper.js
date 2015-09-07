@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import 'cropper';
 import 'cropper/dist/cropper.css';
@@ -61,7 +62,7 @@ const Cropper = React.createClass({
         options[prop] = this.props[prop];
       }
     }
-    this.$img = $(React.findDOMNode(this.refs.img));
+    this.$img = $(ReactDOM.findDOMNode(this.refs.img));
     this.$img.cropper(options);
   },
 
