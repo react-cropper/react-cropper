@@ -11,6 +11,9 @@
 * [Image Cropper](https://github.com/fengyuanchen/cropper)
 
 ## Installation
+>> Before you install react-cropper please make sure `npm install jquery --save` first
+>> or it will install another jquery depedency deep in `react-cropper/node_modules/cropper/node_modules/jquery`
+
 Install via [npm](https://www.npmjs.com/package/react-cropper)
 
 ```shell
