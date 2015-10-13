@@ -31,7 +31,7 @@
     "cropper": "^0.11.1"
   },
   "peerDependencies": {
-    "react": ">= 0.12.0 || =0.14.0-alpha3",
+    "react": "^0.14.0",
     "jquery": "^1.11.3 || ^2.1.4"
   },
   "devDependencies": {
@@ -43,6 +43,8 @@
     "eslint-plugin-babel": "^2.1.1",
     "eslint-plugin-react": "^3.3.2",
     "extract-text-webpack-plugin": "^0.8.2",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
     "style-loader": "^0.12.3",
     "webpack": "^1.12.1"
   }

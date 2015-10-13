@@ -61,7 +61,7 @@ const Cropper = React.createClass({
         options[prop] = this.props[prop];
       }
     }
-    this.$img = $(React.findDOMNode(this.refs.img));
+    this.$img = $(this.refs.img);
     this.$img.cropper(options);
   },
 
