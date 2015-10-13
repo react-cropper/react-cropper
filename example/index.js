@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import Cropper from '../dist/react-cropper';
 
@@ -63,4 +64,4 @@ const Demo = React.createClass({
 
 });
 
-React.render(<Demo />, document.getElementById('main'));
+ReactDOM.render(<Demo />, document.getElementById('main'));
