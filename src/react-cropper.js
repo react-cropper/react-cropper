@@ -115,8 +115,8 @@ const Cropper = React.createClass({
     return this.$img.cropper('replace', url);
   },
 
-  getData(){
-    return this.$img.cropper('getData');
+  getData(rounded){
+    return this.$img.cropper('getData', rounded);
   },
 
   getContainerData(){
