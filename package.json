@@ -28,7 +28,7 @@
     "url": "https://github.com/roadmanfong/react-cropper.git"
   },
   "dependencies": {
-    "cropper": "^0.11.1"
+    "cropper": "^2.2.5"
   },
   "peerDependencies": {
     "react": "^0.14.0",
@@ -46,6 +46,6 @@
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "style-loader": "^0.12.3",
-    "webpack": "^1.12.1"
+    "webpack": "^1.12.11"
   }
 }
