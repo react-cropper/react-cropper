@@ -1,6 +1,6 @@
 # react-cropper
 
-[Cropper](https://github.com/fengyuanchen/cropper) as React components
+[Cropperjs](https://github.com/fengyuanchen/cropperjs) as React components
 
 [![NPM](https://nodei.co/npm/react-cropper.png)](https://www.npmjs.com/package/react-cropper)
 
@@ -11,8 +11,6 @@
 * [Image Cropper](https://github.com/fengyuanchen/cropper)
 
 ## Installation
->> Before you install react-cropper please make sure `npm install jquery --save` first
->> or it will install another jquery depedency deep in `react-cropper/node_modules/cropper/node_modules/jquery`
 
 Install via [npm](https://www.npmjs.com/package/react-cropper)
 
@@ -52,7 +50,6 @@ b.transform(browserifycss, {global: true});
 
 ## Todo
 * Unit test
-* Put demo in [http://roadmanfong.github.io/react-cropper/](http://roadmanfong.github.io/react-cropper/)
 
 ## Quick Example
 ```js
@@ -122,22 +119,6 @@ var Demo = React.createClass({
 })
 ```
 
-## Events
-
-Assign [Events](https://github.com/fengyuanchen/cropper#events) handler with `.on(eventname, callback)` and `ref`.
-
-```js
-
-componentDidMount: function(){
-  this.refs.cropper.on('dragstart.cropper', function (e) {
-    console.log(e.type); // dragstart
-    console.log(e.namespace); // cropper
-    console.log(e.dragType); // ...
-  });
-},
-
-```
-
 ## Build
 
 ```
@@ -145,7 +126,7 @@ npm run build
 ```
 
 ## Author
-Fong Kuanghuei(waneblade@gmail.com)
+Fong Kuanghuei(fongkuanghui@gmail.com)
 
 ## License
 MIT
