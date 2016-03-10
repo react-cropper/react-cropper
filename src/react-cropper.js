@@ -55,7 +55,6 @@ const ReactCropper = React.createClass({
   },
 
   componentDidMount() {
-    console.log('componentDidMount');
     var options = {};
     for(var prop in this.props){
       if(prop !== 'src' && prop !== 'alt' && prop !== 'crossOrigin'){
@@ -63,13 +62,10 @@ const ReactCropper = React.createClass({
       }
     }
     this.img = ReactDOM.findDOMNode(this.refs.img);
-    console.log('options');
-    console.log(options)
     this.cropper =  new Cropper(this.img, options);
   },
 
   componentWillReceiveProps(nextProps) {
-    console.log('componentWillReceiveProps');
     if(nextProps.src !== this.props.src){
       this.cropper.reset().clear().replace(nextProps.src);
     }
@@ -79,7 +75,6 @@ const ReactCropper = React.createClass({
   },
 
   componentWillUnmount() {
-    console.log('componentWillUnmount');
     if(this.img) {
       // Destroy the cropper, this makes sure events such as resize are cleaned up and do not leak
       this.cropper.destroy();
