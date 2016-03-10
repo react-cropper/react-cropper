@@ -54,7 +54,7 @@
 
 	'use strict';
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(2);
 
@@ -64,110 +64,136 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _distReactCropper = __webpack_require__(160);
+	var _reactCropper = __webpack_require__(160);
 
-	var _distReactCropper2 = _interopRequireDefault(_distReactCropper);
+	var _reactCropper2 = _interopRequireDefault(_reactCropper);
 
-	var Demo = _react2['default'].createClass({
-	  displayName: 'Demo',
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	  getInitialState: function getInitialState() {
-	    return {
-	      src: 'http://fengyuanchen.github.io/cropper/img/picture.jpg',
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var src = 'http://fengyuanchen.github.io/cropper/img/picture.jpg';
+
+	var Demo = function (_Component) {
+	  _inherits(Demo, _Component);
+
+	  function Demo(props) {
+	    _classCallCheck(this, Demo);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Demo).call(this, props));
+
+	    _this.state = {
+	      src: src,
 	      cropResult: null
 	    };
-	  },
-
-	  _cropImage: function _cropImage() {
-	    if (typeof this.refs.cropper.getCroppedCanvas() === 'undefined') {
-	      return;
-	    }
-	    this.setState({
-	      cropResult: this.refs.cropper.getCroppedCanvas().toDataURL()
-	    });
-	  },
-
-	  _onChange: function _onChange(e) {
-	    var _this = this;
-
-	    e.preventDefault();
-	    var files = undefined;
-	    if (e.dataTransfer) {
-	      files = e.dataTransfer.files;
-	    } else if (e.target) {
-	      files = e.target.files;
-	    }
-	    var reader = new FileReader();
-	    reader.onload = function () {
-	      _this.setState({ src: reader.result });
-	    };
-	    reader.readAsDataURL(files[0]);
-	  },
-
-	  _useDefaultImage: function _useDefaultImage() {
-	    this.setState({ src: this.getInitialState().src });
-	  },
-
-	  render: function render() {
-	    return _react2['default'].createElement(
-	      'div',
-	      null,
-	      _react2['default'].createElement(
-	        'div',
-	        { style: { width: '100%' } },
-	        _react2['default'].createElement('input', { type: 'file', onChange: this._onChange }),
-	        _react2['default'].createElement(
-	          'button',
-	          { onClick: this._useDefaultImage },
-	          'Use default img'
-	        ),
-	        _react2['default'].createElement('br', null),
-	        _react2['default'].createElement('br', null),
-	        _react2['default'].createElement(_distReactCropper2['default'], {
-	          style: { height: 400, width: '100%' },
-	          aspectRatio: 16 / 9,
-	          preview: '.img-preview',
-	          guides: false,
-	          src: this.state.src,
-	          ref: 'cropper',
-	          crop: this._crop })
-	      ),
-	      _react2['default'].createElement(
-	        'div',
-	        null,
-	        _react2['default'].createElement(
-	          'div',
-	          { className: 'box', style: { width: '50%', float: 'right' } },
-	          _react2['default'].createElement(
-	            'h1',
-	            null,
-	            'Preview'
-	          ),
-	          _react2['default'].createElement('div', { className: 'img-preview', style: { width: '100%', float: 'left', height: 300 } })
-	        ),
-	        _react2['default'].createElement(
-	          'div',
-	          { className: 'box', style: { width: '50%', float: 'right' } },
-	          _react2['default'].createElement(
-	            'h1',
-	            { style: { display: 'inline-block' } },
-	            'Crop',
-	            _react2['default'].createElement(
-	              'button',
-	              { onClick: this._cropImage, style: { float: 'right' } },
-	              'Crop Image'
-	            )
-	          ),
-	          _react2['default'].createElement('img', { style: { width: '100%' }, src: this.state.cropResult })
-	        )
-	      ),
-	      _react2['default'].createElement('br', { style: { clear: 'both' } })
-	    );
+	    _this._cropImage = _this._cropImage.bind(_this);
+	    _this._onChange = _this._onChange.bind(_this);
+	    _this._useDefaultImage = _this._useDefaultImage.bind(_this);
+	    return _this;
 	  }
 
-	});
+	  _createClass(Demo, [{
+	    key: '_cropImage',
+	    value: function _cropImage() {
+	      if (typeof this.refs.cropper.getCroppedCanvas() === 'undefined') {
+	        return;
+	      }
+	      this.setState({
+	        cropResult: this.refs.cropper.getCroppedCanvas().toDataURL()
+	      });
+	    }
+	  }, {
+	    key: '_onChange',
+	    value: function _onChange(e) {
+	      var _this2 = this;
 
-	_reactDom2['default'].render(_react2['default'].createElement(Demo, null), document.getElementById('main'));
+	      e.preventDefault();
+	      var files = void 0;
+	      if (e.dataTransfer) {
+	        files = e.dataTransfer.files;
+	      } else if (e.target) {
+	        files = e.target.files;
+	      }
+	      var reader = new FileReader();
+	      reader.onload = function () {
+	        _this2.setState({ src: reader.result });
+	      };
+	      reader.readAsDataURL(files[0]);
+	    }
+	  }, {
+	    key: '_useDefaultImage',
+	    value: function _useDefaultImage() {
+	      this.setState({ src: src });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'div',
+	          { style: { width: '100%' } },
+	          _react2.default.createElement('input', { type: 'file', onChange: this._onChange }),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: this._useDefaultImage },
+	            'Use default img'
+	          ),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(_reactCropper2.default, {
+	            style: { height: 400, width: '100%' },
+	            aspectRatio: 16 / 9,
+	            preview: '.img-preview',
+	            guides: false,
+	            src: this.state.src,
+	            ref: 'cropper',
+	            crop: this._crop
+	          })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'box', style: { width: '50%', float: 'right' } },
+	            _react2.default.createElement(
+	              'h1',
+	              null,
+	              'Preview'
+	            ),
+	            _react2.default.createElement('div', { className: 'img-preview', style: { width: '100%', float: 'left', height: 300 } })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'box', style: { width: '50%', float: 'right' } },
+	            _react2.default.createElement(
+	              'h1',
+	              { style: { display: 'inline-block' } },
+	              'Crop',
+	              _react2.default.createElement(
+	                'button',
+	                { onClick: this._cropImage, style: { float: 'right' } },
+	                'Crop Image'
+	              )
+	            ),
+	            _react2.default.createElement('img', { style: { width: '100%' }, src: this.state.cropResult })
+	          )
+	        ),
+	        _react2.default.createElement('br', { style: { clear: 'both' } })
+	      );
+	    }
+	  }]);
+
+	  return Demo;
+	}(_react.Component);
+
+	_reactDom2.default.render(_react2.default.createElement(Demo, null), document.getElementById('main'));
 
 /***/ },
 /* 2 */
@@ -324,9 +350,9 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	// shim for using process in browser
-
 	'use strict';
+
+	// shim for using process in browser
 
 	var process = module.exports = {};
 	var queue = [];
@@ -445,6 +471,7 @@
 	 * The current owner is the component who should own any components that are
 	 * currently being constructed.
 	 */
+
 	var ReactCurrentOwner = {
 
 	  /**
@@ -1025,6 +1052,8 @@
 
 	'use strict';
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	var toArray = __webpack_require__(13);
 
 	/**
@@ -1047,7 +1076,7 @@
 	    // not null/false
 	    !!obj && (
 	    // arrays are objects, NodeLists are functions in Safari
-	    typeof obj == 'object' || typeof obj == 'function') &&
+	    (typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) == 'object' || typeof obj == 'function') &&
 	    // quacks like an array
 	    'length' in obj &&
 	    // not window
@@ -1115,6 +1144,8 @@
 
 	'use strict';
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	var invariant = __webpack_require__(14);
 
 	/**
@@ -1131,7 +1162,7 @@
 
 	  // Some browse builtin objects can report typeof 'function' (e.g. NodeList in
 	  // old versions of Safari).
-	  !(!Array.isArray(obj) && (typeof obj === 'object' || typeof obj === 'function')) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'toArray: Array-like object expected') : invariant(false) : undefined;
+	  !(!Array.isArray(obj) && ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) === 'object' || typeof obj === 'function')) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'toArray: Array-like object expected') : invariant(false) : undefined;
 
 	  !(typeof length === 'number') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'toArray: Object needs a length property') : invariant(false) : undefined;
 
@@ -1473,6 +1504,7 @@
 	 * ReactPerf is a general AOP system designed to measure performance. This
 	 * module only has the hooks: see ReactDefaultPerf for the analysis tool.
 	 */
+
 	var ReactPerf = {
 	  /**
 	   * Boolean to enable/disable measurement. Set to false by default to prevent
@@ -1591,7 +1623,7 @@
 
 	// Win8 apps: Allow all html to be inserted
 	if (typeof MSApp !== 'undefined' && MSApp.execUnsafeLocalFunction) {
-	  setInnerHTML = function (node, html) {
+	  setInnerHTML = function setInnerHTML(node, html) {
 	    MSApp.execUnsafeLocalFunction(function () {
 	      node.innerHTML = html;
 	    });
@@ -1608,7 +1640,7 @@
 	  var testElement = document.createElement('div');
 	  testElement.innerHTML = ' ';
 	  if (testElement.innerHTML === '') {
-	    setInnerHTML = function (node, html) {
+	    setInnerHTML = function setInnerHTML(node, html) {
 	      // Magic theory: IE8 supposedly differentiates between added and updated
 	      // nodes when processing innerHTML, innerHTML on updated nodes suffers
 	      // from worse whitespace behavior. Re-adding a node like this triggers
@@ -1685,7 +1717,7 @@
 
 	if (ExecutionEnvironment.canUseDOM) {
 	  if (!('textContent' in document.documentElement)) {
-	    setTextContent = function (node, text) {
+	    setTextContent = function setTextContent(node, text) {
 	      setInnerHTML(node, escapeTextContentForBrowser(text));
 	    };
 	  }
@@ -2267,7 +2299,7 @@
 	var warning = emptyFunction;
 
 	if (process.env.NODE_ENV !== 'production') {
-	  warning = function (condition, format) {
+	  warning = function warning(condition, format) {
 	    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
 	      args[_key - 2] = arguments[_key];
 	    }
@@ -3746,6 +3778,8 @@
 
 	'use strict';
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	var EventPluginRegistry = __webpack_require__(33);
 	var EventPluginUtils = __webpack_require__(34);
 	var ReactErrorUtils = __webpack_require__(35);
@@ -3878,7 +3912,7 @@
 	   * @param {?function} listener The callback to store.
 	   */
 	  putListener: function putListener(id, registrationName, listener) {
-	    !(typeof listener === 'function') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Expected %s listener to be a function, instead got type %s', registrationName, typeof listener) : invariant(false) : undefined;
+	    !(typeof listener === 'function') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Expected %s listener to be a function, instead got type %s', registrationName, typeof listener === 'undefined' ? 'undefined' : _typeof(listener)) : invariant(false) : undefined;
 
 	    var bankForRegistrationName = listenerBank[registrationName] || (listenerBank[registrationName] = {});
 	    bankForRegistrationName[id] = listener;
@@ -4296,7 +4330,7 @@
 
 	var validateEventDispatches;
 	if (process.env.NODE_ENV !== 'production') {
-	  validateEventDispatches = function (event) {
+	  validateEventDispatches = function validateEventDispatches(event) {
 	    var dispatchListeners = event._dispatchListeners;
 	    var dispatchIDs = event._dispatchIDs;
 
@@ -4620,6 +4654,7 @@
 	 * handling the case when there is exactly one item (and we do not need to
 	 * allocate an array).
 	 */
+
 	var forEachAccumulated = function forEachAccumulated(arr, cb, scope) {
 	  if (Array.isArray(arr)) {
 	    arr.forEach(cb, scope);
@@ -4804,7 +4839,7 @@
 	  }
 
 	  var eventName = 'on' + eventNameSuffix;
-	  var isSupported = (eventName in document);
+	  var isSupported = eventName in document;
 
 	  if (!isSupported) {
 	    var element = document.createElement('div');
@@ -4861,6 +4896,8 @@
 	 */
 
 	'use strict';
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 	var ReactCurrentOwner = __webpack_require__(6);
 
@@ -5092,7 +5129,7 @@
 	 * @final
 	 */
 	ReactElement.isValidElement = function (object) {
-	  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+	  return (typeof object === 'undefined' ? 'undefined' : _typeof(object)) === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
 	};
 
 	module.exports = ReactElement;
@@ -5147,6 +5184,7 @@
 
 	// This registry keeps track of the React IDs of the components that rendered to
 	// `null` (in reality a placeholder such as `noscript`)
+
 	var nullComponentIDsRegistry = {};
 
 	/**
@@ -5548,6 +5586,7 @@
 	 */
 
 	// TODO: Replace this with ES6: var ReactInstanceMap = new Map();
+
 	var ReactInstanceMap = {
 
 	  /**
@@ -7055,8 +7094,10 @@
 	 */
 	'use strict';
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	function isNode(object) {
-	  return !!(object && (typeof Node === 'function' ? object instanceof Node : typeof object === 'object' && typeof object.nodeType === 'number' && typeof object.nodeName === 'string'));
+	  return !!(object && (typeof Node === 'function' ? object instanceof Node : (typeof object === 'undefined' ? 'undefined' : _typeof(object)) === 'object' && typeof object.nodeType === 'number' && typeof object.nodeName === 'string'));
 	}
 
 	module.exports = isNode;
@@ -7078,6 +7119,8 @@
 	 */
 
 	'use strict';
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 	var ReactCompositeComponent = __webpack_require__(64);
 	var ReactEmptyComponent = __webpack_require__(69);
@@ -7126,9 +7169,9 @@
 
 	  if (node === null || node === false) {
 	    instance = new ReactEmptyComponent(instantiateReactComponent);
-	  } else if (typeof node === 'object') {
+	  } else if ((typeof node === 'undefined' ? 'undefined' : _typeof(node)) === 'object') {
 	    var element = node;
-	    !(element && (typeof element.type === 'function' || typeof element.type === 'string')) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Element type is invalid: expected a string (for built-in components) ' + 'or a class/function (for composite components) but got: %s.%s', element.type == null ? element.type : typeof element.type, getDeclarationErrorAddendum(element._owner)) : invariant(false) : undefined;
+	    !(element && (typeof element.type === 'function' || typeof element.type === 'string')) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Element type is invalid: expected a string (for built-in components) ' + 'or a class/function (for composite components) but got: %s.%s', element.type == null ? element.type : _typeof(element.type), getDeclarationErrorAddendum(element._owner)) : invariant(false) : undefined;
 
 	    // Special case string values
 	    if (typeof element.type === 'string') {
@@ -7144,7 +7187,7 @@
 	  } else if (typeof node === 'string' || typeof node === 'number') {
 	    instance = ReactNativeComponent.createInstanceForText(node);
 	  } else {
-	     true ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Encountered invalid React node of type %s', typeof node) : invariant(false) : undefined;
+	     true ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Encountered invalid React node of type %s', typeof node === 'undefined' ? 'undefined' : _typeof(node)) : invariant(false) : undefined;
 	  }
 
 	  if (process.env.NODE_ENV !== 'production') {
@@ -7195,6 +7238,8 @@
 	 */
 
 	'use strict';
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 	var ReactComponentEnvironment = __webpack_require__(65);
 	var ReactCurrentOwner = __webpack_require__(6);
@@ -7324,7 +7369,7 @@
 	    // component, which is not newable. It might not be 100% reliable but is
 	    // something we can do until we start detecting that Component extends
 	    // React.Component. We already assume that typeof Component === 'function'.
-	    var canInstantiate = ('prototype' in Component);
+	    var canInstantiate = 'prototype' in Component;
 
 	    if (canInstantiate) {
 	      if (process.env.NODE_ENV !== 'production') {
@@ -7385,7 +7430,7 @@
 	    if (initialState === undefined) {
 	      inst.state = initialState = null;
 	    }
-	    !(typeof initialState === 'object' && !Array.isArray(initialState)) ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s.state: must be set to an object or null', this.getName() || 'ReactCompositeComponent') : invariant(false) : undefined;
+	    !((typeof initialState === 'undefined' ? 'undefined' : _typeof(initialState)) === 'object' && !Array.isArray(initialState)) ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s.state: must be set to an object or null', this.getName() || 'ReactCompositeComponent') : invariant(false) : undefined;
 
 	    this._pendingStateQueue = null;
 	    this._pendingReplaceState = false;
@@ -7510,7 +7555,7 @@
 	    var inst = this._instance;
 	    var childContext = inst.getChildContext && inst.getChildContext();
 	    if (childContext) {
-	      !(typeof Component.childContextTypes === 'object') ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s.getChildContext(): childContextTypes must be defined in order to ' + 'use getChildContext().', this.getName() || 'ReactCompositeComponent') : invariant(false) : undefined;
+	      !(_typeof(Component.childContextTypes) === 'object') ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s.getChildContext(): childContextTypes must be defined in order to ' + 'use getChildContext().', this.getName() || 'ReactCompositeComponent') : invariant(false) : undefined;
 	      if (process.env.NODE_ENV !== 'production') {
 	        this._checkPropTypes(Component.childContextTypes, childContext, ReactPropTypeLocations.childContext);
 	      }
@@ -8022,6 +8067,9 @@
 	 * @return {boolean} True if the existing instance should be updated.
 	 * @protected
 	 */
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	function shouldUpdateReactComponent(prevElement, nextElement) {
 	  var prevEmpty = prevElement === null || prevElement === false;
 	  var nextEmpty = nextElement === null || nextElement === false;
@@ -8029,8 +8077,8 @@
 	    return prevEmpty === nextEmpty;
 	  }
 
-	  var prevType = typeof prevElement;
-	  var nextType = typeof nextElement;
+	  var prevType = typeof prevElement === 'undefined' ? 'undefined' : _typeof(prevElement);
+	  var nextType = typeof nextElement === 'undefined' ? 'undefined' : _typeof(nextElement);
 	  if (prevType === 'string' || prevType === 'number') {
 	    return nextType === 'string' || nextType === 'number';
 	  } else {
@@ -8487,7 +8535,7 @@
 
 	  var didWarn = {};
 
-	  validateDOMNesting = function (childTag, childInstance, ancestorInfo) {
+	  validateDOMNesting = function validateDOMNesting(childTag, childInstance, ancestorInfo) {
 	    ancestorInfo = ancestorInfo || emptyAncestorInfo;
 	    var parentInfo = ancestorInfo.parentTag;
 	    var parentTag = parentInfo && parentInfo.tag;
@@ -8687,6 +8735,8 @@
 
 	'use strict';
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	var EventConstants = __webpack_require__(31);
 	var EventPropagators = __webpack_require__(74);
 	var ExecutionEnvironment = __webpack_require__(10);
@@ -8722,7 +8772,7 @@
 	 */
 	function isPresto() {
 	  var opera = window.opera;
-	  return typeof opera === 'object' && typeof opera.version === 'function' && parseInt(opera.version(), 10) <= 12;
+	  return (typeof opera === 'undefined' ? 'undefined' : _typeof(opera)) === 'object' && typeof opera.version === 'function' && parseInt(opera.version(), 10) <= 12;
 	}
 
 	var SPACEBAR_CODE = 32;
@@ -8842,7 +8892,7 @@
 	 */
 	function getDataFromCustomEvent(nativeEvent) {
 	  var detail = nativeEvent.detail;
-	  if (typeof detail === 'object' && 'data' in detail) {
+	  if ((typeof detail === 'undefined' ? 'undefined' : _typeof(detail)) === 'object' && 'data' in detail) {
 	    return detail.data;
 	  }
 	  return null;
@@ -10017,6 +10067,7 @@
 	 * @param {object} nativeEvent Native browser event.
 	 * @return {DOMEventTarget} Target node.
 	 */
+
 	function getEventTarget(nativeEvent) {
 	  var target = nativeEvent.target || nativeEvent.srcElement || window;
 	  // Safari may fire events on text nodes (Node.TEXT_NODE is 3).
@@ -10046,6 +10097,7 @@
 	/**
 	 * @see http://www.whatwg.org/specs/web-apps/current-work/multipage/the-input-element.html#input-type-attr-summary
 	 */
+
 	var supportedInputTypes = {
 	  'color': true,
 	  'date': true,
@@ -10876,6 +10928,8 @@
 
 	'use strict';
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	var AutoFocusUtils = __webpack_require__(95);
 	var CSSPropertyOperations = __webpack_require__(97);
 	var DOMProperty = __webpack_require__(24);
@@ -10997,7 +11051,7 @@
 	}
 
 	function friendlyStringify(obj) {
-	  if (typeof obj === 'object') {
+	  if ((typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) === 'object') {
 	    if (Array.isArray(obj)) {
 	      return '[' + obj.map(friendlyStringify).join(', ') + ']';
 	    } else {
@@ -11064,13 +11118,13 @@
 	  }
 	  if (props.dangerouslySetInnerHTML != null) {
 	    !(props.children == null) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Can only set one of `children` or `props.dangerouslySetInnerHTML`.') : invariant(false) : undefined;
-	    !(typeof props.dangerouslySetInnerHTML === 'object' && HTML in props.dangerouslySetInnerHTML) ? process.env.NODE_ENV !== 'production' ? invariant(false, '`props.dangerouslySetInnerHTML` must be in the form `{__html: ...}`. ' + 'Please visit https://fb.me/react-invariant-dangerously-set-inner-html ' + 'for more information.') : invariant(false) : undefined;
+	    !(_typeof(props.dangerouslySetInnerHTML) === 'object' && HTML in props.dangerouslySetInnerHTML) ? process.env.NODE_ENV !== 'production' ? invariant(false, '`props.dangerouslySetInnerHTML` must be in the form `{__html: ...}`. ' + 'Please visit https://fb.me/react-invariant-dangerously-set-inner-html ' + 'for more information.') : invariant(false) : undefined;
 	  }
 	  if (process.env.NODE_ENV !== 'production') {
 	    process.env.NODE_ENV !== 'production' ? warning(props.innerHTML == null, 'Directly setting property `innerHTML` is not permitted. ' + 'For more information, lookup documentation on `dangerouslySetInnerHTML`.') : undefined;
 	    process.env.NODE_ENV !== 'production' ? warning(!props.contentEditable || props.children == null, 'A component is `contentEditable` and contains `children` managed by ' + 'React. It is now your responsibility to guarantee that none of ' + 'those nodes are unexpectedly modified or duplicated. This is ' + 'probably not intentional.') : undefined;
 	  }
-	  !(props.style == null || typeof props.style === 'object') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'The `style` prop expects a mapping from style properties to values, ' + 'not a string. For example, style={{marginRight: spacing + \'em\'}} when ' + 'using JSX.%s', getDeclarationErrorAddendum(component)) : invariant(false) : undefined;
+	  !(props.style == null || _typeof(props.style) === 'object') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'The `style` prop expects a mapping from style properties to values, ' + 'not a string. For example, style={{marginRight: spacing + \'em\'}} when ' + 'using JSX.%s', getDeclarationErrorAddendum(component)) : invariant(false) : undefined;
 	}
 
 	function enqueuePutListener(id, registrationName, listener, transaction) {
@@ -11206,7 +11260,7 @@
 
 	var VALID_TAG_REGEX = /^[a-zA-Z][a-zA-Z:_\.\-\d]*$/; // Simplified subset
 	var validatedTagCache = {};
-	var hasOwnProperty = ({}).hasOwnProperty;
+	var hasOwnProperty = {}.hasOwnProperty;
 
 	function validateDangerousTag(tag) {
 	  if (!hasOwnProperty.call(validatedTagCache, tag)) {
@@ -11444,7 +11498,7 @@
 	        ret = innerHTML.__html;
 	      }
 	    } else {
-	      var contentToUse = CONTENT_TYPES[typeof props.children] ? props.children : null;
+	      var contentToUse = CONTENT_TYPES[_typeof(props.children)] ? props.children : null;
 	      var childrenToUse = contentToUse != null ? null : props.children;
 	      if (contentToUse != null) {
 	        // TODO: Validate that text is allowed as a child of this node
@@ -11479,7 +11533,7 @@
 	        setInnerHTML(el, innerHTML.__html);
 	      }
 	    } else {
-	      var contentToUse = CONTENT_TYPES[typeof props.children] ? props.children : null;
+	      var contentToUse = CONTENT_TYPES[_typeof(props.children)] ? props.children : null;
 	      var childrenToUse = contentToUse != null ? null : props.children;
 	      if (contentToUse != null) {
 	        // TODO: Validate that text is allowed as a child of this node
@@ -11701,8 +11755,8 @@
 	   * @param {object} context
 	   */
 	  _updateDOMChildren: function _updateDOMChildren(lastProps, nextProps, transaction, context) {
-	    var lastContent = CONTENT_TYPES[typeof lastProps.children] ? lastProps.children : null;
-	    var nextContent = CONTENT_TYPES[typeof nextProps.children] ? nextProps.children : null;
+	    var lastContent = CONTENT_TYPES[_typeof(lastProps.children)] ? lastProps.children : null;
+	    var nextContent = CONTENT_TYPES[_typeof(nextProps.children)] ? nextProps.children : null;
 
 	    var lastHtml = lastProps.dangerouslySetInnerHTML && lastProps.dangerouslySetInnerHTML.__html;
 	    var nextHtml = nextProps.dangerouslySetInnerHTML && nextProps.dangerouslySetInnerHTML.__html;
@@ -11885,6 +11939,7 @@
 	/**
 	 * @param {DOMElement} node input/textarea to focus
 	 */
+
 	function focusNode(node) {
 	  // IE8 can throw "Can't move focus to the control because it is invisible,
 	  // not enabled, or of a type that does not accept the focus." for all kinds of
@@ -12097,6 +12152,7 @@
 	/**
 	 * CSS properties which accept numbers but are not in units of "px".
 	 */
+
 	var isUnitlessNumber = {
 	  animationIterationCount: true,
 	  boxFlex: true,
@@ -12469,6 +12525,7 @@
 	 * @param {function} callback
 	 * @return {function}
 	 */
+
 	function memoizeStringOnly(callback) {
 	  var cache = {};
 	  return function (string) {
@@ -12852,6 +12909,8 @@
 
 	'use strict';
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	var ReactElement = __webpack_require__(43);
 	var ReactPropTypeLocationNames = __webpack_require__(67);
 
@@ -13111,7 +13170,7 @@
 	}
 
 	function isNode(propValue) {
-	  switch (typeof propValue) {
+	  switch (typeof propValue === 'undefined' ? 'undefined' : _typeof(propValue)) {
 	    case 'number':
 	    case 'string':
 	    case 'undefined':
@@ -13159,7 +13218,7 @@
 
 	// Equivalent of `typeof` but with special handling for array and regexp.
 	function getPropType(propValue) {
-	  var propType = typeof propValue;
+	  var propType = typeof propValue === 'undefined' ? 'undefined' : _typeof(propValue);
 	  if (Array.isArray(propValue)) {
 	    return 'array';
 	  }
@@ -13215,6 +13274,7 @@
 	'use strict';
 
 	/* global Symbol */
+
 	var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
 	var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
 
@@ -13537,6 +13597,8 @@
 
 	'use strict';
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	var ReactCurrentOwner = __webpack_require__(6);
 	var ReactElement = __webpack_require__(43);
 	var ReactInstanceHandles = __webpack_require__(46);
@@ -13613,7 +13675,7 @@
 	 * @return {!number} The number of children in this subtree.
 	 */
 	function traverseAllChildrenImpl(children, nameSoFar, callback, traverseContext) {
-	  var type = typeof children;
+	  var type = typeof children === 'undefined' ? 'undefined' : _typeof(children);
 
 	  if (type === 'undefined' || type === 'boolean') {
 	    // All of the above are perceived as null.
@@ -14731,6 +14793,8 @@
 
 	'use strict';
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 
 	/**
@@ -14743,7 +14807,7 @@
 	    return true;
 	  }
 
-	  if (typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
+	  if ((typeof objA === 'undefined' ? 'undefined' : _typeof(objA)) !== 'object' || objA === null || (typeof objB === 'undefined' ? 'undefined' : _typeof(objB)) !== 'object' || objB === null) {
 	    return false;
 	  }
 
@@ -15101,6 +15165,7 @@
 	 * @param {DOMWindow|DOMElement} scrollable
 	 * @return {object} Map with `x` and `y` keys.
 	 */
+
 	function getUnboundedScrollPosition(scrollable) {
 	  if (scrollable === window) {
 	    return {
@@ -15175,6 +15240,8 @@
 	 */
 
 	'use strict';
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 	var ReactComponent = __webpack_require__(124);
 	var ReactElement = __webpack_require__(43);
@@ -15641,10 +15708,10 @@
 	      continue;
 	    }
 
-	    var isReserved = (name in RESERVED_SPEC_KEYS);
+	    var isReserved = name in RESERVED_SPEC_KEYS;
 	    !!isReserved ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactClass: You are attempting to define a reserved ' + 'property, `%s`, that shouldn\'t be on the "statics" key. Define it ' + 'as an instance property instead; it will still be accessible on the ' + 'constructor.', name) : invariant(false) : undefined;
 
-	    var isInherited = (name in Constructor);
+	    var isInherited = name in Constructor;
 	    !!isInherited ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactClass: You are attempting to define ' + '`%s` on your component more than once. This conflict may be ' + 'due to a mixin.', name) : invariant(false) : undefined;
 	    Constructor[name] = property;
 	  }
@@ -15658,7 +15725,7 @@
 	 * @return {object} one after it has been mutated to contain everything in two.
 	 */
 	function mergeIntoWithNoDuplicateKeys(one, two) {
-	  !(one && two && typeof one === 'object' && typeof two === 'object') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'mergeIntoWithNoDuplicateKeys(): Cannot merge non-objects.') : invariant(false) : undefined;
+	  !(one && two && (typeof one === 'undefined' ? 'undefined' : _typeof(one)) === 'object' && (typeof two === 'undefined' ? 'undefined' : _typeof(two)) === 'object') ? process.env.NODE_ENV !== 'production' ? invariant(false, 'mergeIntoWithNoDuplicateKeys(): Cannot merge non-objects.') : invariant(false) : undefined;
 
 	  for (var key in two) {
 	    if (two.hasOwnProperty(key)) {
@@ -15879,7 +15946,7 @@
 	          initialState = null;
 	        }
 	      }
-	      !(typeof initialState === 'object' && !Array.isArray(initialState)) ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s.getInitialState(): must return an object or null', Constructor.displayName || 'ReactCompositeComponent') : invariant(false) : undefined;
+	      !((typeof initialState === 'undefined' ? 'undefined' : _typeof(initialState)) === 'object' && !Array.isArray(initialState)) ? process.env.NODE_ENV !== 'production' ? invariant(false, '%s.getInitialState(): must return an object or null', Constructor.displayName || 'ReactCompositeComponent') : invariant(false) : undefined;
 
 	      this.state = initialState;
 	    };
@@ -15953,6 +16020,8 @@
 
 	'use strict';
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	var ReactNoopUpdateQueue = __webpack_require__(125);
 
 	var canDefineProperty = __webpack_require__(44);
@@ -16000,7 +16069,7 @@
 	 * @protected
 	 */
 	ReactComponent.prototype.setState = function (partialState, callback) {
-	  !(typeof partialState === 'object' || typeof partialState === 'function' || partialState == null) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'setState(...): takes an object of state variables to update or a ' + 'function which returns an object of state variables.') : invariant(false) : undefined;
+	  !((typeof partialState === 'undefined' ? 'undefined' : _typeof(partialState)) === 'object' || typeof partialState === 'function' || partialState == null) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'setState(...): takes an object of state variables to update or a ' + 'function which returns an object of state variables.') : invariant(false) : undefined;
 	  if (process.env.NODE_ENV !== 'production') {
 	    process.env.NODE_ENV !== 'production' ? warning(partialState != null, 'setState(...): You passed an undefined or null state object; ' + 'instead, use forceUpdate().') : undefined;
 	  }
@@ -16713,6 +16782,7 @@
 	 * @param {DOMElement|DOMTextNode} node
 	 * @return {DOMElement|DOMTextNode}
 	 */
+
 	function getLeafNode(node) {
 	  while (node && node.firstChild) {
 	    node = node.firstChild;
@@ -17038,6 +17108,7 @@
 	 * get confused. In the future we need a way to generate GUIDs but for
 	 * now this will work on a smaller scale.
 	 */
+
 	var GLOBAL_MOUNT_POINT_MAX = Math.pow(2, 53);
 
 	var ServerReactRootIndex = {
@@ -17845,6 +17916,7 @@
 	 * @param {object} nativeEvent Native browser event.
 	 * @return {number} Normalized `charCode` property.
 	 */
+
 	function getEventCharCode(nativeEvent) {
 	  var charCode;
 	  var keyCode = nativeEvent.keyCode;
@@ -18283,6 +18355,8 @@
 
 	'use strict';
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	var DOMProperty = __webpack_require__(24);
 	var ReactDefaultPerfAnalysis = __webpack_require__(144);
 	var ReactMount = __webpack_require__(29);
@@ -18450,7 +18524,7 @@
 	        } else {
 	          // basic format
 	          var id = args[0];
-	          if (typeof id === 'object') {
+	          if ((typeof id === 'undefined' ? 'undefined' : _typeof(id)) === 'object') {
 	            id = ReactMount.getID(args[0]);
 	          }
 	          ReactDefaultPerf._recordWrite(id, fnName, totalTime, Array.prototype.slice.call(args, 1));
@@ -18741,11 +18815,11 @@
 	 * because of Facebook's testing infrastructure.
 	 */
 	if (performance.now) {
-	  performanceNow = function () {
+	  performanceNow = function performanceNow() {
 	    return performance.now();
 	  };
 	} else {
-	  performanceNow = function () {
+	  performanceNow = function performanceNow() {
 	    return Date.now();
 	  };
 	}
@@ -19347,6 +19421,8 @@
 
 	'use strict';
 
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
 	var ReactElement = __webpack_require__(43);
 	var ReactPropTypeLocations = __webpack_require__(66);
 	var ReactPropTypeLocationNames = __webpack_require__(67);
@@ -19452,7 +19528,7 @@
 	 * @param {*} parentType node's parent's type.
 	 */
 	function validateChildKeys(node, parentType) {
-	  if (typeof node !== 'object') {
+	  if ((typeof node === 'undefined' ? 'undefined' : _typeof(node)) !== 'object') {
 	    return;
 	  }
 	  if (Array.isArray(node)) {
@@ -19508,7 +19584,7 @@
 	      } catch (ex) {
 	        error = ex;
 	      }
-	      process.env.NODE_ENV !== 'production' ? warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', ReactPropTypeLocationNames[location], propName, typeof error) : undefined;
+	      process.env.NODE_ENV !== 'production' ? warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', ReactPropTypeLocationNames[location], propName, typeof error === 'undefined' ? 'undefined' : _typeof(error)) : undefined;
 	      if (error instanceof Error && !(error.message in loggedTypeFailures)) {
 	        // Only monitor this failure once because there tends to be a lot of the
 	        // same error.
@@ -19773,7 +19849,9 @@
 
 	'use strict';
 
-	Object.defineProperty(exports, '__esModule', {
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
@@ -19787,9 +19865,15 @@
 	  }return target;
 	};
 
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
-	}
+	var _createClass = function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	}();
 
 	var _react = __webpack_require__(2);
 
@@ -19799,197 +19883,248 @@
 
 	var _cropperjs2 = _interopRequireDefault(_cropperjs);
 
-	__webpack_require__(162);
+	__webpack_require__(163);
 
 	var _reactDom = __webpack_require__(159);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var ReactCropper = _react2['default'].createClass({
-	  displayName: 'ReactCropper',
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
 
-	  propTypes: {
-	    // react cropper options
-	    crossOrigin: _react2['default'].PropTypes.string,
-	    src: _react2['default'].PropTypes.string,
-	    alt: _react2['default'].PropTypes.string,
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
 
-	    // cropper options
-	    aspectRatio: _react2['default'].PropTypes.number,
-	    crop: _react2['default'].PropTypes.func,
-	    preview: _react2['default'].PropTypes.string,
-	    strict: _react2['default'].PropTypes.bool,
-	    responsive: _react2['default'].PropTypes.bool,
-	    checkImageOrigin: _react2['default'].PropTypes.bool,
-	    background: _react2['default'].PropTypes.bool,
-	    modal: _react2['default'].PropTypes.bool,
-	    guides: _react2['default'].PropTypes.bool,
-	    highlight: _react2['default'].PropTypes.bool,
-	    autoCrop: _react2['default'].PropTypes.bool,
-	    autoCropArea: _react2['default'].PropTypes.number,
-	    dragCrop: _react2['default'].PropTypes.bool,
-	    movable: _react2['default'].PropTypes.bool,
-	    cropBoxMovable: _react2['default'].PropTypes.bool,
-	    cropBoxResizable: _react2['default'].PropTypes.bool,
-	    doubleClickToggle: _react2['default'].PropTypes.bool,
-	    zoomable: _react2['default'].PropTypes.bool,
-	    mouseWheelZoom: _react2['default'].PropTypes.bool,
-	    touchDragZoom: _react2['default'].PropTypes.bool,
-	    rotatable: _react2['default'].PropTypes.bool,
-	    minContainerWidth: _react2['default'].PropTypes.number,
-	    minContainerHeight: _react2['default'].PropTypes.number,
-	    minCanvasWidth: _react2['default'].PropTypes.number,
-	    minCanvasHeight: _react2['default'].PropTypes.number,
-	    minCropBoxWidth: _react2['default'].PropTypes.number,
-	    minCropBoxHeight: _react2['default'].PropTypes.number,
-	    build: _react2['default'].PropTypes.func,
-	    built: _react2['default'].PropTypes.func,
-	    dragstart: _react2['default'].PropTypes.func,
-	    dragmove: _react2['default'].PropTypes.func,
-	    dragend: _react2['default'].PropTypes.func,
-	    zoomin: _react2['default'].PropTypes.func,
-	    zoomout: _react2['default'].PropTypes.func
-	  },
+	function _possibleConstructorReturn(self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
 
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      src: null
-	    };
-	  },
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
 
-	  componentDidMount: function componentDidMount() {
-	    console.log('componentDidMount');
-	    var options = {};
-	    for (var prop in this.props) {
-	      if (prop !== 'src' && prop !== 'alt' && prop !== 'crossOrigin') {
-	        options[prop] = this.props[prop];
+	var ReactCropper = function (_Component) {
+	  _inherits(ReactCropper, _Component);
+
+	  function ReactCropper() {
+	    _classCallCheck(this, ReactCropper);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ReactCropper).apply(this, arguments));
+	  }
+
+	  _createClass(ReactCropper, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var options = {};
+	      for (var prop in this.props) {
+	        if (prop !== 'src' && prop !== 'alt' && prop !== 'crossOrigin') {
+	          options[prop] = this.props[prop];
+	        }
+	      }
+	      this.img = _reactDom2.default.findDOMNode(this.refs.img);
+	      this.cropper = new _cropperjs2.default(this.img, options);
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (nextProps.src !== this.props.src) {
+	        this.cropper.reset().clear().replace(nextProps.src);
+	      }
+	      if (nextProps.aspectRatio !== this.props.aspectRatio) {
+	        this.setAspectRatio(nextProps.aspectRatio);
 	      }
 	    }
-	    this.img = _reactDom2['default'].findDOMNode(this.refs.img);
-	    console.log('options');
-	    console.log(options);
-	    this.cropper = new _cropperjs2['default'](this.img, options);
-	  },
-
-	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-	    console.log('componentWillReceiveProps');
-	    if (nextProps.src !== this.props.src) {
-	      this.cropper.reset().clear().replace(nextProps.src);
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      if (this.img) {
+	        // Destroy the cropper, this makes sure events such as resize are cleaned up and do not leak
+	        this.cropper.destroy();
+	        delete this.img;
+	        delete this.cropper;
+	      }
 	    }
-	    if (nextProps.aspectRatio !== this.props.aspectRatio) {
-	      this.setAspectRatio(nextProps.aspectRatio);
+	  }, {
+	    key: 'setDragMode',
+	    value: function setDragMode() {
+	      return this.cropper.setDragMode();
 	    }
-	  },
-
-	  componentWillUnmount: function componentWillUnmount() {
-	    console.log('componentWillUnmount');
-	    if (this.img) {
-	      // Destroy the cropper, this makes sure events such as resize are cleaned up and do not leak
-	      this.cropper.destroy();
-	      delete this.img;
-	      delete this.cropper;
+	  }, {
+	    key: 'setAspectRatio',
+	    value: function setAspectRatio(aspectRatio) {
+	      return this.cropper.setAspectRatio(aspectRatio);
 	    }
-	  },
+	  }, {
+	    key: 'getCroppedCanvas',
+	    value: function getCroppedCanvas(options) {
+	      return this.cropper.getCroppedCanvas(options);
+	    }
+	  }, {
+	    key: 'setCropBoxData',
+	    value: function setCropBoxData(data) {
+	      return this.cropper.setCropBoxData(data);
+	    }
+	  }, {
+	    key: 'getCropBoxData',
+	    value: function getCropBoxData() {
+	      return this.cropper.getCropBoxData();
+	    }
+	  }, {
+	    key: 'setCanvasData',
+	    value: function setCanvasData(data) {
+	      return this.cropper.setCanvasData(data);
+	    }
+	  }, {
+	    key: 'getCanvasData',
+	    value: function getCanvasData() {
+	      return this.cropper.getCanvasData();
+	    }
+	  }, {
+	    key: 'getImageData',
+	    value: function getImageData() {
+	      return this.cropper.getImageData();
+	    }
+	  }, {
+	    key: 'getContainerData',
+	    value: function getContainerData() {
+	      return this.cropper.getContainerData();
+	    }
+	  }, {
+	    key: 'setData',
+	    value: function setData(data) {
+	      return this.cropper.setData(data);
+	    }
+	  }, {
+	    key: 'getData',
+	    value: function getData(rounded) {
+	      return this.cropper.getData(rounded);
+	    }
+	  }, {
+	    key: 'crop',
+	    value: function crop() {
+	      return this.cropper.crop;
+	    }
+	  }, {
+	    key: 'move',
+	    value: function move(offsetX, offsetY) {
+	      return this.cropper.move(offsetX, offsetY);
+	    }
+	  }, {
+	    key: 'zoom',
+	    value: function zoom(ratio) {
+	      return this.cropper.zoom(ratio);
+	    }
+	  }, {
+	    key: 'rotate',
+	    value: function rotate(degree) {
+	      return this.cropper.rotate(degree);
+	    }
+	  }, {
+	    key: 'enable',
+	    value: function enable() {
+	      return this.cropper.enable();
+	    }
+	  }, {
+	    key: 'disable',
+	    value: function disable() {
+	      return this.cropper.disable();
+	    }
+	  }, {
+	    key: 'reset',
+	    value: function reset() {
+	      return this.cropper.reset();
+	    }
+	  }, {
+	    key: 'clear',
+	    value: function clear() {
+	      return this.cropper.clear();
+	    }
+	  }, {
+	    key: 'replace',
+	    value: function replace(url) {
+	      return this.cropper.replace(url);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement('div', _extends({}, this.props, { src: null, crossOrigin: null, alt: null }), _react2.default.createElement('img', {
+	        crossOrigin: this.props.crossOrigin,
+	        ref: 'img',
+	        src: this.props.src,
+	        alt: this.props.alt === undefined ? 'picture' : this.props.alt,
+	        style: { opacity: 0 }
+	      }));
+	    }
+	  }]);
 
-	  crop: function crop() {
-	    return this.cropper.crop;
-	  },
+	  return ReactCropper;
+	}(_react.Component);
 
-	  move: function move(offsetX, offsetY) {
-	    return this.cropper.move(offsetX, offsetY);
-	  },
+	ReactCropper.propTypes = {
+	  // react cropper options
+	  crossOrigin: _react.PropTypes.string,
+	  src: _react.PropTypes.string,
+	  alt: _react.PropTypes.string,
 
-	  zoom: function zoom(ratio) {
-	    return this.cropper.zoom(ratio);
-	  },
+	  // cropper options
+	  aspectRatio: _react.PropTypes.number,
+	  crop: _react.PropTypes.func,
+	  preview: _react.PropTypes.string,
+	  strict: _react.PropTypes.bool,
+	  responsive: _react.PropTypes.bool,
+	  checkImageOrigin: _react.PropTypes.bool,
+	  background: _react.PropTypes.bool,
+	  modal: _react.PropTypes.bool,
+	  guides: _react.PropTypes.bool,
+	  highlight: _react.PropTypes.bool,
+	  autoCrop: _react.PropTypes.bool,
+	  autoCropArea: _react.PropTypes.number,
+	  dragCrop: _react.PropTypes.bool,
+	  movable: _react.PropTypes.bool,
+	  cropBoxMovable: _react.PropTypes.bool,
+	  cropBoxResizable: _react.PropTypes.bool,
+	  doubleClickToggle: _react.PropTypes.bool,
+	  zoomable: _react.PropTypes.bool,
+	  mouseWheelZoom: _react.PropTypes.bool,
+	  touchDragZoom: _react.PropTypes.bool,
+	  rotatable: _react.PropTypes.bool,
+	  minContainerWidth: _react.PropTypes.number,
+	  minContainerHeight: _react.PropTypes.number,
+	  minCanvasWidth: _react.PropTypes.number,
+	  minCanvasHeight: _react.PropTypes.number,
+	  minCropBoxWidth: _react.PropTypes.number,
+	  minCropBoxHeight: _react.PropTypes.number,
+	  build: _react.PropTypes.func,
+	  built: _react.PropTypes.func,
+	  dragstart: _react.PropTypes.func,
+	  dragmove: _react.PropTypes.func,
+	  dragend: _react.PropTypes.func,
+	  zoomin: _react.PropTypes.func,
+	  zoomout: _react.PropTypes.func
+	};
+	ReactCropper.defaultProps = {
+	  src: null
+	};
 
-	  rotate: function rotate(degree) {
-	    return this.cropper.rotate(degree);
-	  },
-
-	  enable: function enable() {
-	    return this.cropper.enable();
-	  },
-
-	  disable: function disable() {
-	    return this.cropper.disable();
-	  },
-
-	  reset: function reset() {
-	    return this.cropper.reset();
-	  },
-
-	  clear: function clear() {
-	    return this.cropper.clear();
-	  },
-
-	  replace: function replace(url) {
-	    return this.cropper.replace(url);
-	  },
-
-	  getData: function getData(rounded) {
-	    return this.cropper.getData(rounded);
-	  },
-
-	  setData: function setData(data) {
-	    return this.cropper.setData(data);
-	  },
-
-	  getContainerData: function getContainerData() {
-	    return this.cropper.getContainerData();
-	  },
-
-	  getImageData: function getImageData() {
-	    return this.cropper.getImageData();
-	  },
-
-	  getCanvasData: function getCanvasData() {
-	    return this.cropper.getCanvasData();
-	  },
-
-	  setCanvasData: function setCanvasData(data) {
-	    return this.cropper.setCanvasData(data);
-	  },
-
-	  getCropBoxData: function getCropBoxData() {
-	    return this.cropper.getCropBoxData();
-	  },
-
-	  setCropBoxData: function setCropBoxData(data) {
-	    return this.cropper.setCropBoxData(data);
-	  },
-
-	  getCroppedCanvas: function getCroppedCanvas(options) {
-	    return this.cropper.getCroppedCanvas(options);
-	  },
-
-	  setAspectRatio: function setAspectRatio(aspectRatio) {
-	    return this.cropper.setAspectRatio(aspectRatio);
-	  },
-
-	  setDragMode: function setDragMode() {
-	    return this.cropper.setDragMode();
-	  },
-
-	  render: function render() {
-	    return _react2['default'].createElement('div', _extends({}, this.props, { src: null, crossOrigin: null, alt: null }), _react2['default'].createElement('img', {
-	      crossOrigin: this.props.crossOrigin,
-	      ref: 'img',
-	      src: this.props.src,
-	      alt: this.props.alt === undefined ? 'picture' : this.props.alt,
-	      style: { opacity: 0 }
-	    }));
-	  }
-	});
-
-	exports['default'] = ReactCropper;
-	module.exports = exports['default'];
+	exports.default = ReactCropper;
 
 /***/ },
 /* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module) {'use strict';
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+
+	/*!
 	 * Cropper.js v0.5.6
 	 * https://github.com/fengyuanchen/cropperjs
 	 *
@@ -19999,10 +20134,8 @@
 	 * Date: 2016-01-18T05:33:43.542Z
 	 */
 
-	'use strict';
-
 	(function (global, factory) {
-	  if (typeof module === 'object' && typeof module.exports === 'object') {
+	  if (( false ? 'undefined' : _typeof(module)) === 'object' && _typeof(module.exports) === 'object') {
 	    module.exports = global.document ? factory(global, true) : function (window) {
 	      if (!window.document) {
 	        throw new Error('Cropper requires a window with a document');
@@ -20018,6 +20151,7 @@
 	  'use strict';
 
 	  // Globals
+
 	  var document = window.document;
 	  var location = window.location;
 	  var ArrayBuffer = window.ArrayBuffer;
@@ -20113,7 +20247,7 @@
 	  }
 
 	  function isObject(obj) {
-	    return typeof obj === 'object' && obj !== null;
+	    return (typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) === 'object' && obj !== null;
 	  }
 
 	  function isPlainObject(obj) {
@@ -22247,12 +22381,12 @@
 
 	        // Zoom canvas
 	        case ACTION_ZOOM:
-	          _this.zoom((function (x1, y1, x2, y2) {
+	          _this.zoom(function (x1, y1, x2, y2) {
 	            var z1 = sqrt(x1 * x1 + y1 * y1);
 	            var z2 = sqrt(x2 * x2 + y2 * y2);
 
 	            return (z2 - z1) / z1;
-	          })(abs(_this.startX - _this.startX2), abs(_this.startY - _this.startY2), abs(_this.endX - _this.endX2), abs(_this.endY - _this.endY2)), originalEvent);
+	          }(abs(_this.startX - _this.startX2), abs(_this.startY - _this.startY2), abs(_this.endX - _this.endX2), abs(_this.endY - _this.endY2)), originalEvent);
 	          _this.startX2 = _this.endX2;
 	          _this.startY2 = _this.endY2;
 	          renderable = false;
@@ -23006,7 +23140,7 @@
 	      }
 
 	      // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D.drawImage
-	      context.drawImage.apply(context, (function () {
+	      context.drawImage.apply(context, function () {
 	        var source = getSourceCanvas(_this.image, _this.imageData);
 	        var sourceWidth = source.width;
 	        var sourceHeight = source.height;
@@ -23062,7 +23196,7 @@
 	        }
 
 	        return args;
-	      }).call(_this));
+	      }.call(_this));
 
 	      return canvas;
 	    },
@@ -23226,13 +23360,13 @@
 	    zoom: null
 	  };
 
-	  Cropper.TEMPLATE = (function (source, words) {
+	  Cropper.TEMPLATE = function (source, words) {
 	    words = words.split(',');
 
 	    return source.replace(/\d+/g, function (i) {
 	      return words[i];
 	    });
-	  })('<0 6="5-container"><0 6="5-wrap-9"><0 6="5-canvas"></0></0><0 6="5-drag-9"></0><0 6="5-crop-9"><1 6="5-view-9"></1><1 6="5-8 8-h"></1><1 6="5-8 8-v"></1><1 6="5-center"></1><1 6="5-face"></1><1 6="5-7 7-e" 3-2="e"></1><1 6="5-7 7-n" 3-2="n"></1><1 6="5-7 7-w" 3-2="w"></1><1 6="5-7 7-s" 3-2="s"></1><1 6="5-4 4-e" 3-2="e"></1><1 6="5-4 4-n" 3-2="n"></1><1 6="5-4 4-w" 3-2="w"></1><1 6="5-4 4-s" 3-2="s"></1><1 6="5-4 4-ne" 3-2="ne"></1><1 6="5-4 4-nw" 3-2="nw"></1><1 6="5-4 4-sw" 3-2="sw"></1><1 6="5-4 4-se" 3-2="se"></1></0></0>', 'div,span,action,data,point,cropper,class,line,dashed,box');
+	  }('<0 6="5-container"><0 6="5-wrap-9"><0 6="5-canvas"></0></0><0 6="5-drag-9"></0><0 6="5-crop-9"><1 6="5-view-9"></1><1 6="5-8 8-h"></1><1 6="5-8 8-v"></1><1 6="5-center"></1><1 6="5-face"></1><1 6="5-7 7-e" 3-2="e"></1><1 6="5-7 7-n" 3-2="n"></1><1 6="5-7 7-w" 3-2="w"></1><1 6="5-7 7-s" 3-2="s"></1><1 6="5-4 4-e" 3-2="e"></1><1 6="5-4 4-n" 3-2="n"></1><1 6="5-4 4-w" 3-2="w"></1><1 6="5-4 4-s" 3-2="s"></1><1 6="5-4 4-ne" 3-2="ne"></1><1 6="5-4 4-nw" 3-2="nw"></1><1 6="5-4 4-sw" 3-2="sw"></1><1 6="5-4 4-se" 3-2="se"></1></0></0>', 'div,span,action,data,point,cropper,class,line,dashed,box');
 
 	  /*Cropper.TEMPLATE = (
 	    '<div class="cropper-container">' +
@@ -23285,9 +23419,27 @@
 
 	  return Cropper;
 	});
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(162)(module)))
 
 /***/ },
 /* 162 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = function (module) {
+		if (!module.webpackPolyfill) {
+			module.deprecate = function () {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	};
+
+/***/ },
+/* 163 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
