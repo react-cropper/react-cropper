@@ -1,27 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import Cropper from '../dist/react-cropper';
 
-const Demo = React.createClass({
+const src = 'http://fengyuanchen.github.io/cropper/img/picture.jpg';
 
-  getInitialState() {
-    return {
-      src: 'http://fengyuanchen.github.io/cropper/img/picture.jpg',
-      cropResult: null
+class Demo extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      src,
+      cropResult: null,
     };
-  },
+    this._cropImage = this._cropImage.bind(this);
+    this._onChange = this._onChange.bind(this);
+    this._useDefaultImage = this._useDefaultImage.bind(this);
+  }
 
-  _cropImage(){
-    if(typeof this.refs.cropper.getCroppedCanvas() === 'undefined'){
+  _cropImage() {
+    if (typeof this.refs.cropper.getCroppedCanvas() === 'undefined') {
       return;
     }
     this.setState({
-      cropResult: this.refs.cropper.getCroppedCanvas().toDataURL()
+      cropResult: this.refs.cropper.getCroppedCanvas().toDataURL(),
     });
-  },
+  }
 
-  _onChange(e){
+  _onChange(e) {
     e.preventDefault();
     let files;
     if (e.dataTransfer) {
@@ -29,52 +35,54 @@ const Demo = React.createClass({
     } else if (e.target) {
       files = e.target.files;
     }
-    let reader = new FileReader();
+    const reader = new FileReader();
     reader.onload = () => {
-      this.setState({src: reader.result});
+      this.setState({ src: reader.result });
     };
     reader.readAsDataURL(files[0]);
-  },
+  }
 
-  _useDefaultImage(){
-    this.setState({src: this.getInitialState().src});
-  },
+  _useDefaultImage() {
+    this.setState({ src });
+  }
 
   render() {
     return (
       <div>
-        <div style={{width: '100%'}}>
-          <input type='file' onChange={this._onChange} />
+        <div style={{ width: '100%' }}>
+          <input type="file" onChange={this._onChange} />
           <button onClick={this._useDefaultImage}>Use default img</button>
           <br />
           <br />
           <Cropper
-            style={{height: 400, width: '100%'}}
+            style={{ height: 400, width: '100%' }}
             aspectRatio={16 / 9}
-            preview='.img-preview'
+            preview=".img-preview"
             guides={false}
             src={this.state.src}
-            ref='cropper'
-            crop={this._crop} />
+            ref="cropper"
+            crop={this._crop}
+          />
         </div>
         <div>
-          <div className='box' style={{width: '50%', float: 'right'}}>
+          <div className="box" style={{ width: '50%', float: 'right' }}>
             <h1>Preview</h1>
-            <div className="img-preview" style={{width: '100%', float: 'left', height: 300}}/>
+            <div className="img-preview" style={{ width: '100%', float: 'left', height: 300 }} />
           </div>
-          <div className='box' style={{width: '50%', float: 'right'}}>
-            <h1 style={{display: 'inline-block'}}>
+          <div className="box" style={{ width: '50%', float: 'right' }}>
+            <h1 style={{ display: 'inline-block' }}>
               Crop
-              <button onClick={this._cropImage} style={{float: 'right'}}>Crop Image</button>
+              <button onClick={ this._cropImage } style={{ float: 'right' }}>
+                Crop Image
+              </button>
             </h1>
-            <img style={{width: '100%'}} src={this.state.cropResult}/>
+            <img style={{ width: '100%' }} src={this.state.cropResult} />
           </div>
         </div>
-        <br style={{clear: 'both'}}/>
+        <br style={{ clear: 'both' }} />
       </div>
     );
   }
-
-});
+}
 
 ReactDOM.render(<Demo />, document.getElementById('main'));
