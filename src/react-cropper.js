@@ -86,6 +86,10 @@ class ReactCropper extends Component {
     return this.cropper.move(offsetX, offsetY);
   }
 
+  moveTo(offsetX, offsetY) {
+    return this.cropper.move(offsetX, offsetY);
+  }
+
   zoom(ratio) {
     return this.cropper.zoom(ratio);
   }
