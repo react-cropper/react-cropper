@@ -88,10 +88,51 @@ class Demo extends Component {
 ```js
   <Cropper src='http://fengyuanchen.github.io/cropper/img/picture.jpg' />
 ```
+### alt
+* Type: `string`
+* Default: `picture`
+
+### crossOrigin
+* Type: `string`
+* Default: `null`
+
+### aspectRatio
+https://github.com/fengyuanchen/cropperjs#aspectratio
+
+### dragMode
+https://github.com/fengyuanchen/cropperjs#dragmode
+
+### data
+https://github.com/fengyuanchen/cropperjs#setdatadata
+
+### scaleX
+https://github.com/fengyuanchen/cropperjs#scalexscalex
+
+### scaleY
+https://github.com/fengyuanchen/cropperjs#scalexscaley
+
+### enable
+https://github.com/fengyuanchen/cropperjs#enable
+https://github.com/fengyuanchen/cropperjs#disable
+
+### cropBoxData
+https://github.com/fengyuanchen/cropperjs#setcropboxdatadata
+
+### canvasData
+https://github.com/fengyuanchen/cropperjs#setcanvasdata
+
+### zoomTo
+https://github.com/fengyuanchen/cropperjs#zoomto
+
+### moveTo
+https://github.com/fengyuanchen/cropperjs#moveto
+
+### rotateTo
+https://github.com/fengyuanchen/cropperjs#rotateto
 
 ### Other options
-
-Accept all options in the [docs](https://github.com/fengyuanchen/cropper#options) as attributes.
+Accept all options in the [docs](https://github.com/fengyuanchen/cropperjs#options) as properties.
+Except previous mentioned options, other options don't take effect after component mount.
 
 ```js
 <Cropper
@@ -126,6 +167,7 @@ class Demo extends Component {
 
 ```
 npm run build
+npm run build-example
 ```
 
 ## Author
