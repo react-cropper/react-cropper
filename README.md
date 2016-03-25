@@ -53,14 +53,18 @@ b.transform(browserifycss, {global: true});
 
 ## Quick Example
 ```js
-var Cropper = require('react-cropper');
-var Demo = React.createClass({
-  _crop: function(){
+import React, {Component} from 'react';
+import Cropper from 'react-cropper';
+// If you choose not to use import, you need to assign Cropper to default
+// var Cropper = require('react-cropper').default
+
+class Demo extends Component {
+  _crop(){
     // image in dataUrl
     console.log(this.refs.cropper.getCroppedCanvas().toDataURL());
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <Cropper
         ref='cropper'
@@ -69,11 +73,10 @@ var Demo = React.createClass({
         // Cropper.js options
         aspectRatio={16 / 9}
         guides={false}
-        crop={this._crop} />
+        crop={this._crop.bind(this)} />
     );
   }
-});
-
+}
 ```
 
 ## Options
@@ -91,32 +94,32 @@ var Demo = React.createClass({
 Accept all options in the [docs](https://github.com/fengyuanchen/cropper#options) as attributes.
 
 ```js
-  <Cropper
-    src='http://fengyuanchen.github.io/cropper/img/picture.jpg'
-    aspectRatio={16 / 9} 
-    guides={false} 
-    crop={this._crop} />
+<Cropper
+  src='http://fengyuanchen.github.io/cropper/img/picture.jpg'
+  aspectRatio={16 / 9} 
+  guides={false} 
+  crop={this._crop} />
 ```
 
 ## Methods
 Assign a `ref` attribute to use [methods](https://github.com/fengyuanchen/cropper#methods)
 
 ```js
-var Demo = React.createClass({
+class Demo extends Component {
 
-  _crop: function(){
-    var dataUrl = this.refs.cropper.getCroppedCanvas().toDataURL();
+  _crop(){
+    const dataUrl = this.refs.cropper.getCroppedCanvas().toDataURL();
     console.log(dataUrl);
   },
 
-  render: function() {
+  render() {
     return (
       <Cropper
         ref='cropper'
-        crop={this._crop} />
+        crop={this._crop.bind(this)} />
     );
   }
-})
+}
 ```
 
 ## Build
