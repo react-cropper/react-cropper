@@ -8,6 +8,7 @@
 
 
 ## Docs
+
 * [Image Cropper](https://github.com/fengyuanchen/cropper)
 
 ## Installation
@@ -18,35 +19,11 @@ Install via [npm](https://www.npmjs.com/package/react-cropper)
 npm install --save react-cropper
 ```
 
-### Webpack User
+You need `cropper.css` in your project,
+It located in `node_modules/react-cropper/cropperjs/dist/cropper.css`
 
-You also need a couple of loaders for webpack
+# Changelog
 
-```shell
-npm install style-loader css-loader
-```
-
-### Browserify User
-
-https://github.com/cheton/browserify-css
-
-```shell
-npm i --save-dev browserify-css
-```
-
-Compile your project with command line like
-
-```shell
- browserify -t reactify -g browserify-css index.jsx > bundle.js
-```
-
-If you are using `gulp`, `browserify` or other build tools, make sure you enable `global` option `true`
-
-For example in `gulp` you should do
-
-```js
-b.transform(browserifycss, {global: true});
-```
 
 ## Todo
 * Unit test

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Cropper from 'cropperjs';
-import 'cropperjs/dist/cropper.css';
+
 import ReactDOM from 'react-dom';
 
 const optionProps = [
