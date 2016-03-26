@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import 'cropperjs/dist/cropper.css';
 
-import Cropper from '../dist/react-cropper';
+import Cropper from '../../src/react-cropper';
 
 const src = 'http://fengyuanchen.github.io/cropper/img/picture.jpg';
 
-class Demo extends Component {
+export default class Demo extends Component {
 
   constructor(props) {
     super(props);
@@ -85,5 +85,3 @@ class Demo extends Component {
     );
   }
 }
-
-ReactDOM.render(<Demo />, document.getElementById('main'));

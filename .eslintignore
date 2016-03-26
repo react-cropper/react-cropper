@@ -2,3 +2,5 @@ dist/**
 node_modules/**
 **/bundle.js
 webpack.config.js
+webpack.config.dev.js
+server.js
