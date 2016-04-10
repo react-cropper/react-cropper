@@ -20,7 +20,7 @@ npm install --save react-cropper
 ```
 
 You need `cropper.css` in your project,
-It located in `node_modules/react-cropper/cropperjs/dist/cropper.css`
+It located in `node_modules/react-cropper/node_modules/cropperjs/dist/cropper.css`
 
 # Changelog
 
