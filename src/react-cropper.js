@@ -37,8 +37,7 @@ const optionProps = [
   'minCanvasHeight',
   'minCropBoxWidth',
   'minCropBoxHeight',
-  'build',
-  'built',
+  'ready',
   'cropstart',
   'cropmove',
   'cropend',
@@ -237,7 +236,6 @@ class ReactCropper extends Component {
 
     return (
       <div
-        {...this.props}
         src={null}
         crossOrigin={null}
         alt={null}
@@ -323,8 +321,7 @@ ReactCropper.propTypes = {
   minCanvasHeight: PropTypes.number,
   minCropBoxWidth: PropTypes.number,
   minCropBoxHeight: PropTypes.number,
-  build: PropTypes.func,
-  built: PropTypes.func,
+  ready: PropTypes.func,
   cropstart: PropTypes.func,
   cropmove: PropTypes.func,
   cropend: PropTypes.func,
