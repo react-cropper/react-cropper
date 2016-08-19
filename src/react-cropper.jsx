@@ -56,7 +56,6 @@ class ReactCropper extends Component {
       Object.assign({}, prevOptions, { [propKey]: this.props[propKey] })
     , {});
 
-    this.img = ReactDOM.findDOMNode(this.refs.img);
     this.cropper = new Cropper(this.img, options);
   }
 
@@ -106,12 +105,12 @@ class ReactCropper extends Component {
       }
     }
 
-    for (const propKey in nextProps) {
+    Object.keys(nextProps).forEach(propKey => {
       if (nextProps[propKey] !== this.props[propKey]
         && unchangeableProps.indexOf(propKey) !== -1) {
         throw new Error(`prop: ${propKey} can't be change after componentDidMount`);
       }
-    }
+    });
   }
 
   componentWillUnmount() {
@@ -242,7 +241,7 @@ class ReactCropper extends Component {
       >
         <img
           crossOrigin={crossOrigin}
-          ref="img"
+          ref={(img) => { this.img = img; }}
           src={src}
           alt={alt === undefined ? 'picture' : alt}
           style={{ opacity: 0 }}

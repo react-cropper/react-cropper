@@ -3,6 +3,8 @@ import 'cropperjs/dist/cropper.css';
 
 import Cropper from '../../src/react-cropper';
 
+/* global FileReader */
+
 const src = 'http://fengyuanchen.github.io/cropper/img/picture.jpg';
 
 export default class Demo extends Component {
@@ -13,21 +15,12 @@ export default class Demo extends Component {
       src,
       cropResult: null,
     };
-    this._cropImage = this._cropImage.bind(this);
-    this._onChange = this._onChange.bind(this);
-    this._useDefaultImage = this._useDefaultImage.bind(this);
+    this.cropImage = this.cropImage.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.useDefaultImage = this.useDefaultImage.bind(this);
   }
 
-  _cropImage() {
-    if (typeof this.refs.cropper.getCroppedCanvas() === 'undefined') {
-      return;
-    }
-    this.setState({
-      cropResult: this.refs.cropper.getCroppedCanvas().toDataURL(),
-    });
-  }
-
-  _onChange(e) {
+  onChange(e) {
     e.preventDefault();
     let files;
     if (e.dataTransfer) {
@@ -42,7 +35,16 @@ export default class Demo extends Component {
     reader.readAsDataURL(files[0]);
   }
 
-  _useDefaultImage() {
+  cropImage() {
+    if (typeof this.cropper.getCroppedCanvas() === 'undefined') {
+      return;
+    }
+    this.setState({
+      cropResult: this.cropper.getCroppedCanvas().toDataURL(),
+    });
+  }
+
+  useDefaultImage() {
     this.setState({ src });
   }
 
@@ -50,8 +52,8 @@ export default class Demo extends Component {
     return (
       <div>
         <div style={{ width: '100%' }}>
-          <input type="file" onChange={this._onChange} />
-          <button onClick={this._useDefaultImage}>Use default img</button>
+          <input type="file" onChange={this.onChange} />
+          <button onClick={this.useDefaultImage}>Use default img</button>
           <br />
           <br />
           <Cropper
@@ -60,8 +62,7 @@ export default class Demo extends Component {
             preview=".img-preview"
             guides={false}
             src={this.state.src}
-            ref="cropper"
-            crop={this._crop}
+            ref={cropper => { this.cropper = cropper; }}
           />
         </div>
         <div>
@@ -70,13 +71,13 @@ export default class Demo extends Component {
             <div className="img-preview" style={{ width: '100%', float: 'left', height: 300 }} />
           </div>
           <div className="box" style={{ width: '50%', float: 'right' }}>
-            <h1 style={{ display: 'inline-block' }}>
-              Crop
-              <button onClick={ this._cropImage } style={{ float: 'right' }}>
+            <h1>
+              <span>Crop</span>
+              <button onClick={this.cropImage} style={{ float: 'right' }}>
                 Crop Image
               </button>
             </h1>
-            <img style={{ width: '100%' }} src={this.state.cropResult} />
+            <img style={{ width: '100%' }} src={this.state.cropResult} alt="cropped image" />
           </div>
         </div>
         <br style={{ clear: 'both' }} />

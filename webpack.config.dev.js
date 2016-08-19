@@ -6,7 +6,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:3000',
     'webpack/hot/only-dev-server',
-    path.join(__dirname, 'example/src/index.js')
+    path.join(__dirname, 'example/src/index.jsx')
   ],
   output: {
     path: path.join(__dirname, 'example/assets'),
@@ -16,7 +16,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         loaders: [
           'react-hot',
           'babel',
@@ -32,6 +32,9 @@ module.exports = {
         include: path.join(__dirname),
       },
     ],
+  },
+   resolve: {
+    extensions: ['', '.js', '.jsx'],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
