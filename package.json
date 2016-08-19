@@ -1,6 +1,6 @@
 {
   "name": "react-cropper",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Cropper as React components",
   "main": "dist/react-cropper.jsx",
   "scripts": {
