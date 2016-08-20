@@ -238,6 +238,7 @@ class ReactCropper extends Component {
         src={null}
         crossOrigin={null}
         alt={null}
+        style={this.props.style}
       >
         <img
           crossOrigin={crossOrigin}
@@ -252,6 +253,7 @@ class ReactCropper extends Component {
 }
 
 ReactCropper.propTypes = {
+  style: PropTypes.object,
   // react cropper options
   crossOrigin: PropTypes.string,
   src: PropTypes.string,
