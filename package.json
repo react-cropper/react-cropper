@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./",
     "build": "babel ./src/react-cropper.jsx --out-file dist/react-cropper.js",
-    "prepublish": "npm run build",
+    "clean": "rimraf dist && mkdir dist",
+    "prepublish": "npm run clean && npm run build",
     "prebuild": "npm run lint",
     "build-example": "npm run build && webpack --config webpack.config.js",
     "start": "babel-node server.js"
@@ -31,7 +32,8 @@
   "dependencies": {
     "cropperjs": "^0.8.0",
     "react": "^15.0.0",
-    "react-dom": "^15.0.0"
+    "react-dom": "^15.0.0",
+    "rimraf": "^2.5.4"
   },
   "peerDependencies": {
     "react": "^15.0.0"
