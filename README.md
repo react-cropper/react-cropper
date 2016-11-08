@@ -32,7 +32,7 @@ Since this project have dependency on [cropperjs](https://www.npmjs.com/package/
 ```js
 import React, {Component} from 'react';
 import Cropper from 'react-cropper';
-import 'react-cropper/node_modules/cropperjs/dist/cropper.css';
+import 'cropperjs/dist/cropper.css'; // see installation section above for versions of NPM older than 3.0.0
 // If you choose not to use import, you need to assign Cropper to default
 // var Cropper = require('react-cropper').default
 
