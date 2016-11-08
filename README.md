@@ -91,6 +91,8 @@ https://github.com/fengyuanchen/cropperjs#scalexscaley
 
 ### enable
 https://github.com/fengyuanchen/cropperjs#enable
+
+### disable
 https://github.com/fengyuanchen/cropperjs#disable
 
 ### cropBoxData
