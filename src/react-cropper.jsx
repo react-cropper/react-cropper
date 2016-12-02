@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import Cropper from 'cropperjs';
 
 import ReactDOM from 'react-dom';
 
@@ -56,6 +55,7 @@ class ReactCropper extends Component {
       Object.assign({}, prevOptions, { [propKey]: this.props[propKey] })
     , {});
 
+    const Cropper = require('cropperjs').default;
     this.cropper = new Cropper(this.img, options);
   }
 
