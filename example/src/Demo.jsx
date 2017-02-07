@@ -5,7 +5,7 @@ import Cropper from '../../src/react-cropper';
 
 /* global FileReader */
 
-const src = 'http://fengyuanchen.github.io/cropper/img/picture.jpg';
+const src = 'img/child.jpg';
 
 export default class Demo extends Component {
 
