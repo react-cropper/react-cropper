@@ -30,7 +30,8 @@
     "url": "https://github.com/roadmanfong/react-cropper.git"
   },
   "dependencies": {
-    "cropperjs": "^0.8.0"
+    "cropperjs": "^0.8.0",
+    "prop-types": "^15.5.8"
   },
   "peerDependencies": {
     "react": "^15.0.0",
