@@ -2,7 +2,7 @@
   "name": "react-cropper",
   "version": "0.12.0",
   "description": "Cropper as React components",
-  "main": "src/react-cropper.js",
+  "main": "dist/react-cropper.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./",
