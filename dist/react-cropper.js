@@ -16,6 +16,10 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _cropperjs = require('cropperjs');
+
+var _cropperjs2 = _interopRequireDefault(_cropperjs);
+
 var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
@@ -55,9 +59,7 @@ var ReactCropper = function (_Component) {
       }).reduce(function (prevOptions, propKey) {
         return _extends({}, prevOptions, _defineProperty({}, propKey, _this2.props[propKey]));
       }, {});
-
-      var Cropper = require('cropperjs').default;
-      this.cropper = new Cropper(this.img, options);
+      this.cropper = new _cropperjs2.default(this.img, options);
     }
   }, {
     key: 'componentWillReceiveProps',
