@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Cropper from 'cropperjs';
-import ReactDOM from 'react-dom';
 
 const optionProps = [
   'dragMode',
@@ -104,7 +103,7 @@ class ReactCropper extends Component {
       }
     }
 
-    Object.keys(nextProps).forEach(propKey => {
+    Object.keys(nextProps).forEach((propKey) => {
       if (nextProps[propKey] !== this.props[propKey]
         && unchangeableProps.indexOf(propKey) !== -1) {
         throw new Error(`prop: ${propKey} can't be change after componentDidMount`);
@@ -253,7 +252,7 @@ class ReactCropper extends Component {
 }
 
 ReactCropper.propTypes = {
-  style: PropTypes.object,
+  style: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   className: PropTypes.string,
 
   // react cropper options
