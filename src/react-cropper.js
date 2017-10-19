@@ -104,8 +104,14 @@ class ReactCropper extends Component {
     }
 
     Object.keys(nextProps).forEach((propKey) => {
-      if (nextProps[propKey] !== this.props[propKey]
-        && unchangeableProps.indexOf(propKey) !== -1) {
+      let isDifferentVal = nextProps[propKey] !== this.props[propKey];
+      const isUnchangeableProps = unchangeableProps.indexOf(propKey) !== -1;
+
+      if (typeof nextProps[propKey] === 'function' && typeof this.props[propKey] === 'function') {
+        isDifferentVal = nextProps[propKey].toString() !== this.props[propKey].toString();
+      }
+
+      if (isDifferentVal && isUnchangeableProps) {
         throw new Error(`prop: ${propKey} can't be change after componentDidMount`);
       }
     });
