@@ -112,7 +112,7 @@ class ReactCropper extends Component {
       }
 
       if (isDifferentVal && isUnchangeableProps) {
-        throw new Error(`prop: ${propKey} can't be change after componentDidMount`);
+        console.warn(`prop: ${propKey} can't be change after componentDidMount`);
       }
     });
   }
