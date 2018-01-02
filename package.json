@@ -1,5 +1,5 @@
 {
-  "name": "react-cropper",
+  "name": "react-cropper2",
   "version": "1.0.1",
   "description": "Cropper as React components",
   "main": "dist/react-cropper.js",
@@ -18,12 +18,7 @@
   "bugs": {
     "url": "https://github.com/roadmanfong/react-cropper/issues"
   },
-  "keywords": [
-    "react",
-    "react-component",
-    "cropper",
-    "image"
-  ],
+  "keywords": ["react", "react-component", "cropper", "image"],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -60,13 +55,8 @@
     "webpack-dev-server": "^1.14.1"
   },
   "babel": {
-    "presets": [
-      "react",
-      "es2015"
-    ],
-    "plugins": [
-      "transform-object-assign"
-    ],
+    "presets": ["react", "es2015"],
+    "plugins": ["transform-object-assign"],
     "ignore": [
       "dist/**/*.js",
       "webpack.config.js",
