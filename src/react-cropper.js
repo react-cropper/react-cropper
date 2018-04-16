@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Cropper from 'cropperjs';
+import Cropper from 'cropperjs2';
 
 const optionProps = [
   'dragMode',
@@ -47,19 +47,23 @@ const optionProps = [
 const unchangeableProps = optionProps.slice(4);
 
 class ReactCropper extends Component {
-
   componentDidMount() {
     const options = Object.keys(this.props)
-    .filter(propKey => optionProps.indexOf(propKey) !== -1)
-    .reduce((prevOptions, propKey) =>
-      Object.assign({}, prevOptions, { [propKey]: this.props[propKey] })
-    , {});
+      .filter((propKey) => optionProps.indexOf(propKey) !== -1)
+      .reduce(
+        (prevOptions, propKey) =>
+          Object.assign({}, prevOptions, { [propKey]: this.props[propKey] }),
+        {}
+      );
     this.cropper = new Cropper(this.img, options);
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.src !== this.props.src) {
-      this.cropper.reset().clear().replace(nextProps.src);
+      this.cropper
+        .reset()
+        .clear()
+        .replace(nextProps.src);
     }
     if (nextProps.aspectRatio !== this.props.aspectRatio) {
       this.setAspectRatio(nextProps.aspectRatio);
@@ -107,12 +111,18 @@ class ReactCropper extends Component {
       let isDifferentVal = nextProps[propKey] !== this.props[propKey];
       const isUnchangeableProps = unchangeableProps.indexOf(propKey) !== -1;
 
-      if (typeof nextProps[propKey] === 'function' && typeof this.props[propKey] === 'function') {
-        isDifferentVal = nextProps[propKey].toString() !== this.props[propKey].toString();
+      if (
+        typeof nextProps[propKey] === 'function' &&
+        typeof this.props[propKey] === 'function'
+      ) {
+        isDifferentVal =
+          nextProps[propKey].toString() !== this.props[propKey].toString();
       }
 
       if (isDifferentVal && isUnchangeableProps) {
-        console.warn(`prop: ${propKey} can't be change after componentDidMount`);
+        console.warn(
+          `prop: ${propKey} can't be change after componentDidMount`
+        );
       }
     });
   }
@@ -231,11 +241,7 @@ class ReactCropper extends Component {
   }
 
   render() {
-    const {
-      src,
-      alt,
-      crossOrigin,
-    } = this.props;
+    const { src, alt, crossOrigin } = this.props;
 
     return (
       <div
@@ -247,7 +253,9 @@ class ReactCropper extends Component {
       >
         <img
           crossOrigin={crossOrigin}
-          ref={(img) => { this.img = img; }}
+          ref={(img) => {
+            this.img = img;
+          }}
           src={src}
           alt={alt === undefined ? 'picture' : alt}
           style={{ opacity: 0 }}
