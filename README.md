@@ -36,6 +36,8 @@ import 'cropperjs/dist/cropper.css'; // see installation section above for versi
 // If you choose not to use import, you need to assign Cropper to default
 // var Cropper = require('react-cropper').default
 
+const cropper = React.createRef(null);
+
 class Demo extends Component {
   _crop(){
     // image in dataUrl
@@ -45,7 +47,7 @@ class Demo extends Component {
   render() {
     return (
       <Cropper
-        ref='cropper'
+        ref={cropper}
         src='http://fengyuanchen.github.io/cropper/img/picture.jpg'
         style={{height: 400, width: '100%'}}
         // Cropper.js options
@@ -126,6 +128,9 @@ Except previous mentioned options, other options don't take effect after compone
 Assign a `ref` attribute to use [methods](https://github.com/fengyuanchen/cropper#methods)
 
 ```js
+
+const cropper = React.createRef(null);
+
 class Demo extends Component {
 
   _crop(){
@@ -136,7 +141,7 @@ class Demo extends Component {
   render() {
     return (
       <Cropper
-        ref='cropper'
+        ref={cropper}
         crop={this._crop.bind(this)} />
     );
   }
