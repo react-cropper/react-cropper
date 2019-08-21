@@ -27,7 +27,7 @@ const optionProps = [
   'zoomable',
   'zoomOnTouch',
   'zoomOnWheel',
-  'wheelZoomRation',
+  'wheelZoomRatio',
   'cropBoxMovable',
   'cropBoxResizable',
   'toggleDragModeOnDblclick',
@@ -235,15 +235,14 @@ class ReactCropper extends Component {
       src,
       alt,
       crossOrigin,
+      style,
+      className,
     } = this.props;
 
     return (
       <div
-        src={null}
-        crossOrigin={null}
-        alt={null}
-        style={this.props.style}
-        className={this.props.className}
+        style={style}
+        className={className}
       >
         <img
           crossOrigin={crossOrigin}
@@ -319,7 +318,7 @@ ReactCropper.propTypes = {
   zoomable: PropTypes.bool,
   zoomOnTouch: PropTypes.bool,
   zoomOnWheel: PropTypes.bool,
-  wheelZoomRation: PropTypes.number,
+  wheelZoomRatio: PropTypes.number,
   cropBoxMovable: PropTypes.bool,
   cropBoxResizable: PropTypes.bool,
   toggleDragModeOnDblclick: PropTypes.bool,
