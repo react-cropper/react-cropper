@@ -55,7 +55,7 @@ class ReactCropper extends Component {
     this.cropper = new Cropper(this.img, options);
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.src !== this.props.src) {
       this.cropper.reset().clear().replace(nextProps.src);
     }
