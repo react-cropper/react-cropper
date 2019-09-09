@@ -184,8 +184,8 @@ class ReactCropper extends Component {
     return this.cropper.zoom(ratio);
   }
 
-  zoomTo(ratio) {
-    return this.cropper.zoomTo(ratio);
+  zoomTo(ratio, pivot = null) {
+    return this.cropper.zoomTo(ratio, pivot);
   }
 
   rotate(degree) {
