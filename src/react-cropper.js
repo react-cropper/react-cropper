@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Cropper from 'cropperjs';
+import isEqual from 'lodash/isEqual';
+import debounce from 'lodash/debounce';
 
 const optionProps = [
   'dragMode',
@@ -48,65 +50,73 @@ const unchangeableProps = optionProps.slice(4);
 
 class ReactCropper extends Component {
   componentDidMount() {
+    const { cropDebounceDelay } = this.props;
     const options = Object.keys(this.props)
       .filter(propKey => optionProps.indexOf(propKey) !== -1)
       .reduce((prevOptions, propKey) =>
         Object.assign({}, prevOptions, { [propKey]: this.props[propKey] }), {});
+
+    options.crop = debounce(options.crop, cropDebounceDelay);
+
     this.cropper = new Cropper(this.img, options);
   }
 
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (nextProps.src !== this.props.src) {
-      this.cropper.reset().clear().replace(nextProps.src);
+  shouldComponentUpdate(nextProps) {
+    return !isEqual(nextProps, this.props);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.src !== this.props.src) {
+      this.cropper.reset().clear().replace(this.props.src);
     }
-    if (nextProps.aspectRatio !== this.props.aspectRatio) {
-      this.setAspectRatio(nextProps.aspectRatio);
+    if (prevProps.aspectRatio !== this.props.aspectRatio) {
+      this.setAspectRatio(this.props.aspectRatio);
     }
-    if (nextProps.data !== this.props.data) {
-      this.setData(nextProps.data);
+    if (prevProps.data !== this.props.data) {
+      this.setData(this.props.data);
     }
-    if (nextProps.dragMode !== this.props.dragMode) {
-      this.setDragMode(nextProps.dragMode);
+    if (prevProps.dragMode !== this.props.dragMode) {
+      this.setDragMode(this.props.dragMode);
     }
-    if (nextProps.cropBoxData !== this.props.cropBoxData) {
-      this.setCropBoxData(nextProps.cropBoxData);
+    if (prevProps.cropBoxData !== this.props.cropBoxData) {
+      this.setCropBoxData(this.props.cropBoxData);
     }
-    if (nextProps.canvasData !== this.props.canvasData) {
-      this.setCanvasData(nextProps.canvasData);
+    if (prevProps.canvasData !== this.props.canvasData) {
+      this.setCanvasData(this.props.canvasData);
     }
-    if (nextProps.moveTo !== this.props.moveTo) {
-      if (nextProps.moveTo.length > 1) {
-        this.moveTo(nextProps.moveTo[0], nextProps.moveTo[1]);
+    if (prevProps.moveTo !== this.props.moveTo) {
+      if (this.props.moveTo.length > 1) {
+        this.moveTo(this.props.moveTo[0], this.props.moveTo[1]);
       } else {
-        this.moveTo(nextProps.moveTo[0]);
+        this.moveTo(this.props.moveTo[0]);
       }
     }
-    if (nextProps.zoomTo !== this.props.zoomTo) {
-      this.zoomTo(nextProps.zoomTo);
+    if (prevProps.zoomTo !== this.props.zoomTo) {
+      this.zoomTo(this.props.zoomTo);
     }
-    if (nextProps.rotateTo !== this.props.rotateTo) {
-      this.rotateTo(nextProps.rotateTo);
+    if (prevProps.rotateTo !== this.props.rotateTo) {
+      this.rotateTo(this.props.rotateTo);
     }
-    if (nextProps.scaleX !== this.props.scaleX) {
-      this.scaleX(nextProps.scaleX);
+    if (prevProps.scaleX !== this.props.scaleX) {
+      this.scaleX(this.props.scaleX);
     }
-    if (nextProps.scaleY !== this.props.scaleY) {
-      this.scaleY(nextProps.scaleY);
+    if (prevProps.scaleY !== this.props.scaleY) {
+      this.scaleY(this.props.scaleY);
     }
-    if (nextProps.enable !== this.props.enable) {
-      if (nextProps.enable) {
+    if (prevProps.enable !== this.props.enable) {
+      if (this.props.enable) {
         this.enable();
       } else {
         this.disable();
       }
     }
 
-    Object.keys(nextProps).forEach((propKey) => {
-      let isDifferentVal = nextProps[propKey] !== this.props[propKey];
+    Object.keys(this.props).forEach((propKey) => {
+      let isDifferentVal = prevProps[propKey] !== this.props[propKey];
       const isUnchangeableProps = unchangeableProps.indexOf(propKey) !== -1;
 
-      if (typeof nextProps[propKey] === 'function' && typeof this.props[propKey] === 'function') {
-        isDifferentVal = nextProps[propKey].toString() !== this.props[propKey].toString();
+      if (typeof this.props[propKey] === 'function' && typeof this.props[propKey] === 'function') {
+        isDifferentVal = prevProps[propKey].toString() !== this.props[propKey].toString();
       }
 
       if (isDifferentVal && isUnchangeableProps) {
@@ -262,6 +272,7 @@ ReactCropper.propTypes = {
   crossOrigin: PropTypes.string,
   src: PropTypes.string,
   alt: PropTypes.string,
+  cropDebounceDelay: PropTypes.number,
 
   // props of option can be changed after componentDidmount
   aspectRatio: PropTypes.number,
@@ -343,6 +354,7 @@ ReactCropper.defaultProps = {
   enable: true,
   zoomTo: 1,
   rotateTo: 0,
+  cropDebounceDelay: 0,
 };
 
 export default ReactCropper;

@@ -60,7 +60,8 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "lodash": "^4.17.15"
   },
   "babel": {
     "presets": [
