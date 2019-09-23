@@ -17,7 +17,12 @@ export default class Demo extends Component {
     };
     this.cropImage = this.cropImage.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.rotateLeft = this.rotateLeft.bind(this)
     this.useDefaultImage = this.useDefaultImage.bind(this);
+  }
+
+  rotateLeft() {
+    this.cropper.rotate(-90)
   }
 
   onChange(e) {
@@ -60,11 +65,13 @@ export default class Demo extends Component {
             style={{ height: 400, width: '100%' }}
             aspectRatio={16 / 9}
             preview=".img-preview"
+            rotatable={true}
             guides={false}
             src={this.state.src}
             ref={cropper => { this.cropper = cropper; }}
           />
         </div>
+        <div onClick={this.rotateLeft}>rotate left</div>
         <div>
           <div className="box" style={{ width: '50%', float: 'right' }}>
             <h1>Preview</h1>

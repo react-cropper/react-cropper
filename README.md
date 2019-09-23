@@ -48,7 +48,7 @@ class Demo extends Component {
     return (
       <Cropper
         ref={cropper}
-        src='http://fengyuanchen.github.io/cropper/img/picture.jpg'
+        src='http://fengyuanchen.github.io/cropper/images/picture.jpg'
         style={{height: 400, width: '100%'}}
         // Cropper.js options
         aspectRatio={16 / 9}
@@ -66,7 +66,7 @@ class Demo extends Component {
 * Default: `null`
 
 ```js
-  <Cropper src='http://fengyuanchen.github.io/cropper/img/picture.jpg' />
+  <Cropper src='http://fengyuanchen.github.io/cropper/images/picture.jpg' />
 ```
 ### alt
 * Type: `string`
@@ -118,7 +118,7 @@ Except previous mentioned options, other options don't take effect after compone
 
 ```js
 <Cropper
-  src='http://fengyuanchen.github.io/cropper/img/picture.jpg'
+  src='http://fengyuanchen.github.io/cropper/images/picture.jpg'
   aspectRatio={16 / 9} 
   guides={false} 
   crop={this._crop} />
