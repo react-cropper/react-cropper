@@ -39,15 +39,20 @@ import 'cropperjs/dist/cropper.css'; // see installation section above for versi
 const cropper = React.createRef(null);
 
 class Demo extends Component {
+  constructor(props) {
+    super(props);
+    this.cropper = React.createRef();
+  }
+
   _crop(){
     // image in dataUrl
-    console.log(this.refs.cropper.getCroppedCanvas().toDataURL());
+    console.log(this.cropper.current.getCroppedCanvas().toDataURL());
   }
 
   render() {
     return (
       <Cropper
-        ref={cropper}
+        ref={this.cropper}
         src='http://fengyuanchen.github.io/cropper/img/picture.jpg'
         style={{height: 400, width: '100%'}}
         // Cropper.js options
@@ -133,15 +138,20 @@ const cropper = React.createRef(null);
 
 class Demo extends Component {
 
+  constructor(props) {
+    super(props);
+    this.cropper = React.createRef();
+  }
+
   _crop(){
-    const dataUrl = this.refs.cropper.getCroppedCanvas().toDataURL();
+    const dataUrl = this.cropper.current.getCroppedCanvas().toDataURL();
     console.log(dataUrl);
   },
 
   render() {
     return (
       <Cropper
-        ref={cropper}
+        ref={this.cropper}
         crop={this._crop.bind(this)} />
     );
   }
