@@ -9,6 +9,7 @@ const optionProps = [
   'crop',
   // unchangeable props start from here
   'viewMode',
+  'initialAspectRatio',
   'preview',
   'responsive',
   'restore',
@@ -298,6 +299,7 @@ ReactCropper.propTypes = {
   // https://github.com/fengyuanchen/cropperjs#options
   // aspectRatio, dragMode, data
   viewMode: PropTypes.oneOf([0, 1, 2, 3]),
+  initialAspectRatio: PropTypes.number,
   preview: PropTypes.string,
   responsive: PropTypes.bool,
   restore: PropTypes.bool,
