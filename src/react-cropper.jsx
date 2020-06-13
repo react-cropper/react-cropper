@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, {
+  Component
+} from 'react';
 import Cropper from 'cropperjs';
 
 const optionProps = [
@@ -51,7 +52,9 @@ class ReactCropper extends Component {
     const options = Object.keys(this.props)
       .filter(propKey => optionProps.indexOf(propKey) !== -1)
       .reduce((prevOptions, propKey) =>
-        Object.assign({}, prevOptions, { [propKey]: this.props[propKey] }), {});
+        Object.assign({}, prevOptions, {
+          [propKey]: this.props[propKey]
+        }), {});
     this.cropper = new Cropper(this.img, options);
   }
 
@@ -237,19 +240,35 @@ class ReactCropper extends Component {
       className,
     } = this.props;
 
-    return (
-      <div
-        style={style}
-        className={className}
-      >
-        <img
-          crossOrigin={crossOrigin}
-          ref={(img) => { this.img = img; }}
-          src={src}
-          alt={alt === undefined ? 'picture' : alt}
-          style={{ opacity: 0 }}
-        />
-      </div>
+    return ( <
+      div style = {
+        style
+      }
+      className = {
+        className
+      } >
+      <
+      img crossOrigin = {
+        crossOrigin
+      }
+      ref = {
+        (img) => {
+          this.img = img;
+        }
+      }
+      src = {
+        src
+      }
+      alt = {
+        alt === undefined ? 'picture' : alt
+      }
+      style = {
+        {
+          opacity: 0
+        }
+      }
+      /> < /
+      div >
     );
   }
 }

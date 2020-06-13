@@ -1,12 +1,22 @@
 {
-  "extends": "airbnb",
-  "rules": {
-    "react/no-unused-prop-types": 0,
-    "react/require-default-props": 0,
-    "react/jsx-filename-extension": 0,
-    "camelcase": [
-      0,
-      {"allow": ["^UNSAFE_"]}
-    ]
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
+    "prettier/react"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }
