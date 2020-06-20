@@ -4,7 +4,7 @@
   "description": "Cropper as React Component",
   "main": "dist/react-cropper.umd.js",
   "module": "dist/react-cropper.es5.js",
-  "typings": "dist/types/react-cropper.d.ts",
+  "typings": "types/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./example",
@@ -14,6 +14,7 @@
     "prepublishOnly": "npm run clean && npm run build",
     "prepare": "npm run clean && npm run lint",
     "build:example": "npm run build && webpack --config webpack.config.js",
+    "dev": "node server.js",
     "commit": "git-cz",
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare"
@@ -81,6 +82,7 @@
     "rollup-plugin-typescript2": "^0.18.0",
     "semantic-release": "^17.0.8",
     "style-loader": "^1.2.1",
+    "ts-loader": "^7.0.5",
     "tslib": "^2.0.0",
     "typedoc": "^0.17.7",
     "typescript": "3.7.5",

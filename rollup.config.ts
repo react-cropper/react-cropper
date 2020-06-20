@@ -3,10 +3,10 @@ import commonjs from '@rollup/plugin-commonjs';
 import sourceMaps from 'rollup-plugin-sourcemaps';
 import typescript from 'rollup-plugin-typescript2';
 
-const pkg = require('./package.json');
+import pkg from './package.json';
 
 export default {
-    input: `src/index.ts`,
+    input: `src/react-cropper.tsx`,
     output: [
         {file: `${pkg.main}`, format: 'cjs', name: pkg.name, sourcemap: true},
         {file: `${pkg.module}`, format: 'es', name: pkg.name, sourcemap: true},
