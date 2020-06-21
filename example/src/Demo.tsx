@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import 'cropperjs/dist/cropper.css';
-
 import {ReactCropper as Cropper} from '../../src/react-cropper';
 
 const defaultSrc = 'img/child.jpg';
 
 export const Demo: React.FC = () => {
-    const [cropper, setCropper] = useState<Cropper>();
     const [image, setImage] = useState(defaultSrc);
+    const [cropData, setCropData] = useState('#');
+    const [cropper, setCropper] = useState<Cropper>();
     const onChange = (e: any) => {
         e.preventDefault();
         let files;
@@ -23,6 +23,12 @@ export const Demo: React.FC = () => {
         reader.readAsDataURL(files[0]);
     };
 
+    const getCropData = () => {
+        if (typeof cropper !== 'undefined') {
+            setCropData(cropper.getCroppedCanvas().toDataURL());
+        }
+    };
+
     return (
         <div>
             <div style={{width: '100%'}}>
@@ -36,10 +42,9 @@ export const Demo: React.FC = () => {
                     preview=".img-preview"
                     guides={true}
                     src={image}
-                    ref={(instance) => {
-                        if (instance !== null) {
-                            setCropper(instance);
-                        }
+                    dragMode={'move'}
+                    onInitialized={(instance) => {
+                        setCropper(instance);
                     }}
                 />
             </div>
@@ -51,9 +56,11 @@ export const Demo: React.FC = () => {
                 <div className="box" style={{width: '50%', float: 'right'}}>
                     <h1>
                         <span>Crop</span>
-                        <button style={{float: 'right'}}>Crop Image</button>
+                        <button style={{float: 'right'}} onClick={getCropData}>
+                            Crop Image
+                        </button>
                     </h1>
-                    <img style={{width: '100%'}} src={'#'} alt="cropped image" />
+                    <img style={{width: '100%'}} src={cropData} alt="cropped image" />
                 </div>
             </div>
             <br style={{clear: 'both'}} />

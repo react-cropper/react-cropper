@@ -7,13 +7,17 @@ export interface ReactCropperProps
     extends Cropper.Options,
         Omit<React.HTMLProps<HTMLImageElement>, 'data' | 'ref' | 'crossOrigin'> {
     crossOrigin?: '' | 'anonymous' | 'use-credentials' | undefined;
-    ref?: React.Ref<ReactCropper> | React.MutableRefObject<ReactCropper> | React.RefObject<ReactCropper>;
+    ref?:
+        | React.Ref<ReactCropper | null>
+        | React.MutableRefObject<ReactCropper | undefined>
+        | React.RefObject<ReactCropper>;
     on?: (eventName: string, callback: () => void | Promise<void>) => void | Promise<void>;
     scaleX?: number;
     scaleY?: number;
     enable?: boolean;
     zoomTo?: number;
     rotateTo?: number;
+    onInitialized?: (instance: Cropper) => void | Promise<void>;
 }
 
 export const ReactCropper: React.FC<ReactCropperProps> = (props) => {
@@ -30,6 +34,7 @@ export const ReactCropper: React.FC<ReactCropperProps> = (props) => {
         rotateTo = 0,
         alt = 'picture',
         ready,
+        onInitialized,
         ...rest
     } = props;
     const [cropper, setCropper] = useState<Cropper | undefined>(undefined);
@@ -55,6 +60,7 @@ export const ReactCropper: React.FC<ReactCropperProps> = (props) => {
                     ready && ready(e);
                 },
             });
+            onInitialized && onInitialized(cropper);
             setCropper(cropper);
         }
 
