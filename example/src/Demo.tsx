@@ -38,11 +38,12 @@ export const Demo: React.FC = () => {
                 <br />
                 <Cropper
                     style={{height: 400, width: '100%'}}
-                    aspectRatio={16 / 9}
+                    initialAspectRatio={16 / 9}
                     preview=".img-preview"
                     guides={true}
                     src={image}
                     dragMode={'move'}
+                    checkOrientation={true} // https://github.com/fengyuanchen/cropperjs/issues/671
                     onInitialized={(instance) => {
                         setCropper(instance);
                     }}
