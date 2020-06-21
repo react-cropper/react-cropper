@@ -3,58 +3,7 @@ import 'cropperjs/dist/cropper.css';
 
 import {ReactCropper as Cropper} from '../../src/react-cropper';
 
-/* global FileReader */
-
 const defaultSrc = 'img/child.jpg';
-
-// export default class Demo extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             src,
-//             cropResult: null,
-//         };
-//         this.cropImage = this.cropImage.bind(this);
-//         this.onChange = this.onChange.bind(this);
-//         this.useDefaultImage = this.useDefaultImage.bind(this);
-//         this.zoomImage = this.zoomImage.bind(this);
-//         this.cropper = React.createRef();
-//     }
-
-//     onChange(e) {
-//         e.preventDefault();
-//         let files;
-//         if (e.dataTransfer) {
-//             files = e.dataTransfer.files;
-//         } else if (e.target) {
-//             files = e.target.files;
-//         }
-//         const reader = new FileReader();
-//         reader.onload = () => {
-//             this.setState({src: reader.result});
-//         };
-//         reader.readAsDataURL(files[0]);
-//     }
-
-//     cropImage() {
-//         if (typeof this.cropper.getCroppedCanvas() === 'undefined') {
-//             return;
-//         }
-//         this.setState({
-//             cropResult: this.cropper.getCroppedCanvas().toDataURL(),
-//         });
-//     }
-
-//     useDefaultImage() {
-//         this.setState({src});
-//     }
-
-//     zoomImage() {
-//         console.log(this.cropper, this.cropper.current);
-//         this.cropper.current.zoomTo(2);
-//     }
-
-// }
 
 export const Demo: React.FC = () => {
     const [cropper, setCropper] = useState<Cropper>();
@@ -78,15 +27,6 @@ export const Demo: React.FC = () => {
         <div>
             <div style={{width: '100%'}}>
                 <input type="file" onChange={onChange} />
-                <button
-                    onClick={() => {
-                        if (typeof cropper !== 'undefined') {
-                            cropper.zoomTo(1);
-                        }
-                    }}
-                >
-                    Zoom check
-                </button>
                 <button>Use default img</button>
                 <br />
                 <br />
@@ -113,7 +53,7 @@ export const Demo: React.FC = () => {
                         <span>Crop</span>
                         <button style={{float: 'right'}}>Crop Image</button>
                     </h1>
-                    <img style={{width: '100%'}} src={'this.state.cropResult'} alt="cropped image" />
+                    <img style={{width: '100%'}} src={'#'} alt="cropped image" />
                 </div>
             </div>
             <br style={{clear: 'both'}} />

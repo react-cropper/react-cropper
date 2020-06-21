@@ -44,6 +44,7 @@ export const ReactCropper: React.FC<ReactCropperProps> = (props) => {
             target.cropper.zoomTo(zoomTo);
         }
     };
+
     useEffect(() => {
         if (imageRef.current !== null && imageRef.current.src) {
             const cropper = new Cropper(imageRef.current, {
@@ -57,12 +58,24 @@ export const ReactCropper: React.FC<ReactCropperProps> = (props) => {
             setCropper(cropper);
         }
 
+        /**
+         * destroy cropper on un-mount
+         */
         return () => {
             if (imageRef.current !== null) {
                 cropper?.destroy();
             }
         };
     }, [imageRef.current]);
+
+    /**
+     * re-render when src changes
+     */
+    useEffect(() => {
+        if (typeof cropper !== 'undefined' && typeof src !== 'undefined') {
+            cropper.reset().clear().replace(src);
+        }
+    }, [src]);
 
     return (
         <div style={style} className={className}>

@@ -14,7 +14,7 @@
     "prepublishOnly": "npm run clean && npm run build",
     "prepare": "npm run clean && npm run lint",
     "build:example": "npm run build && webpack --config webpack.config.js",
-    "dev": "node server.js",
+    "dev": "npm run build && node server.js",
     "commit": "git-cz",
     "semantic-release": "semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare"
