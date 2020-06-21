@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Cropper from 'cropperjs';
 
-export type ReactCropper = Cropper;
-
 export interface ReactCropperProps
     extends Cropper.Options,
         Omit<React.HTMLProps<HTMLImageElement>, 'data' | 'ref' | 'crossOrigin'> {
