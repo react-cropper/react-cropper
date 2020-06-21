@@ -7,10 +7,6 @@ export interface ReactCropperProps
     extends Cropper.Options,
         Omit<React.HTMLProps<HTMLImageElement>, 'data' | 'ref' | 'crossOrigin'> {
     crossOrigin?: '' | 'anonymous' | 'use-credentials' | undefined;
-    ref?:
-        | React.Ref<ReactCropper | null>
-        | React.MutableRefObject<ReactCropper | undefined>
-        | React.RefObject<ReactCropper>;
     on?: (eventName: string, callback: () => void | Promise<void>) => void | Promise<void>;
     scaleX?: number;
     scaleY?: number;
