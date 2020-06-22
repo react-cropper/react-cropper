@@ -7,17 +7,13 @@
         "@babel/preset-react"
     ],
     "plugins": [
-        ["@babel/proposal-class-properties", {
-            "loose": true
-        }],
         ["@babel/proposal-object-rest-spread", {
             "loose": true
         }],
         "@babel/transform-object-assign"
     ],
     "ignore": [
-        "lib/**",
-        "es/**",
+        "dist/**",
         "webpack.config.js",
         "webpack.config.dev.js",
         "bundle.js"

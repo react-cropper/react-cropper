@@ -1,8 +1,7 @@
 .DS_Store
-/lib
+/dist
 /node_modules
 /example/assets
 /yarn.lock
 /.rpt2_cache
 /.vscode
-/es
