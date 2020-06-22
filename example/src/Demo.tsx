@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import 'cropperjs/dist/cropper.css';
-import {ReactCropper as Cropper} from '../../src/react-cropper';
+import {Cropper} from '../../src/react-cropper';
 
 const defaultSrc = 'img/child.jpg';
 

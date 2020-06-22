@@ -14,7 +14,7 @@ export interface ReactCropperProps
     onInitialized?: (instance: Cropper) => void | Promise<void>;
 }
 
-export const ReactCropper: React.FC<ReactCropperProps> = (props) => {
+const ReactCropper: React.FC<ReactCropperProps> = (props) => {
     const {
         dragMode = 'crop',
         src,
@@ -84,4 +84,5 @@ export const ReactCropper: React.FC<ReactCropperProps> = (props) => {
     );
 };
 
+export {ReactCropper as Cropper};
 export default ReactCropper;

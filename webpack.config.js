@@ -7,10 +7,11 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'example/assets'),
         filename: 'bundle.js',
+        publicPath: '/assets/',
     },
     module: {
         rules: [
-            {test: /\.tsx?$/, use: 'ts-loader', exclude: /node_modules/},
+            {test: /\.tsx?$/, loaders: ['ts-loader'], exclude: /node_modules/},
             {
                 test: /\.css$/,
                 include: path.join(__dirname),
@@ -24,7 +25,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.tsx'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     plugins: [
         new MiniCssExtractPlugin({

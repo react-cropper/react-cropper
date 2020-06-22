@@ -1,7 +1,7 @@
 {
   "include": ["src"],
   "compilerOptions": {
-    "lib": ["es2015", "dom"],
+    "lib": ["es6", "dom"],
     "jsx": "react",
     "allowJs": true,
     "declaration": true,
