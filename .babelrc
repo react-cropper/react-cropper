@@ -16,7 +16,8 @@
         "@babel/transform-object-assign"
     ],
     "ignore": [
-        "dist/**",
+        "lib/**",
+        "es/**",
         "webpack.config.js",
         "webpack.config.dev.js",
         "bundle.js"
