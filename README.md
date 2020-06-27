@@ -26,6 +26,7 @@ Since this project have dependency on [cropperjs](https://www.npmjs.com/package/
 1. Support for `ref` has been **removed**. Use the `onInitialized` method to get the `cropper` instance.
 2. To set initial aspect ratio, instead of using `aspectRatio` use `initialAspectRatio`.
 3. Props `data`, `canvasData` and `cropBoxData` are directly passed on to `cropperjs` and their respective setters are **not** called as earlier.
+4. React Cropper now does not try to use/execute `moveTo` as earlier. Directly use the `moveTo` method from the `cropper` instance. 
 
 ## Quick Example
 
@@ -107,10 +108,6 @@ https://github.com/fengyuanchen/cropperjs#disable
 
 https://github.com/fengyuanchen/cropperjs#zoomto
 
-### moveTo
-
-https://github.com/fengyuanchen/cropperjs#moveto
-
 ### rotateTo
 
 https://github.com/fengyuanchen/cropperjs#rotateto
@@ -118,7 +115,6 @@ https://github.com/fengyuanchen/cropperjs#rotateto
 ### Other options
 
 Accept all options in the [docs](https://github.com/fengyuanchen/cropperjs#options) as properties.
-Except previous mentioned options, other options don't take effect after component mount.
 
 ```js
 <Cropper
