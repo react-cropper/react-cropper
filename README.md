@@ -19,8 +19,8 @@ Install via [npm](https://www.npmjs.com/package/react-cropper)
 npm install --save react-cropper
 ```
 
-You need `cropper.css` in your project,
-It located in `node_modules/react-cropper/cropperjs/dist/cropper.css`
+You need `cropper.css` in your project which is from [cropperjs](https://www.npmjs.com/package/cropperjs).
+Since this project have dependency on [cropperjs](https://www.npmjs.com/package/cropperjs), it located in `/node_modules/react-cropper/node_modules/cropperjs/dist/cropper.css` or `node_modules/cropperjs/dist/cropper.css` for npm version `3.0.0` later
 
 # Changelog
 
@@ -32,8 +32,11 @@ It located in `node_modules/react-cropper/cropperjs/dist/cropper.css`
 ```js
 import React, {Component} from 'react';
 import Cropper from 'react-cropper';
+import 'cropperjs/dist/cropper.css'; // see installation section above for versions of NPM older than 3.0.0
 // If you choose not to use import, you need to assign Cropper to default
 // var Cropper = require('react-cropper').default
+
+const cropper = React.createRef(null);
 
 class Demo extends Component {
   _crop(){
@@ -44,7 +47,7 @@ class Demo extends Component {
   render() {
     return (
       <Cropper
-        ref='cropper'
+        ref={cropper}
         src='http://fengyuanchen.github.io/cropper/img/picture.jpg'
         style={{height: 400, width: '100%'}}
         // Cropper.js options
@@ -90,6 +93,8 @@ https://github.com/fengyuanchen/cropperjs#scalexscaley
 
 ### enable
 https://github.com/fengyuanchen/cropperjs#enable
+
+### disable
 https://github.com/fengyuanchen/cropperjs#disable
 
 ### cropBoxData
@@ -123,6 +128,9 @@ Except previous mentioned options, other options don't take effect after compone
 Assign a `ref` attribute to use [methods](https://github.com/fengyuanchen/cropper#methods)
 
 ```js
+
+const cropper = React.createRef(null);
+
 class Demo extends Component {
 
   _crop(){
@@ -133,7 +141,7 @@ class Demo extends Component {
   render() {
     return (
       <Cropper
-        ref='cropper'
+        ref={cropper}
         crop={this._crop.bind(this)} />
     );
   }
