@@ -123,7 +123,7 @@ Except previous mentioned options, other options don't take effect after compone
 ```js
 <Cropper
     src="http://fengyuanchen.github.io/cropper/img/picture.jpg"
-    aspectRatio={16 / 9}
+    initialAspectRatio={16 / 9}
     guides={false}
     crop={this._crop}
 />
