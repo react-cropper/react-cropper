@@ -17,7 +17,7 @@
     "build:example": "npm run build && webpack --config webpack.config.js",
     "dev": "npm run build && node server.js",
     "commit": "git-cz",
-    "release": "np --contents=dist"
+    "release": "np"
   },
   "author": "Fong Kuanghuei <waneblade@gmail.com>",
   "maintainers": [
@@ -91,5 +91,10 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "np": {
+    "yarn": false,
+    "contents": "dist",
+    "tests": "false"
   }
 }
