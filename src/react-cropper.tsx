@@ -79,7 +79,7 @@ const ReactCropper: React.FC<ReactCropperProps> = (props) => {
 
     return (
         <div style={style} className={className}>
-            <img crossOrigin={crossOrigin} src={src} alt={alt} style={{opacity: 0}} ref={imageRef} />
+            <img crossOrigin={crossOrigin} src={src} alt={alt} style={{opacity: 0, maxWidth: '100%'}} ref={imageRef} />
         </div>
     );
 };
