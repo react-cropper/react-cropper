@@ -133,7 +133,12 @@ Use the `cropper` instance from `onInitialized` to access cropperjs [methods](ht
 
 ```sh
 npm run build
-npm run build:example
+```
+
+## Development
+
+```sh
+npm start
 ```
 
 ## Author
