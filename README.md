@@ -50,7 +50,7 @@ class Demo extends Component {
     render() {
         return (
             <Cropper
-                src="http://fengyuanchen.github.io/cropper/img/picture.jpg"
+                src="http://fengyuanchen.github.io/cropper/images/picture.jpg"
                 style={{height: 400, width: '100%'}}
                 // Cropper.js options
                 initialAspectRatio={16/9}
@@ -71,7 +71,7 @@ class Demo extends Component {
 - Default: `null`
 
 ```js
-<Cropper src="http://fengyuanchen.github.io/cropper/img/picture.jpg" />
+<Cropper src="http://fengyuanchen.github.io/cropper/images/picture.jpg" />
 ```
 
 ### alt
@@ -118,7 +118,7 @@ Accept all options in the [docs](https://github.com/fengyuanchen/cropperjs#optio
 
 ```js
 <Cropper
-    src="http://fengyuanchen.github.io/cropper/img/picture.jpg"
+    src="http://fengyuanchen.github.io/cropper/images/picture.jpg"
     initialAspectRatio={16 / 9}
     guides={false}
     crop={this._crop}
