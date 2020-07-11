@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import 'cropperjs/dist/cropper.css';
 import {Cropper} from '../../src/react-cropper';
 
-const defaultSrc = 'img/child.jpg';
+const defaultSrc = 'example/img/child.jpg';
 
 export const Demo: React.FC = () => {
     const [image, setImage] = useState(defaultSrc);
