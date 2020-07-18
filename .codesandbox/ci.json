@@ -1,6 +1,3 @@
 {
-    "publishDirectory": {
-        "react-cropper": "dist"
-    },
     "sandboxes": ["react-cropper-demo-0wtqc"]
 }
