@@ -8,15 +8,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./example",
-    "build": "rollup -c rollup.config.ts",
+    "build": "npm run clean && rollup -c rollup.config.ts",
     "build:dev": "rollup -c rollup.config.dev.ts -w",
     "clean": "rimraf dist",
     "prepublishOnly": "npm run build",
-    "prebuild": "npm run clean",
-    "prepare": "npm run clean && npm run lint",
     "dev": "npm run build && node server.js",
     "commit": "git-cz",
-    "release": "np",
+    "release": "np --no-tests",
     "start": "npm-run-all --parallel build:dev browse",
     "browse": "browser-sync start --s --ss build --index example/index.html --files example/**/*.html,example/assets/**/*.js,example/assets/**/*.css --no-notify"
   },
@@ -90,10 +88,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "np": {
-    "yarn": false,
-    "contents": "dist",
-    "tests": "false"
   }
 }
