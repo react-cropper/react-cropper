@@ -3,23 +3,14 @@
 [Cropperjs](https://github.com/fengyuanchen/cropperjs) as React component
 
 [![NPM](https://img.shields.io/npm/v/react-cropper/latest)](https://www.npmjs.com/package/react-cropper)
-
 [![NPM](https://img.shields.io/npm/v/react-cropper/beta)](https://www.npmjs.com/package/react-cropper)
-
 [![NPM downloads](https://img.shields.io/npm/dt/react-cropper)](https://www.npmjs.com/package/react-cropper)
-
 [![Dependencies](https://img.shields.io/david/react-cropper/react-cropper)](https://www.npmjs.com/package/react-cropper)
-
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/react-cropper/react-cropper.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/react-cropper/react-cropper/context:javascript)
-
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/react-cropper/react-cropper.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/react-cropper/react-cropper/alerts/)
-
 [![Bundle Size minZip](https://img.shields.io/bundlephobia/minzip/react-cropper)](https://www.npmjs.com/package/react-cropper)
-
 [![Bundle Size min](https://img.shields.io/bundlephobia/min/react-cropper)](https://www.npmjs.com/package/react-cropper)
-
 [![Stars](https://img.shields.io/github/stars/react-cropper/react-cropper)](https://github.com/react-cropper/react-cropper/stargazers)
-
 [![License](https://img.shields.io/github/license/react-cropper/react-cropper)](https://github.com/react-cropper/react-cropper/blob/develop/LICENSE)
 
 ## Demo
