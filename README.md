@@ -1,14 +1,25 @@
 # react-cropper
 
-[Cropperjs](https://github.com/fengyuanchen/cropperjs) as React components
+[Cropperjs](https://github.com/fengyuanchen/cropperjs) as React component
 
-[![NPM](https://nodei.co/npm/react-cropper.png)](https://www.npmjs.com/package/react-cropper)
+[![NPM](https://img.shields.io/npm/v/react-cropper/latest)](https://www.npmjs.com/package/react-cropper)
+[![NPM](https://img.shields.io/npm/v/react-cropper/beta)](https://www.npmjs.com/package/react-cropper)
+[![NPM downloads](https://img.shields.io/npm/dt/react-cropper)](https://www.npmjs.com/package/react-cropper)
+[![Dependencies](https://img.shields.io/david/react-cropper/react-cropper)](https://www.npmjs.com/package/react-cropper)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/react-cropper/react-cropper.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/react-cropper/react-cropper/context:javascript)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/react-cropper/react-cropper.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/react-cropper/react-cropper/alerts/)
+[![Bundle Size minZip](https://img.shields.io/bundlephobia/minzip/react-cropper)](https://www.npmjs.com/package/react-cropper)
+[![Bundle Size min](https://img.shields.io/bundlephobia/min/react-cropper)](https://www.npmjs.com/package/react-cropper)
+[![Stars](https://img.shields.io/github/stars/react-cropper/react-cropper)](https://github.com/react-cropper/react-cropper/stargazers)
+[![License](https://img.shields.io/github/license/react-cropper/react-cropper)](https://github.com/react-cropper/react-cropper/blob/develop/LICENSE)
 
-[Demo](http://roadmanfong.github.io/react-cropper/example/)
+## Demo
+
+[Click for a Demo](http://roadmanfong.github.io/react-cropper/example/)
 
 ## Docs
 
-- [Image Cropper](https://github.com/fengyuanchen/cropper)
+-   [Image Cropper](https://github.com/fengyuanchen/cropper)
 
 ## Installation
 
@@ -26,7 +37,7 @@ Since this project have dependency on [cropperjs](https://www.npmjs.com/package/
 1. Support for `ref` has been **removed**. Use the `onInitialized` method to get the `cropper` instance.
 2. To set initial aspect ratio, instead of using `aspectRatio` use `initialAspectRatio`.
 3. Props `data`, `canvasData` and `cropBoxData` are directly passed on to `cropperjs` and their respective setters are **not** called as earlier.
-4. React Cropper now does not try to use/execute `moveTo` as earlier. Directly use the `moveTo` method from the `cropper` instance. 
+4. React Cropper now does not try to use/execute `moveTo` as earlier. Directly use the `moveTo` method from the `cropper` instance.
 
 ## Quick Example
 
@@ -53,7 +64,7 @@ class Demo extends Component {
                 src="http://fengyuanchen.github.io/cropper/images/picture.jpg"
                 style={{height: 400, width: '100%'}}
                 // Cropper.js options
-                initialAspectRatio={16/9}
+                initialAspectRatio={16 / 9}
                 guides={false}
                 crop={this._crop.bind(this)}
                 onInitialized={this.onCropperInit.bind(this)}
@@ -67,8 +78,8 @@ class Demo extends Component {
 
 ### src
 
-- Type: `string`
-- Default: `null`
+-   Type: `string`
+-   Default: `null`
 
 ```js
 <Cropper src="http://fengyuanchen.github.io/cropper/images/picture.jpg" />
@@ -76,13 +87,13 @@ class Demo extends Component {
 
 ### alt
 
-- Type: `string`
-- Default: `picture`
+-   Type: `string`
+-   Default: `picture`
 
 ### crossOrigin
 
-- Type: `string`
-- Default: `null`
+-   Type: `string`
+-   Default: `null`
 
 ### dragMode
 
