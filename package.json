@@ -82,7 +82,7 @@
     "rollup-plugin-postcss": "^3.1.2",
     "rollup-plugin-typescript2": "^0.27.1",
     "tslib": "^2.0.0",
-    "typescript": "3.7.5"
+    "typescript": "3.9.7"
   },
   "config": {
     "commitizen": {
