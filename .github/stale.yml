@@ -18,6 +18,7 @@ markComment: >
   for your contributions.
 
 # Comment to post when closing a stale Issue or Pull Request.
- closeComment: >
+closeComment: >
    Closing as there was no activity. Please reopen if required.
+
 only: issues
