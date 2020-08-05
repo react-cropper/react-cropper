@@ -1,18 +1,31 @@
 import React, {useState, useEffect} from 'react';
 import Cropper from 'cropperjs';
 
-export interface ReactCropperProps
-    extends Cropper.Options,
-        Omit<React.HTMLProps<HTMLImageElement>, 'data' | 'ref' | 'crossOrigin'> {
-    crossOrigin?: '' | 'anonymous' | 'use-credentials' | undefined;
-    on?: (eventName: string, callback: () => void | Promise<void>) => void | Promise<void>;
+interface ReactCropperDefaultOptions {
     scaleX?: number;
     scaleY?: number;
     enable?: boolean;
     zoomTo?: number;
     rotateTo?: number;
+}
+
+interface ReactCropperProps
+    extends ReactCropperDefaultOptions,
+        Cropper.Options,
+        Omit<React.HTMLProps<HTMLImageElement>, 'data' | 'ref' | 'crossOrigin'> {
+    crossOrigin?: '' | 'anonymous' | 'use-credentials' | undefined;
+    on?: (eventName: string, callback: () => void | Promise<void>) => void | Promise<void>;
     onInitialized?: (instance: Cropper) => void | Promise<void>;
 }
+
+const __applyDefaultOptions = (cropper: Cropper, options: ReactCropperDefaultOptions = {}): void => {
+    const {enable = true, scaleX = 1, scaleY = 1, zoomTo = 1, rotateTo = 0} = options;
+    enable ? cropper.enable() : cropper.disable();
+    cropper.scaleX(scaleX);
+    cropper.scaleY(scaleY);
+    cropper.rotateTo(rotateTo);
+    cropper.zoomTo(zoomTo);
+};
 
 const ReactCropper: React.FC<ReactCropperProps> = (props) => {
     const {
@@ -21,11 +34,11 @@ const ReactCropper: React.FC<ReactCropperProps> = (props) => {
         style,
         className,
         crossOrigin,
-        scaleX = 1,
-        scaleY = 1,
-        enable = true,
-        zoomTo = 1,
-        rotateTo = 0,
+        scaleX,
+        scaleY,
+        enable,
+        zoomTo,
+        rotateTo,
         alt = 'picture',
         ready,
         onInitialized,
@@ -33,16 +46,7 @@ const ReactCropper: React.FC<ReactCropperProps> = (props) => {
     } = props;
     const [cropper, setCropper] = useState<Cropper | undefined>(undefined);
     const imageRef = React.createRef<HTMLImageElement>();
-    const defaultOptions = (e: CustomEvent<unknown>) => {
-        if (e.target !== null) {
-            const target = e.target as any;
-            enable ? target.cropper.enable() : target.cropper.disable();
-            target.cropper.scaleX(scaleX);
-            target.cropper.scaleY(scaleY);
-            target.cropper.rotateTo(rotateTo);
-            target.cropper.zoomTo(zoomTo);
-        }
-    };
+    const defaultOptions: ReactCropperDefaultOptions = {scaleY, scaleX, enable, zoomTo, rotateTo};
 
     useEffect(() => {
         if (imageRef.current !== null && imageRef.current.src) {
@@ -50,7 +54,10 @@ const ReactCropper: React.FC<ReactCropperProps> = (props) => {
                 dragMode,
                 ...rest,
                 ready: (e) => {
-                    defaultOptions(e);
+                    if (e.target !== null) {
+                        const target = e.target as any;
+                        __applyDefaultOptions(target.cropper, defaultOptions);
+                    }
                     ready && ready(e);
                 },
             });
@@ -74,6 +81,7 @@ const ReactCropper: React.FC<ReactCropperProps> = (props) => {
     useEffect(() => {
         if (typeof cropper !== 'undefined' && typeof src !== 'undefined') {
             cropper.reset().clear().replace(src);
+            __applyDefaultOptions(cropper, defaultOptions);
         }
     }, [src]);
 
@@ -84,5 +92,4 @@ const ReactCropper: React.FC<ReactCropperProps> = (props) => {
     );
 };
 
-export {ReactCropper as Cropper};
-export default ReactCropper;
+export {ReactCropper, ReactCropperProps, __applyDefaultOptions};
