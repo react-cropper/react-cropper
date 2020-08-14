@@ -13,7 +13,7 @@
     "clean": "rimraf dist",
     "prepublishOnly": "npm run build",
     "commit": "git-cz",
-    "release": "np --no-tests",
+    "release": "np",
     "start": "npm-run-all --parallel build:dev browse",
     "browse": "browser-sync start --s --ss build --index example/index.html --files example/**/*.html,example/assets/**/*.js,example/assets/**/*.css --no-notify"
   },
