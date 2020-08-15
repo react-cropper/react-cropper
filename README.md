@@ -16,7 +16,7 @@
 
 ## Demo
 
-[Click for a Demo](http://roadmanfong.github.io/react-cropper/example/)
+[Click for a Demo](https://codesandbox.io/s/wonderful-pine-i7fs3)
 
 ## Docs
 
