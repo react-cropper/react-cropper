@@ -6,8 +6,6 @@ import replace from '@rollup/plugin-replace';
 import babel from '@rollup/plugin-babel';
 import path from 'path';
 
-import pkg from './package.json';
-
 export default {
     input: `example/src/index.tsx`,
     output: {

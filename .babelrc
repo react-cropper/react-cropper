@@ -2,9 +2,12 @@
     "presets": [
         ["@babel/preset-env", {
             "loose": true,
-            "modules": false
+            "modules": false,
+            "targets": {
+                "node": "current"
+            }
         }],
-        "@babel/preset-react"
+        "react-app"
     ],
     "plugins": [
         ["@babel/proposal-object-rest-spread", {

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cropper Render Tests Cropper snapshot 1`] = `
+<div>
+  <img
+    alt="picture"
+    src="http://fengyuanchen.github.io/cropper/images/picture.jpg"
+    style={
+      Object {
+        "maxWidth": "100%",
+        "opacity": 0,
+      }
+    }
+  />
+</div>
+`;
