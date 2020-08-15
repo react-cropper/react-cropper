@@ -20,7 +20,7 @@
 
 ## Docs
 
--   [Image Cropper](https://github.com/fengyuanchen/cropper)
+- [Image Cropper](https://github.com/fengyuanchen/cropper)
 
 ## Installation
 
@@ -39,6 +39,7 @@ Since this project have dependency on [cropperjs](https://www.npmjs.com/package/
 2. To set initial aspect ratio, instead of using `aspectRatio` use `initialAspectRatio`.
 3. Props `data`, `canvasData` and `cropBoxData` are directly passed on to `cropperjs` and their respective setters are **not** called as earlier.
 4. React Cropper now does not try to use/execute `moveTo` as earlier. Directly use the `moveTo` method from the `cropper` instance.
+5. React Cropper does not depend on `@types/react-cropper` and provides its own types. Please uninstall/remove `@types/react-cropper` as they might 'cause issues.
 
 ## Quick Example
 
