@@ -7,6 +7,7 @@ const defaultSrc = 'example/img/child.jpg';
 export const Demo: React.FC = () => {
     const [image, setImage] = useState(defaultSrc);
     const [cropData, setCropData] = useState('#');
+    const imageRef = React.createRef<HTMLImageElement>();
     const [cropper, setCropper] = useState<Cropper>();
     const onChange = (e: any) => {
         e.preventDefault();
@@ -37,11 +38,15 @@ export const Demo: React.FC = () => {
                 <br />
                 <br />
                 <Cropper
+                    crop={() => {
+                        console.log(imageRef);
+                    }}
                     style={{height: 400, width: '100%'}}
                     initialAspectRatio={16 / 9}
                     preview=".img-preview"
                     guides={true}
                     src={image}
+                    ref={imageRef}
                     dragMode={'move'}
                     checkOrientation={true} // https://github.com/fengyuanchen/cropperjs/issues/671
                     onInitialized={(instance) => {
