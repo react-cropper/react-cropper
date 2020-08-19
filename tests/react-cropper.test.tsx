@@ -2,19 +2,21 @@ import React from 'react';
 import {create} from 'react-test-renderer';
 import {render, waitFor} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import {ReactCropper as Cropper, __applyDefaultOptions} from '../src/react-cropper';
+import {ReactCropper as Cropper, applyDefaultOptions} from '../src/react-cropper';
 
 const image = 'http://fengyuanchen.github.io/cropper/images/picture.jpg';
 
 describe('Cropper Render Tests', () => {
     test('Cropper snapshot', () => {
-        const component = create(<Cropper src={image} />).toJSON();
+        const ref = React.createRef<HTMLImageElement>();
+        const component = create(<Cropper src={image} ref={ref} />).toJSON();
         expect(component).toMatchSnapshot();
     });
 
     test('renders cropper and calls onInitialized', async () => {
         const onInitialized = jest.fn();
-        render(<Cropper src={image} onInitialized={onInitialized} />);
+        const ref = React.createRef<HTMLImageElement>();
+        render(<Cropper src={image} onInitialized={onInitialized} ref={ref} />);
         await waitFor(() => expect(onInitialized).toHaveBeenCalledTimes(1));
     });
 });
@@ -33,7 +35,7 @@ describe('Test Cropper Methods', () => {
     });
 
     test('Test applyDefaultOptions with default params', () => {
-        __applyDefaultOptions(cropper);
+        applyDefaultOptions(cropper);
         expect(enable).toHaveBeenCalledTimes(1);
         expect(disable).toHaveBeenCalledTimes(0);
 
@@ -49,7 +51,7 @@ describe('Test Cropper Methods', () => {
     });
 
     test('Test applyDefaultOptions with custom params', () => {
-        __applyDefaultOptions(cropper, {enable: false});
+        applyDefaultOptions(cropper, {enable: false});
         expect(enable).toHaveBeenCalledTimes(0);
         expect(disable).toHaveBeenCalledTimes(1);
     });
