@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import 'cropperjs/dist/cropper.css';
 import {Cropper} from '../../src';
 
@@ -7,6 +7,7 @@ const defaultSrc = 'example/img/child.jpg';
 export const Demo: React.FC = () => {
     const [image, setImage] = useState(defaultSrc);
     const [cropData, setCropData] = useState('#');
+    const imageRef = useRef<HTMLImageElement>(null);
     const [cropper, setCropper] = useState<Cropper>();
     const onChange = (e: any) => {
         e.preventDefault();
@@ -42,6 +43,7 @@ export const Demo: React.FC = () => {
                     preview=".img-preview"
                     guides={true}
                     src={image}
+                    ref={imageRef}
                     dragMode={'move'}
                     checkOrientation={true} // https://github.com/fengyuanchen/cropperjs/issues/671
                     onInitialized={(instance) => {
