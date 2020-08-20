@@ -5,6 +5,7 @@ import '@testing-library/jest-dom/extend-expect';
 import {ReactCropper as Cropper, applyDefaultOptions} from '../src/react-cropper';
 
 const image = 'http://fengyuanchen.github.io/cropper/images/picture.jpg';
+const newImage = 'https://raw.githubusercontent.com/react-cropper/react-cropper/develop/example/img/child.jpg';
 
 describe('Cropper Render Tests', () => {
     test('Cropper snapshot', () => {
@@ -18,6 +19,15 @@ describe('Cropper Render Tests', () => {
         const ref = React.createRef<HTMLImageElement>();
         render(<Cropper src={image} onInitialized={onInitialized} ref={ref} />);
         await waitFor(() => expect(onInitialized).toHaveBeenCalledTimes(1));
+    });
+
+    test('cropper re-renders on src change', async () => {
+        const ref = React.createRef<HTMLImageElement>();
+        const {rerender, findByAltText} = render(<Cropper src={image} ref={ref} />);
+        const imageTag = await findByAltText('picture');
+        expect(imageTag).toHaveAttribute('src', image);
+        rerender(<Cropper src={newImage} ref={ref} />);
+        expect(imageTag).toHaveAttribute('src', newImage);
     });
 });
 

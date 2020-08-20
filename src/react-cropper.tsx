@@ -82,7 +82,6 @@ const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...
     useEffect(() => {
         if (typeof cropper !== 'undefined' && typeof src !== 'undefined') {
             cropper.reset().clear().replace(src);
-            applyDefaultOptions(cropper, defaultOptions);
         }
     }, [src]);
 
