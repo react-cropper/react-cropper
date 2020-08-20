@@ -1,6 +1,6 @@
 import React from 'react';
 import Cropper from 'cropperjs';
-export interface ReactCropperProps
+interface ReactCropperProps
     extends Cropper.Options,
         Omit<React.HTMLProps<HTMLImageElement>, 'data' | 'ref' | 'crossOrigin'> {
     crossOrigin?: '' | 'anonymous' | 'use-credentials' | undefined;
@@ -12,6 +12,7 @@ export interface ReactCropperProps
     rotateTo?: number;
     onInitialized?: (instance: Cropper) => void | Promise<void>;
 }
-declare const ReactCropper: React.FC<ReactCropperProps>;
+declare const ReactCropper: React.ForwardRefExoticComponent<ReactCropperProps & React.RefAttributes<HTMLImageElement>>;
 export {ReactCropper as Cropper};
-export default ReactCropper;
+export {ReactCropper as default};
+export {ReactCropperProps};

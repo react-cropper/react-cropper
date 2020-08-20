@@ -21,9 +21,9 @@
   "maintainers": [
     "Shubhendu Shekhar <connect@shubhendu.de>"
   ],
-  "homepage": "http://roadmanfong.github.io/react-cropper/",
+  "homepage": "https://github.com/react-cropper/react-cropper/",
   "bugs": {
-    "url": "https://github.com/roadmanfong/react-cropper/issues"
+    "url": "https://github.com/react-cropper/react-cropper/issues"
   },
   "keywords": [
     "react",
@@ -35,7 +35,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/roadmanfong/react-cropper.git"
+    "url": "https://github.com/react-cropper/react-cropper.git"
   },
   "dependencies": {
     "cropperjs": "^1.5.7"
