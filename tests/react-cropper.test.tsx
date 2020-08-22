@@ -55,7 +55,7 @@ describe('Test Cropper Methods', () => {
         expect(scaleY).toHaveBeenCalledTimes(1);
 
         expect(rotateTo).toHaveBeenCalledWith(0);
-        expect(zoomTo).toHaveBeenCalledWith(1);
+        expect(zoomTo).toHaveBeenCalledWith(0);
         expect(rotateTo).toHaveBeenCalledTimes(1);
         expect(zoomTo).toHaveBeenCalledTimes(1);
     });
