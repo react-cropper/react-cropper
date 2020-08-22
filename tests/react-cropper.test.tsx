@@ -29,6 +29,20 @@ describe('Cropper Render Tests', () => {
         rerender(<Cropper src={newImage} ref={ref} />);
         expect(imageTag).toHaveAttribute('src', newImage);
     });
+
+    test('renders cropper without ref and calls onInitialized', async () => {
+        const onInitialized = jest.fn();
+        render(<Cropper src={image} onInitialized={onInitialized} />);
+        await waitFor(() => expect(onInitialized).toHaveBeenCalledTimes(1));
+    });
+
+    test('renders cropper with functional ref', async () => {
+        const onInitialized = jest.fn();
+        const ref = jest.fn();
+        render(<Cropper src={image} onInitialized={onInitialized} ref={ref} />);
+        await waitFor(() => expect(onInitialized).toHaveBeenCalledTimes(1));
+        await waitFor(() => expect(ref).toHaveBeenCalled());
+    });
 });
 
 describe('Test Cropper Methods', () => {
