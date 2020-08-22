@@ -1,7 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import Cropper from 'cropperjs';
 
-type ReactCropperRef = React.MutableRefObject<HTMLImageElement | null> | null;
+type ReactCropperRef =
+    | ((instance: HTMLImageElement | null) => void)
+    | React.MutableRefObject<HTMLImageElement | null>
+    | null;
 
 interface ReactCropperDefaultOptions {
     scaleX?: number;
@@ -29,6 +32,27 @@ const applyDefaultOptions = (cropper: Cropper, options: ReactCropperDefaultOptio
     cropper.zoomTo(zoomTo);
 };
 
+/**
+ * sourced from: https://itnext.io/reusing-the-ref-from-forwardref-with-react-hooks-4ce9df693dd
+ */
+const useCombinedRefs = (...refs: ReactCropperRef[]): React.RefObject<HTMLImageElement> => {
+    const targetRef = useRef<HTMLImageElement>(null);
+
+    React.useEffect(() => {
+        refs.forEach((ref) => {
+            if (!ref) return;
+
+            if (typeof ref === 'function') {
+                ref(targetRef.current);
+            } else {
+                ref.current = targetRef.current;
+            }
+        });
+    }, [refs]);
+
+    return targetRef;
+};
+
 const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...props}, ref) => {
     const {
         dragMode = 'crop',
@@ -48,10 +72,11 @@ const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...
     } = props;
     const [cropper, setCropper] = useState<Cropper | undefined>(undefined);
     const defaultOptions: ReactCropperDefaultOptions = {scaleY, scaleX, enable, zoomTo, rotateTo};
-    const cropperRef = ref as ReactCropperRef;
+    const innerRef = useRef<HTMLImageElement>(null);
+    const combinedRef = useCombinedRefs(ref, innerRef);
     useEffect(() => {
-        if (cropperRef !== null && cropperRef.current !== null && typeof cropperRef !== 'undefined' && cropperRef) {
-            const cropper = new Cropper(cropperRef.current, {
+        if (combinedRef !== null && combinedRef.current !== null && typeof combinedRef !== 'undefined' && combinedRef) {
+            const cropper = new Cropper(combinedRef.current, {
                 dragMode,
                 ...rest,
                 ready: (e) => {
@@ -70,11 +95,11 @@ const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...
          * destroy cropper on un-mount
          */
         return () => {
-            if (cropperRef !== null) {
+            if (combinedRef !== null) {
                 cropper?.destroy();
             }
         };
-    }, [cropperRef]);
+    }, [combinedRef]);
 
     /**
      * re-render when src changes
@@ -87,7 +112,13 @@ const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...
 
     return (
         <div style={style} className={className}>
-            <img crossOrigin={crossOrigin} src={src} alt={alt} style={{opacity: 0, maxWidth: '100%'}} ref={ref} />
+            <img
+                crossOrigin={crossOrigin}
+                src={src}
+                alt={alt}
+                style={{opacity: 0, maxWidth: '100%'}}
+                ref={combinedRef}
+            />
         </div>
     );
 });
