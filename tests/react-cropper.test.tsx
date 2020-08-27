@@ -36,12 +36,24 @@ describe('Cropper Render Tests', () => {
         await waitFor(() => expect(onInitialized).toHaveBeenCalledTimes(1));
     });
 
-    test('renders cropper with functional ref', async () => {
+    test('renders cropper with functional ref - method invoked', async () => {
         const onInitialized = jest.fn();
         const ref = jest.fn();
         render(<Cropper src={image} onInitialized={onInitialized} ref={ref} />);
         await waitFor(() => expect(onInitialized).toHaveBeenCalledTimes(1));
         await waitFor(() => expect(ref).toHaveBeenCalled());
+    });
+
+    test('renders cropper with functional ref and check ref exists', async () => {
+        const onInitialized = jest.fn();
+        let ref: HTMLImageElement;
+        const {rerender} = render(
+            <Cropper src={image} onInitialized={onInitialized} ref={(cropperRef) => (ref = cropperRef)} />,
+        );
+        await waitFor(() => expect(onInitialized).toHaveBeenCalledTimes(1));
+        expect(ref.src).toEqual(image);
+        rerender(<Cropper src={newImage} />);
+        expect(ref.src).toEqual(newImage);
     });
 });
 

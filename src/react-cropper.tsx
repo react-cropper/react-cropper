@@ -75,7 +75,7 @@ const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...
     const innerRef = useRef<HTMLImageElement>(null);
     const combinedRef = useCombinedRefs(ref, innerRef);
     useEffect(() => {
-        if (combinedRef !== null && combinedRef.current !== null && typeof combinedRef !== 'undefined' && combinedRef) {
+        if (combinedRef.current !== null) {
             const cropper = new Cropper(combinedRef.current, {
                 dragMode,
                 ...rest,
@@ -95,9 +95,7 @@ const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...
          * destroy cropper on un-mount
          */
         return () => {
-            if (combinedRef !== null) {
-                cropper?.destroy();
-            }
+            cropper?.destroy();
         };
     }, [combinedRef]);
 
