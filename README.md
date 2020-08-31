@@ -10,9 +10,8 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/react-cropper/react-cropper.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/react-cropper/react-cropper/alerts/)
 [![Bundle Size minZip](https://img.shields.io/bundlephobia/minzip/react-cropper)](https://www.npmjs.com/package/react-cropper)
 [![Bundle Size min](https://img.shields.io/bundlephobia/min/react-cropper)](https://www.npmjs.com/package/react-cropper)
-[![Stars](https://img.shields.io/github/stars/react-cropper/react-cropper)](https://github.com/react-cropper/react-cropper/stargazers)
 [![License](https://img.shields.io/github/license/react-cropper/react-cropper)](https://github.com/react-cropper/react-cropper/blob/develop/LICENSE)
-[![codecoverage](https://img.shields.io/codecov/c/gh/react-cropper/react-cropper/develop)](https://codecov.io/gh/react-cropper/react-cropper/src/develop/src/react-cropper.tsx)
+[![codecov](https://codecov.io/gh/react-cropper/react-cropper/branch/develop/graph/badge.svg)](https://codecov.io/gh/react-cropper/react-cropper)
 
 ## Demo
 

@@ -29,6 +29,32 @@ describe('Cropper Render Tests', () => {
         rerender(<Cropper src={newImage} ref={ref} />);
         expect(imageTag).toHaveAttribute('src', newImage);
     });
+
+    test('renders cropper without ref and calls onInitialized', async () => {
+        const onInitialized = jest.fn();
+        render(<Cropper src={image} onInitialized={onInitialized} />);
+        await waitFor(() => expect(onInitialized).toHaveBeenCalledTimes(1));
+    });
+
+    test('renders cropper with functional ref - method invoked', async () => {
+        const onInitialized = jest.fn();
+        const ref = jest.fn();
+        render(<Cropper src={image} onInitialized={onInitialized} ref={ref} />);
+        await waitFor(() => expect(onInitialized).toHaveBeenCalledTimes(1));
+        await waitFor(() => expect(ref).toHaveBeenCalled());
+    });
+
+    test('renders cropper with functional ref and check ref exists', async () => {
+        const onInitialized = jest.fn();
+        let ref: HTMLImageElement;
+        const {rerender} = render(
+            <Cropper src={image} onInitialized={onInitialized} ref={(cropperRef) => (ref = cropperRef)} />,
+        );
+        await waitFor(() => expect(onInitialized).toHaveBeenCalledTimes(1));
+        expect(ref.src).toEqual(image);
+        rerender(<Cropper src={newImage} />);
+        expect(ref.src).toEqual(newImage);
+    });
 });
 
 describe('Test Cropper Methods', () => {
@@ -55,7 +81,7 @@ describe('Test Cropper Methods', () => {
         expect(scaleY).toHaveBeenCalledTimes(1);
 
         expect(rotateTo).toHaveBeenCalledWith(0);
-        expect(zoomTo).toHaveBeenCalledWith(1);
+        expect(zoomTo).toHaveBeenCalledWith(0);
         expect(rotateTo).toHaveBeenCalledTimes(1);
         expect(zoomTo).toHaveBeenCalledTimes(1);
     });
