@@ -29,7 +29,7 @@ const applyDefaultOptions = (cropper: Cropper, options: ReactCropperDefaultOptio
     cropper.scaleX(scaleX);
     cropper.scaleY(scaleY);
     cropper.rotateTo(rotateTo);
-    cropper.zoomTo(zoomTo);
+    zoomTo > 0 && cropper.zoomTo(zoomTo);
 };
 
 /**
