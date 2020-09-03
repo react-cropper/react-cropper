@@ -81,14 +81,15 @@ describe('Test Cropper Methods', () => {
         expect(scaleY).toHaveBeenCalledTimes(1);
 
         expect(rotateTo).toHaveBeenCalledWith(0);
-        expect(zoomTo).toHaveBeenCalledWith(0);
+        expect(zoomTo).toHaveBeenCalledTimes(0);
         expect(rotateTo).toHaveBeenCalledTimes(1);
-        expect(zoomTo).toHaveBeenCalledTimes(1);
     });
 
     test('Test applyDefaultOptions with custom params', () => {
-        applyDefaultOptions(cropper, {enable: false});
+        applyDefaultOptions(cropper, {enable: false, zoomTo: 1});
         expect(enable).toHaveBeenCalledTimes(0);
         expect(disable).toHaveBeenCalledTimes(1);
+        expect(zoomTo).toHaveBeenCalledWith(1);
+        expect(zoomTo).toHaveBeenCalledTimes(1);
     });
 });
