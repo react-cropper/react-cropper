@@ -38,7 +38,7 @@
     "url": "https://github.com/react-cropper/react-cropper.git"
   },
   "dependencies": {
-    "cropperjs": "^1.5.7"
+    "cropperjs": "^1.5.8"
   },
   "peerDependencies": {
     "react": "^16.0.0-0"
@@ -89,7 +89,7 @@
     "rollup-plugin-postcss": "^3.1.2",
     "rollup-plugin-typescript2": "^0.27.1",
     "tslib": "^2.0.0",
-    "typescript": "^3.9.7"
+    "typescript": "^4.0.2"
   },
   "config": {
     "commitizen": {
