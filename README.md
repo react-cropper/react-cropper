@@ -122,15 +122,6 @@ https://github.com/fengyuanchen/cropperjs#rotateto
 
 Accept all options in the [docs](https://github.com/fengyuanchen/cropperjs#options) as properties.
 
-```js
-<Cropper
-    src="http://fengyuanchen.github.io/cropper/images/picture.jpg"
-    initialAspectRatio={16 / 9}
-    guides={false}
-    crop={this._crop}
-/>
-```
-
 ## Methods
 
 Use the `cropper` instance from `onInitialized` to access cropperjs [methods](https://github.com/fengyuanchen/cropper#methods)
