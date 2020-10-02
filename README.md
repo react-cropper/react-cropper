@@ -140,7 +140,7 @@ npm start
 
 ## Author
 
-Fong Kuanghuei(fongkuanghui@gmail.com)
+[Fong Kuanghuei](mailto:fongkuanghui@gmail.com)
 
 ## Maintainer
 
