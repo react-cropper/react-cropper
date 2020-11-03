@@ -13,6 +13,7 @@ interface ReactCropperProps
     onInitialized?: (instance: Cropper) => void | Promise<void>;
 }
 declare const ReactCropper: React.ForwardRefExoticComponent<ReactCropperProps & React.RefAttributes<HTMLImageElement>>;
+export type CropperType = Cropper;
 export {ReactCropper as Cropper};
 export {ReactCropper as default};
 export {ReactCropperProps};
