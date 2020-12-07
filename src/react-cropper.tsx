@@ -38,7 +38,7 @@ const applyDefaultOptions = (cropper: Cropper, options: ReactCropperDefaultOptio
 const useCombinedRefs = (...refs: ReactCropperRef[]): React.RefObject<HTMLImageElement> => {
     const targetRef = useRef<HTMLImageElement>(null);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         refs.forEach((ref) => {
             if (!ref) return;
 
@@ -73,7 +73,7 @@ const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...
     const defaultOptions: ReactCropperDefaultOptions = {scaleY, scaleX, enable, zoomTo, rotateTo};
     const innerRef = useRef<HTMLImageElement>(null);
     const combinedRef = useCombinedRefs(ref, innerRef);
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (combinedRef.current !== null) {
             const cropper = new Cropper(combinedRef.current, {
                 dragMode,
@@ -94,7 +94,7 @@ const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...
          */
         return () => {
             const current = combinedRef.current as any;
-            current.cropper?.destroy();
+            current?.cropper?.destroy();
         };
     }, [combinedRef]);
 
@@ -103,8 +103,8 @@ const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...
      */
     useEffect(() => {
         const current = combinedRef.current as any;
-        if (typeof current.cropper !== 'undefined' && typeof src !== 'undefined') {
-            current.cropper.reset().clear().replace(src);
+        if (typeof current?.cropper !== 'undefined' && typeof src !== 'undefined') {
+            current?.cropper.reset().clear().replace(src);
         }
     }, [src]);
 
