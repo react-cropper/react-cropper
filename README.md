@@ -11,7 +11,7 @@
 [![Bundle Size minZip](https://img.shields.io/bundlephobia/minzip/react-cropper)](https://www.npmjs.com/package/react-cropper)
 [![Bundle Size min](https://img.shields.io/bundlephobia/min/react-cropper)](https://www.npmjs.com/package/react-cropper)
 [![License](https://img.shields.io/github/license/react-cropper/react-cropper)](https://github.com/react-cropper/react-cropper/blob/develop/LICENSE)
-[![codecov](https://codecov.io/gh/react-cropper/react-cropper/branch/develop/graph/badge.svg)](https://codecov.io/gh/react-cropper/react-cropper)
+[![codecov](https://codecov.io/gh/react-cropper/react-cropper/branch/develop/graph/badge.svg)](https://codecov.io/gh/react-cropper/react-cropper) [![Meercode CI Score](https://meercode.io/badge/react-cropper/react-cropper?type=ci-score&branch=develop)](https://meercode.io/react-cropper/react-cropper)
 
 ## Demo
 
