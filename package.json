@@ -41,7 +41,7 @@
     "cropperjs": "^1.5.9"
   },
   "peerDependencies": {
-    "react": "^16.0.0-0"
+    "react": ">=16.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.1",
