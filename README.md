@@ -42,37 +42,31 @@ Since this project have dependency on [cropperjs](https://www.npmjs.com/package/
 
 ## Quick Example
 
-```js
-import React, {Component} from 'react';
-import Cropper from 'react-cropper';
-import 'cropperjs/dist/cropper.css'; // see installation section above for versions of NPM older than 3.0.0
-// If you choose not to use import, you need to assign Cropper to default
-// var Cropper = require('react-cropper').default
+```ts
+import React, { useRef } from "react";
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
 
-class Demo extends Component {
-    _crop() {
-        // image in dataUrl
-        console.log(this.cropper.getCroppedCanvas().toDataURL());
-    }
+const Demo: React.FC = () => {
+  const cropperRef = useRef<HTMLImageElement>(null);
+  const onCrop = () => {
+    const imageElement: any = cropperRef?.current;
+    const cropper: any = imageElement?.cropper;
+    console.log(cropper.getCroppedCanvas().toDataURL());
+  };
 
-    onCropperInit(cropper) {
-        this.cropper = cropper;
-    }
-
-    render() {
-        return (
-            <Cropper
-                src="http://fengyuanchen.github.io/cropper/images/picture.jpg"
-                style={{height: 400, width: '100%'}}
-                // Cropper.js options
-                initialAspectRatio={16 / 9}
-                guides={false}
-                crop={this._crop.bind(this)}
-                onInitialized={this.onCropperInit.bind(this)}
-            />
-        );
-    }
-}
+  return (
+    <Cropper
+      src="https://raw.githubusercontent.com/roadmanfong/react-cropper/master/example/img/child.jpg"
+      style={{ height: 400, width: "100%" }}
+      // Cropper.js options
+      initialAspectRatio={16 / 9}
+      guides={false}
+      crop={onCrop}
+      ref={cropperRef}
+    />
+  );
+};
 ```
 
 ## Options
@@ -128,15 +122,6 @@ https://github.com/fengyuanchen/cropperjs#rotateto
 
 Accept all options in the [docs](https://github.com/fengyuanchen/cropperjs#options) as properties.
 
-```js
-<Cropper
-    src="http://fengyuanchen.github.io/cropper/images/picture.jpg"
-    initialAspectRatio={16 / 9}
-    guides={false}
-    crop={this._crop}
-/>
-```
-
 ## Methods
 
 Use the `cropper` instance from `onInitialized` to access cropperjs [methods](https://github.com/fengyuanchen/cropper#methods)
@@ -155,7 +140,7 @@ npm start
 
 ## Author
 
-Fong Kuanghuei(fongkuanghui@gmail.com)
+[Fong Kuanghuei](mailto:fongkuanghui@gmail.com)
 
 ## Maintainer
 
