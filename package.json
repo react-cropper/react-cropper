@@ -6,7 +6,7 @@
   "module": "dist/react-cropper.es.js",
   "typings": "types/index.d.ts",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --coverage --forceExit --detectOpenHandles",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./example",
     "build": "npm run clean && rollup -c rollup.config.ts",
     "build:dev": "rollup -c rollup.config.dev.ts -w",
