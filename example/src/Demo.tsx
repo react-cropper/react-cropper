@@ -46,9 +46,13 @@ export const Demo: React.FC = () => {
                     ref={imageRef}
                     dragMode={'move'}
                     checkOrientation={true} // https://github.com/fengyuanchen/cropperjs/issues/671
-                    onInitialized={(instance) => {
-                        setCropper(instance);
-                    }}
+                    onInitialized={setCropper}
+                    onReady={(event) => console.log('onReady', event)}
+                    onCrop={(event) => console.log('onCrop', event)}
+                    onCropStart={(event) => console.log('onCropStart', event)}
+                    onCropMove={(event) => console.log('onCropMove', event)}
+                    onCropEnd={(event) => console.log('onCropEnd', event)}
+                    onZoom={(event) => console.log('onZoom', event)}
                 />
             </div>
             <div>
