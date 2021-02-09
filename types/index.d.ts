@@ -1,33 +1,30 @@
 import type Instance from 'cropperjs';
 import type React from 'react';
 
-interface EventMap {
-    crop: Instance.CropEvent;
-    cropend: Instance.CropEndEvent;
-    cropmove: Instance.CropMoveEvent;
-    cropstart: Instance.CropStartEvent;
-    ready: Instance.ReadyEvent;
-    zoom: Instance.ZoomEvent;
-}
-
 interface EventHandler {
-    <K extends keyof EventMap>(eventName: K, callback: (event: EventMap[K]) => void): Promise<void>;
+    onInitialized?(instance: Instance): void;
+    onReady?(event: Instance.ReadyEvent): void;
+    onCrop?(event: Instance.CropEvent): void;
+    onCropStart?(event: Instance.CropStartEvent): void;
+    onCropMove?(event: Instance.CropMoveEvent): void;
+    onCropEnd?(event: Instance.CropEndEvent): void;
+    onZoom?(event: Instance.ZoomEvent): void;
 }
 
-interface Props extends Cropper.Options, Omit<React.HTMLProps<HTMLImageElement>, 'data' | 'ref' | 'crossOrigin'> {
+type Options = Omit<Cropper.Options, 'ready' | 'crop' | 'cropstart' | 'cropmove' | 'cropend' | 'zoom'>;
+type ElementProps = Omit<React.HTMLProps<HTMLImageElement>, 'data' | 'ref' | 'crossOrigin'>;
+
+interface Props extends EventHandler, Options, ElementProps {
     enable?: boolean;
     scaleX?: number;
     scaleY?: number;
     zoomTo?: number;
     rotateTo?: number;
     crossOrigin?: '' | 'anonymous' | 'use-credentials';
-    on?: EventHandler;
-    onInitialized?: (instance: Instance) => void;
 }
 
-declare const ReactCropper: React.ForwardRefExoticComponent<Props & React.RefAttributes<HTMLImageElement>>;
+declare const Cropper: React.ForwardRefExoticComponent<Props & React.RefAttributes<HTMLImageElement>>;
 
-export {Instance, EventHandler};
-export {ReactCropper as Cropper};
-export {ReactCropper as default};
+export {Cropper, Instance, EventHandler};
 export {Props as ReactCropperProps};
+export default Cropper;

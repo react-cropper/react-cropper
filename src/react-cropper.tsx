@@ -14,13 +14,22 @@ interface ReactCropperDefaultOptions {
     rotateTo?: number;
 }
 
+interface EventHandler {
+    onInitialized?(instance: Cropper): void;
+    onReady?(event: Cropper.ReadyEvent): void;
+    onCrop?(event: Cropper.CropEvent): void;
+    onCropStart?(event: Cropper.CropStartEvent): void;
+    onCropMove?(event: Cropper.CropMoveEvent): void;
+    onCropEnd?(event: Cropper.CropEndEvent): void;
+    onZoom?(event: Cropper.ZoomEvent): void;
+}
+
 interface ReactCropperProps
     extends ReactCropperDefaultOptions,
         Cropper.Options,
+        EventHandler,
         Omit<React.HTMLProps<HTMLImageElement>, 'data' | 'ref' | 'crossOrigin'> {
-    crossOrigin?: '' | 'anonymous' | 'use-credentials' | undefined;
-    on?: (eventName: string, callback: () => void | Promise<void>) => void | Promise<void>;
-    onInitialized?: (instance: Cropper) => void | Promise<void>;
+    crossOrigin?: '' | 'anonymous' | 'use-credentials';
 }
 
 const applyDefaultOptions = (cropper: Cropper, options: ReactCropperDefaultOptions = {}): void => {
@@ -66,8 +75,13 @@ const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...
         zoomTo,
         rotateTo,
         alt = 'picture',
-        ready,
         onInitialized,
+        onReady,
+        onCrop,
+        onCropStart,
+        onCropMove,
+        onCropEnd,
+        onZoom,
         ...rest
     } = props;
     const [cropper, setCropper] = useState<Cropper | undefined>(undefined);
@@ -81,13 +95,18 @@ const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...
                 ...rest,
                 ready: (e) => {
                     if (e.target !== null) {
-                        const target = e.target as any;
+                        const target = e.target as EventTarget & {cropper: Cropper};
                         applyDefaultOptions(target.cropper, defaultOptions);
                     }
-                    ready && ready(e);
+                    onReady?.(e);
                 },
+                crop: onCrop,
+                cropstart: onCropStart,
+                cropmove: onCropMove,
+                cropend: onCropEnd,
+                zoom: onZoom,
             });
-            onInitialized && onInitialized(cropper);
+            onInitialized?.(cropper);
             setCropper(cropper);
         }
 
