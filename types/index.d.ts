@@ -24,4 +24,4 @@ declare const ReactCropper: React.ForwardRefExoticComponent<
 >;
 export {ReactCropper as Cropper};
 export {ReactCropper as default};
-export {ReactCropperProps};
+export {ReactCropperProps, ReactCropperElement};
