@@ -1,9 +1,13 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import Cropper from 'cropperjs';
 
+interface ReactCropperElement extends HTMLImageElement {
+    cropper: Cropper;
+}
+
 type ReactCropperRef =
-    | ((instance: HTMLImageElement | null) => void)
-    | React.MutableRefObject<HTMLImageElement | null>
+    | ((instance: HTMLImageElement | ReactCropperElement | null) => void)
+    | React.MutableRefObject<HTMLImageElement | ReactCropperElement | null>
     | null;
 
 interface ReactCropperDefaultOptions {
@@ -16,7 +20,7 @@ interface ReactCropperDefaultOptions {
 
 interface ReactCropperProps
     extends ReactCropperDefaultOptions,
-        Cropper.Options,
+        Cropper.Options<HTMLImageElement>,
         Omit<React.HTMLProps<HTMLImageElement>, 'data' | 'ref' | 'crossOrigin'> {
     crossOrigin?: '' | 'anonymous' | 'use-credentials' | undefined;
     on?: (eventName: string, callback: () => void | Promise<void>) => void | Promise<void>;
@@ -35,8 +39,8 @@ const applyDefaultOptions = (cropper: Cropper, options: ReactCropperDefaultOptio
 /**
  * sourced from: https://itnext.io/reusing-the-ref-from-forwardref-with-react-hooks-4ce9df693dd
  */
-const useCombinedRefs = (...refs: ReactCropperRef[]): React.RefObject<HTMLImageElement> => {
-    const targetRef = useRef<HTMLImageElement>(null);
+const useCombinedRefs = (...refs: ReactCropperRef[]): React.RefObject<ReactCropperElement> => {
+    const targetRef = useRef<ReactCropperElement>(null);
 
     React.useEffect(() => {
         refs.forEach((ref) => {
@@ -53,7 +57,7 @@ const useCombinedRefs = (...refs: ReactCropperRef[]): React.RefObject<HTMLImageE
     return targetRef;
 };
 
-const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...props}, ref) => {
+const ReactCropper = React.forwardRef<ReactCropperElement | HTMLImageElement, ReactCropperProps>(({...props}, ref) => {
     const {
         dragMode = 'crop',
         src,
@@ -70,7 +74,6 @@ const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...
         onInitialized,
         ...rest
     } = props;
-    const [cropper, setCropper] = useState<Cropper | undefined>(undefined);
     const defaultOptions: ReactCropperDefaultOptions = {scaleY, scaleX, enable, zoomTo, rotateTo};
     const innerRef = useRef<HTMLImageElement>(null);
     const combinedRef = useCombinedRefs(ref, innerRef);
@@ -80,22 +83,20 @@ const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...
                 dragMode,
                 ...rest,
                 ready: (e) => {
-                    if (e.target !== null) {
-                        const target = e.target as any;
-                        applyDefaultOptions(target.cropper, defaultOptions);
+                    if (e.currentTarget !== null) {
+                        applyDefaultOptions(e.currentTarget.cropper, defaultOptions);
                     }
                     ready && ready(e);
                 },
             });
             onInitialized && onInitialized(cropper);
-            setCropper(cropper);
         }
 
         /**
          * destroy cropper on un-mount
          */
         return () => {
-            cropper?.destroy();
+            combinedRef.current?.cropper?.destroy();
         };
     }, [combinedRef]);
 
@@ -103,8 +104,8 @@ const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...
      * re-render when src changes
      */
     useEffect(() => {
-        if (typeof cropper !== 'undefined' && typeof src !== 'undefined') {
-            cropper.reset().clear().replace(src);
+        if (combinedRef.current?.cropper && typeof src !== 'undefined') {
+            combinedRef.current.cropper.reset().clear().replace(src);
         }
     }, [src]);
 
@@ -121,4 +122,4 @@ const ReactCropper = React.forwardRef<HTMLImageElement, ReactCropperProps>(({...
     );
 });
 
-export {ReactCropper, ReactCropperProps, applyDefaultOptions};
+export {ReactCropper, ReactCropperProps, ReactCropperElement, applyDefaultOptions};
