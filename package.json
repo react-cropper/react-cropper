@@ -1,6 +1,6 @@
 {
   "name": "react-cropper",
-  "version": "2.1.5",
+  "version": "2.1.6-0",
   "description": "Cropper as React Component",
   "main": "dist/react-cropper.umd.js",
   "module": "dist/react-cropper.es.js",
@@ -38,7 +38,7 @@
     "url": "https://github.com/react-cropper/react-cropper.git"
   },
   "dependencies": {
-    "cropperjs": "^1.5.9"
+    "cropperjs": "^1.5.10"
   },
   "peerDependencies": {
     "react": ">=16.0.0"
@@ -79,10 +79,10 @@
     "np": "^7.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "2.2.1",
-    "react": "^16.13.1",
+    "react": "^17.0.1",
     "react-app-polyfill": "^2.0.0",
-    "react-dom": "^16.13.1",
-    "react-test-renderer": "^16.13.1",
+    "react-dom": "^17.0.1",
+    "react-test-renderer": "^17.0.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.16.0",
     "rollup-plugin-node-globals": "^1.4.0",
