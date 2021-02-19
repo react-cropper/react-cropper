@@ -8,10 +8,10 @@
   "scripts": {
     "test": "jest --coverage --forceExit --detectOpenHandles",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./example",
-    "build": "npm run clean && rollup -c rollup.config.ts",
+    "build": "yarn clean && rollup -c rollup.config.ts",
     "build:dev": "rollup -c rollup.config.dev.ts -w",
     "clean": "rimraf dist",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "yarn build",
     "commit": "git-cz",
     "release": "np",
     "start": "npm-run-all --parallel build:dev browse",
@@ -38,7 +38,7 @@
     "url": "https://github.com/react-cropper/react-cropper.git"
   },
   "dependencies": {
-    "cropperjs": "^1.5.10"
+    "cropperjs": "^1.5.11"
   },
   "peerDependencies": {
     "react": ">=16.0.0"
