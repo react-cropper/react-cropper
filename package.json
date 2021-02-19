@@ -38,7 +38,7 @@
     "url": "https://github.com/react-cropper/react-cropper.git"
   },
   "dependencies": {
-    "cropperjs": "^1.5.10"
+    "cropperjs": "^1.5.11"
   },
   "peerDependencies": {
     "react": ">=16.0.0"
