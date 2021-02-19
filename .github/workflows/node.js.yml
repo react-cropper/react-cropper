@@ -13,8 +13,8 @@ jobs:
       with:
         node-version: '12'
         check-latest: true
-    - run: npm ci
-    - run: npm test
-    - run: npm run build
+    - run: yarn install
+    - run: yarn test
+    - run: yarn build
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
