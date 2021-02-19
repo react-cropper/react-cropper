@@ -8,10 +8,10 @@
   "scripts": {
     "test": "jest --coverage --forceExit --detectOpenHandles",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./example",
-    "build": "npm run clean && rollup -c rollup.config.ts",
+    "build": "yarn clean && rollup -c rollup.config.ts",
     "build:dev": "rollup -c rollup.config.dev.ts -w",
     "clean": "rimraf dist",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "yarn build",
     "commit": "git-cz",
     "release": "np",
     "start": "npm-run-all --parallel build:dev browse",
