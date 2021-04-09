@@ -101,6 +101,16 @@ const ReactCropper = React.forwardRef<ReactCropperElement | HTMLImageElement, Re
     }, [combinedRef]);
 
     /**
+     * do zooming when zoomTo param is changed (passind data to cropperjs)
+     */
+    useEffect(() => {
+       if(combinedRef.current?.cropper?.canvasData && typeof props?.zoomTo === 'number') {
+         const cropper = combinedRef.current.cropper;
+         cropper.zoomTo(props.zoomTo);
+       }
+    },[props.zoomTo]);
+
+    /**
      * re-render when src changes
      */
     useEffect(() => {
