@@ -77,6 +77,25 @@ const ReactCropper = React.forwardRef<ReactCropperElement | HTMLImageElement, Re
     const defaultOptions: ReactCropperDefaultOptions = {scaleY, scaleX, enable, zoomTo, rotateTo};
     const innerRef = useRef<HTMLImageElement>(null);
     const combinedRef = useCombinedRefs(ref, innerRef);
+
+    /**
+     * Invoke zoomTo method when cropper is set and zoomTo prop changes
+     */
+    useEffect(() => {
+        if (combinedRef.current?.cropper && typeof zoomTo === 'number') {
+            combinedRef.current.cropper.zoomTo(zoomTo);
+        }
+    }, [props.zoomTo]);
+
+    /**
+     * re-render when src changes
+     */
+    useEffect(() => {
+        if (combinedRef.current?.cropper && typeof src !== 'undefined') {
+            combinedRef.current.cropper.reset().clear().replace(src);
+        }
+    }, [src]);
+
     useEffect(() => {
         if (combinedRef.current !== null) {
             const cropper = new Cropper(combinedRef.current, {
@@ -99,26 +118,6 @@ const ReactCropper = React.forwardRef<ReactCropperElement | HTMLImageElement, Re
             combinedRef.current?.cropper?.destroy();
         };
     }, [combinedRef]);
-
-    /**
-     * do zooming when param zoomTo is changed (passing data to cropperjs)
-     */
-    useEffect(() => {
-      const currentRef: any = combinedRef.current;
-       if(currentRef && currentRef?.cropper?.canvasData && typeof props?.zoomTo === 'number') {
-         const cropper = currentRef.cropper;
-         cropper.zoomTo(props.zoomTo);
-       }
-    },[props.zoomTo]);
-
-    /**
-     * re-render when src changes
-     */
-    useEffect(() => {
-        if (combinedRef.current?.cropper && typeof src !== 'undefined') {
-            combinedRef.current.cropper.reset().clear().replace(src);
-        }
-    }, [src]);
 
     return (
         <div style={style} className={className}>

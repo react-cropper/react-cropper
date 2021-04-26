@@ -56,9 +56,9 @@ describe('Cropper Render Tests', () => {
         expect(ref.src).toEqual(newImage);
     });
 
-    test('renders  cropper with zoomTo prop', async () => {
+    test('renders cropper with zoomTo prop', async () => {
         const onInitialized = jest.fn();
-        render(<Cropper src={image} onInitialized={onInitialized} zoomTo={1} />);
+        render(<Cropper src={newImage} onInitialized={onInitialized} zoomTo={1} />);
         await waitFor(() => expect(onInitialized).toHaveBeenCalledTimes(1));
     });
 });
