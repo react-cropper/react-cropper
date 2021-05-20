@@ -28,11 +28,11 @@ interface ReactCropperProps
 }
 
 const applyDefaultOptions = (cropper: Cropper, options: ReactCropperDefaultOptions = {}): void => {
-    const {enable = true, scaleX = 1, scaleY = 1, zoomTo = 0, rotateTo = 0} = options;
+    const {enable = true, scaleX = 1, scaleY = 1, zoomTo = 0, rotateTo} = options;
     enable ? cropper.enable() : cropper.disable();
     cropper.scaleX(scaleX);
     cropper.scaleY(scaleY);
-    cropper.rotateTo(rotateTo);
+    rotateTo !== undefined && cropper.rotateTo(rotateTo);
     zoomTo > 0 && cropper.zoomTo(zoomTo);
 };
 
