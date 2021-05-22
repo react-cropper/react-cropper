@@ -86,9 +86,8 @@ describe('Test Cropper Methods', () => {
         expect(scaleX).toHaveBeenCalledTimes(1);
         expect(scaleY).toHaveBeenCalledTimes(1);
 
-        expect(rotateTo).toHaveBeenCalledWith(0);
         expect(zoomTo).toHaveBeenCalledTimes(0);
-        expect(rotateTo).toHaveBeenCalledTimes(1);
+        expect(rotateTo).toHaveBeenCalledTimes(0);
     });
 
     test('Test applyDefaultOptions with custom params', () => {
