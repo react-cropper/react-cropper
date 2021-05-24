@@ -19,7 +19,7 @@
 
 ## Docs
 
-- [Image Cropper](https://github.com/fengyuanchen/cropper)
+- [Cropperjs](https://github.com/fengyuanchen/cropperjs)
 
 ## Installation
 
