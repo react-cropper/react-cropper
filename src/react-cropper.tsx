@@ -1,6 +1,8 @@
 import React, {useEffect, useRef} from 'react';
 import Cropper from 'cropperjs';
 
+const REQUIRED_IMAGE_STYLES = {opacity: 0, maxWidth: '100%'};
+
 interface ReactCropperElement extends HTMLImageElement {
     cropper: Cropper;
 }
@@ -119,15 +121,11 @@ const ReactCropper = React.forwardRef<ReactCropperElement | HTMLImageElement, Re
         };
     }, [combinedRef]);
 
+    const imageProps = React.useMemo(() => ({...rest, crossOrigin, src, alt}), [rest, crossOrigin, src, alt]);
+
     return (
         <div style={style} className={className}>
-            <img
-                crossOrigin={crossOrigin}
-                src={src}
-                alt={alt}
-                style={{opacity: 0, maxWidth: '100%'}}
-                ref={combinedRef}
-            />
+            <img {...imageProps} style={REQUIRED_IMAGE_STYLES} ref={combinedRef} />
         </div>
     );
 });
