@@ -6,7 +6,7 @@ module.exports = {
     collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts'],
     setupFiles: ['react-app-polyfill/jsdom'],
     testMatch: ['<rootDir>/tests/**/*.{spec,test}.{js,jsx,ts,tsx}'],
-    testEnvironment: 'jest-environment-jsdom-sixteen',
+    testEnvironment: 'jest-environment-jsdom',
     transform: {
         '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
     },
