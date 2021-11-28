@@ -47,11 +47,15 @@ import React, { useRef } from "react";
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
 
+interface CropperRef extends HTMLImageElement {
+  cropper: Cropper
+}
+
 const Demo: React.FC = () => {
-  const cropperRef = useRef<HTMLImageElement>(null);
+  const cropperRef = useRef<CropperRef>(null);
   const onCrop = () => {
-    const imageElement: any = cropperRef?.current;
-    const cropper: any = imageElement?.cropper;
+    const imageElement = cropperRef?.current;
+    const cropper = imageElement?.cropper;
     console.log(cropper.getCroppedCanvas().toDataURL());
   };
 
