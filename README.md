@@ -44,15 +44,23 @@ Since this project have dependency on [cropperjs](https://www.npmjs.com/package/
 
 ```ts
 import React, { useRef } from "react";
-import Cropper from "react-cropper";
+import Cropper, { ReactCropperElement } from "react-cropper";
 import "cropperjs/dist/cropper.css";
 
-const Demo: React.FC = () => {
-  const cropperRef = useRef<HTMLImageElement>(null);
+export default function Demo(): JSX.Element {
+  const cropperRef = useRef<ReactCropperElement>(null);
+  
   const onCrop = () => {
-    const imageElement: any = cropperRef?.current;
-    const cropper: any = imageElement?.cropper;
-    console.log(cropper.getCroppedCanvas().toDataURL());
+    const cropperElement = cropperRef.current;
+    const cropper = cropperElement?.cropper;
+
+    // toDataURL
+    console.log(cropper?.getCroppedCanvas().toDataURL());
+    
+    // toBlob
+    cropper?.getCroppedCanvas().toBlob((blob) => {
+      console.log(URL.createObjectURL(blob));
+    })
   };
 
   return (
