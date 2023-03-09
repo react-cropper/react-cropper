@@ -5,6 +5,12 @@
     "main": "dist/react-cropper.umd.js",
     "module": "dist/react-cropper.es.js",
     "typings": "dist/index.d.ts",
+    "files": [
+        "dist",
+        "src",
+        "LICENSE",
+        "README.md"
+    ],
     "scripts": {
         "test": "jest --coverage --forceExit",
         "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ./example",
