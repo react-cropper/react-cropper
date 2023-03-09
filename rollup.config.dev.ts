@@ -1,6 +1,7 @@
+import serve from 'rollup-plugin-serve';
+import typescript from 'rollup-plugin-typescript2';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
 import replace from '@rollup/plugin-replace';
 import babel from '@rollup/plugin-babel';
@@ -18,24 +19,27 @@ export default {
             'react-dom': 'ReactDOM',
         },
     },
-    watch: {
-        include: ['src/**', 'example/**'],
-        exclude: ['example/assets/**'],
-    },
     plugins: [
+        replace({'process.env.NODE_ENV': JSON.stringify('development'), preventAssignment: true}),
+        postcss({
+            extract: path.resolve('example/assets/bundle.css'),
+        }),
         resolve({
             browser: true,
         }),
         commonjs({
             include: /node_modules/,
         }),
-        babel(),
+        babel({babelHelpers: 'bundled'}),
         typescript({
             useTsconfigDeclarationDir: true,
         }),
-        postcss({
-            extract: path.resolve('example/assets/bundle.css'),
+        serve({
+            open: true,
+            verbose: true,
+            contentBase: 'example',
+            host: 'localhost',
+            port: 3000,
         }),
-        replace({'process.env.NODE_ENV': JSON.stringify('development')}),
     ],
 };
