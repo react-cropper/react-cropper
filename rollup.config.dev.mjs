@@ -1,5 +1,7 @@
 import serve from 'rollup-plugin-serve';
-import typescript from 'rollup-plugin-typescript2';
+import jsx from 'acorn-jsx';
+//import typescript from 'rollup-plugin-typescript2';
+import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
@@ -19,6 +21,7 @@ export default {
             'react-dom': 'ReactDOM',
         },
     },
+    acornInjectPlugins: [jsx()],
     plugins: [
         replace({'process.env.NODE_ENV': JSON.stringify('development'), preventAssignment: true}),
         postcss({
@@ -31,9 +34,7 @@ export default {
             include: /node_modules/,
         }),
         babel({babelHelpers: 'bundled'}),
-        typescript({
-            useTsconfigDeclarationDir: true,
-        }),
+        typescript({tsconfig: 'tsconfig.dev.json'}),
         serve({
             open: true,
             verbose: true,
