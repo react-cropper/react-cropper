@@ -14,7 +14,7 @@
         "prepublishOnly": "yarn build",
         "commit": "git-cz",
         "release": "np",
-        "browse": "browser-sync start --s --ss build --index example/index.html --files example/**/*.html,example/assets/**/*.js,example/assets/**/*.css --no-notify"
+        "size": "bundlesize"
     },
     "author": "Fong Kuanghuei <waneblade@gmail.com>",
     "maintainers": [
@@ -68,6 +68,7 @@
         "babel-jest": "^27.2.5",
         "babel-preset-react-app": "^10.0.0",
         "browser-sync": "^2.27.5",
+        "bundlesize": "^0.18.1",
         "cz-conventional-changelog": "^3.3.0",
         "eslint": "^8.0.1",
         "eslint-config-prettier": "^8.3.0",
@@ -98,5 +99,15 @@
         "commitizen": {
             "path": "./node_modules/cz-conventional-changelog"
         }
-    }
+    },
+    "bundlesize": [
+        {
+            "path": "./dist/react-cropper.es.js",
+            "maxSize": "6.18KB"
+        },
+        {
+            "path": "./dist/react-cropper.umd.js",
+            "maxSize": "6.18KB"
+        }
+    ]
 }
