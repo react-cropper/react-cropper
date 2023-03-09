@@ -23,9 +23,6 @@ export default [
     {
         input: './dist/types/index.d.ts',
         output: [{file: 'dist/index.d.ts', format: 'es'}],
-        plugins: [
-            dts(),
-            del({hook: 'buildEnd', targets: './dist/types'}), //<------ New Addition
-        ],
+        plugins: [dts(), del({hook: 'buildEnd', targets: './dist/types'})],
     },
 ];
