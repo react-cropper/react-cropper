@@ -102,11 +102,7 @@
     },
     "bundlesize": [
         {
-            "path": "./dist/react-cropper.es.js",
-            "maxSize": "6.18KB"
-        },
-        {
-            "path": "./dist/react-cropper.umd.js",
+            "path": "./dist/react-cropper.*.js",
             "maxSize": "6.18KB"
         }
     ]
