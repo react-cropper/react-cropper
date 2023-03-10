@@ -1,6 +1,9 @@
+import serve from 'rollup-plugin-serve';
+import jsx from 'acorn-jsx';
+//import typescript from 'rollup-plugin-typescript2';
+import typescript from '@rollup/plugin-typescript';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
 import replace from '@rollup/plugin-replace';
 import babel from '@rollup/plugin-babel';
@@ -18,24 +21,26 @@ export default {
             'react-dom': 'ReactDOM',
         },
     },
-    watch: {
-        include: ['src/**', 'example/**'],
-        exclude: ['example/assets/**'],
-    },
+    acornInjectPlugins: [jsx()],
     plugins: [
+        replace({'process.env.NODE_ENV': JSON.stringify('development'), preventAssignment: true}),
+        postcss({
+            extract: path.resolve('example/assets/bundle.css'),
+        }),
         resolve({
             browser: true,
         }),
         commonjs({
             include: /node_modules/,
         }),
-        babel(),
-        typescript({
-            useTsconfigDeclarationDir: true,
+        babel({babelHelpers: 'bundled'}),
+        typescript({tsconfig: 'tsconfig.dev.json'}),
+        serve({
+            open: true,
+            verbose: true,
+            contentBase: 'example',
+            host: 'localhost',
+            port: 3000,
         }),
-        postcss({
-            extract: path.resolve('example/assets/bundle.css'),
-        }),
-        replace({'process.env.NODE_ENV': JSON.stringify('development')}),
     ],
 };

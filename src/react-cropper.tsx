@@ -1,6 +1,8 @@
 import React, {useEffect, useRef} from 'react';
 import Cropper from 'cropperjs';
 
+const REQUIRED_IMAGE_STYLES = {opacity: 0, maxWidth: '100%'};
+
 interface ReactCropperElement extends HTMLImageElement {
     cropper: Cropper;
 }
@@ -28,11 +30,11 @@ interface ReactCropperProps
 }
 
 const applyDefaultOptions = (cropper: Cropper, options: ReactCropperDefaultOptions = {}): void => {
-    const {enable = true, scaleX = 1, scaleY = 1, zoomTo = 0, rotateTo = 0} = options;
+    const {enable = true, scaleX = 1, scaleY = 1, zoomTo = 0, rotateTo} = options;
     enable ? cropper.enable() : cropper.disable();
     cropper.scaleX(scaleX);
     cropper.scaleY(scaleY);
-    cropper.rotateTo(rotateTo);
+    rotateTo !== undefined && cropper.rotateTo(rotateTo);
     zoomTo > 0 && cropper.zoomTo(zoomTo);
 };
 
@@ -77,6 +79,25 @@ const ReactCropper = React.forwardRef<ReactCropperElement | HTMLImageElement, Re
     const defaultOptions: ReactCropperDefaultOptions = {scaleY, scaleX, enable, zoomTo, rotateTo};
     const innerRef = useRef<HTMLImageElement>(null);
     const combinedRef = useCombinedRefs(ref, innerRef);
+
+    /**
+     * Invoke zoomTo method when cropper is set and zoomTo prop changes
+     */
+    useEffect(() => {
+        if (combinedRef.current?.cropper && typeof zoomTo === 'number') {
+            combinedRef.current.cropper.zoomTo(zoomTo);
+        }
+    }, [props.zoomTo]);
+
+    /**
+     * re-render when src changes
+     */
+    useEffect(() => {
+        if (combinedRef.current?.cropper && typeof src !== 'undefined') {
+            combinedRef.current.cropper.reset().clear().replace(src);
+        }
+    }, [src]);
+
     useEffect(() => {
         if (combinedRef.current !== null) {
             const cropper = new Cropper(combinedRef.current, {
@@ -100,24 +121,11 @@ const ReactCropper = React.forwardRef<ReactCropperElement | HTMLImageElement, Re
         };
     }, [combinedRef]);
 
-    /**
-     * re-render when src changes
-     */
-    useEffect(() => {
-        if (combinedRef.current?.cropper && typeof src !== 'undefined') {
-            combinedRef.current.cropper.reset().clear().replace(src);
-        }
-    }, [src]);
+    const imageProps = React.useMemo(() => ({...rest, crossOrigin, src, alt}), [rest, crossOrigin, src, alt]);
 
     return (
         <div style={style} className={className}>
-            <img
-                crossOrigin={crossOrigin}
-                src={src}
-                alt={alt}
-                style={{opacity: 0, maxWidth: '100%'}}
-                ref={combinedRef}
-            />
+            <img {...imageProps} style={REQUIRED_IMAGE_STYLES} ref={combinedRef} />
         </div>
     );
 });

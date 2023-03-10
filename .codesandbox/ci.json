@@ -1,3 +1,4 @@
 {
-    "sandboxes": ["react-cropper-demo-0wtqc"]
+    "sandboxes": ["react-cropper-demo-0wtqc"],
+    "node": "16"
 }

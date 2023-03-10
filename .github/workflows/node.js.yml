@@ -4,17 +4,17 @@ on: [push, pull_request]
 
 jobs:
   test:
-    name: Test on latest ubuntu and latest Node 12.x
+    name: Test on latest ubuntu and latest Node 16.x
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 12.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: '12'
-        check-latest: true
-    - run: yarn install
-    - run: yarn test
-    - run: yarn build
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v1
+      - uses: actions/checkout@v2
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16"
+          check-latest: true
+      - run: yarn install
+      - run: yarn test
+      - run: yarn build
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1

@@ -1,11 +1,10 @@
 {
-  "include": ["src"],
+  "include": ["src", "example"],
   "compilerOptions": {
     "lib": ["es6", "dom"],
     "jsx": "react-jsx",
     "allowJs": true,
-    "declaration": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "importHelpers": true,
     "strict": true,
     "noImplicitAny": true,
@@ -14,6 +13,5 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "declarationDir": "types"
   }
 }

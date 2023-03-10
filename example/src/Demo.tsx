@@ -2,13 +2,12 @@ import React, {useState, useRef} from 'react';
 import 'cropperjs/dist/cropper.css';
 import {Cropper, ReactCropperElement} from '../../src';
 
-const defaultSrc = 'example/img/child.jpg';
+const defaultSrc = 'img/child.jpg';
 
 export const Demo: React.FC = () => {
     const [image, setImage] = useState(defaultSrc);
     const [cropData, setCropData] = useState('#');
-    const imageRef = useRef<ReactCropperElement>(null);
-    const [cropper, setCropper] = useState<Cropper>();
+    const cropperRef = useRef<ReactCropperElement>(null);
     const onChange = (e: any) => {
         e.preventDefault();
         let files;
@@ -25,7 +24,8 @@ export const Demo: React.FC = () => {
     };
 
     const getCropData = () => {
-        if (typeof cropper !== 'undefined') {
+        if (typeof cropperRef.current?.cropper !== 'undefined') {
+            const cropper = cropperRef.current?.cropper;
             setCropData(cropper.getCroppedCanvas().toDataURL());
         }
     };
@@ -43,12 +43,9 @@ export const Demo: React.FC = () => {
                     preview=".img-preview"
                     guides={true}
                     src={image}
-                    ref={imageRef}
+                    ref={cropperRef}
                     dragMode={'move'}
                     checkOrientation={true} // https://github.com/fengyuanchen/cropperjs/issues/671
-                    onInitialized={(instance) => {
-                        setCropper(instance);
-                    }}
                 />
             </div>
             <div>
