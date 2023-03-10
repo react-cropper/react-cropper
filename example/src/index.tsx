@@ -1,8 +1,8 @@
-/* global document */
+import {createRoot} from 'react-dom/client';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Demo from './Demo';
 
-const Root = () => <Demo />;
+const container = document.getElementById('main');
+const root = createRoot(container!);
 
-ReactDOM.render(<Root />, document.getElementById('main'));
+root.render(<Demo />);
