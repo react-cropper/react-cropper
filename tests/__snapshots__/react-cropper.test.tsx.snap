@@ -6,7 +6,7 @@ exports[`Cropper Render Tests Cropper snapshot 1`] = `
     alt="picture"
     src="http://fengyuanchen.github.io/cropper/images/picture.jpg"
     style={
-      Object {
+      {
         "maxWidth": "100%",
         "opacity": 0,
       }
