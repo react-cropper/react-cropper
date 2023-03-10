@@ -19,8 +19,7 @@
         "clean": "rimraf dist",
         "prepublishOnly": "yarn build",
         "commit": "git-cz",
-        "release": "np",
-        "size": "bundlesize"
+        "release": "np"
     },
     "author": "Fong Kuanghuei <waneblade@gmail.com>",
     "maintainers": [
@@ -74,7 +73,6 @@
         "babel-jest": "^27.2.5",
         "babel-preset-react-app": "^10.0.0",
         "browser-sync": "^2.27.5",
-        "bundlesize": "^0.18.1",
         "cz-conventional-changelog": "^3.3.0",
         "eslint": "^8.0.1",
         "eslint-config-prettier": "^8.3.0",
@@ -94,6 +92,7 @@
         "react-test-renderer": "^17.0.2",
         "rimraf": "^3.0.2",
         "rollup": "^3.18.0",
+        "rollup-plugin-bundle-size": "^1.0.3",
         "rollup-plugin-delete": "^2.0.0",
         "rollup-plugin-dts": "^5.2.0",
         "rollup-plugin-postcss": "^4.0.2",

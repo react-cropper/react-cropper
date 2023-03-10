@@ -4,6 +4,7 @@ import dts from 'rollup-plugin-dts';
 import typescript from '@rollup/plugin-typescript';
 import terser from '@rollup/plugin-terser';
 import del from 'rollup-plugin-delete';
+import bundleSize from 'rollup-plugin-bundle-size';
 
 import pkg from './package.json' assert {type: 'json'};
 
@@ -18,7 +19,7 @@ export default [
         watch: {
             include: 'src/**',
         },
-        plugins: [resolve(), typescript(), commonjs(), terser()],
+        plugins: [resolve(), typescript(), commonjs(), terser(), bundleSize()],
     },
     {
         input: './dist/types/index.d.ts',
