@@ -1,5 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import Cropper from 'cropperjs';
+import {cleanImageProps} from './utils';
 
 const REQUIRED_IMAGE_STYLES = {opacity: 0, maxWidth: '100%'};
 
@@ -121,7 +122,7 @@ const ReactCropper = React.forwardRef<ReactCropperElement | HTMLImageElement, Re
         };
     }, [combinedRef]);
 
-    const imageProps = React.useMemo(() => ({...rest, crossOrigin, src, alt}), [rest, crossOrigin, src, alt]);
+    const imageProps = cleanImageProps({...rest, crossOrigin, src, alt});
 
     return (
         <div style={style} className={className}>
