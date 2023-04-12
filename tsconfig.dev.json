@@ -2,7 +2,7 @@
   "include": ["src", "example"],
   "compilerOptions": {
     "lib": ["es6", "dom"],
-    "jsx": "react-jsx",
+    "jsx": "react",
     "allowJs": true,
     "sourceMap": true,
     "importHelpers": true,
